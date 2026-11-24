@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manufaktura Lingwistyczna | Patrycja Rosińska-Babiarz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1e1b4b;
+      background-color: #ffffff;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    .purple-gradient-text {
+      background: linear-gradient(135deg, #4c1d95 0%, #7e22ce 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .purple-soft-bg {
+      background: linear-gradient(180deg, #faf5ff 0%, #ffffff 100%);
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-purple-200 selection:text-purple-900">
+
+  <!-- NAWIGACJA -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-purple-100 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 sm:gap-3 min-w-0">
+        <img src="logo.png" alt="Manufaktura Lingwistyczna Logo" class="h-10 sm:h-12 w-auto object-contain shrink-0" onerror="this.style.display='none'">
+        <span class="font-bold text-base sm:text-xl text-purple-900 tracking-tight truncate">Manufaktura<span class="text-purple-600">Lingwistyczna</span></span>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
+        <a href="#dlaczego-warto" class="hover:text-purple-700 transition" data-i18n="nav_why">Dlaczego warto</a>
+        <a href="#o-mnie" class="hover:text-purple-700 transition" data-i18n="nav_about">O lektorce</a>
+        <a href="#cennik" class="hover:text-purple-700 transition" data-i18n="nav_pricing">Cennik i Kalkulator</a>
+        <a href="#opinie" class="hover:text-purple-700 transition" data-i18n="nav_reviews">Opinie</a>
+        <a href="#kontakt" class="hover:text-purple-700 transition" data-i18n="nav_contact">Kontakt</a>
+      </nav>
+
+      <!-- Prawa strona: Przełącznik języka + CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <div class="inline-flex items-center bg-purple-50 p-1 rounded-full border border-purple-200 text-xs font-bold">
+          <button id="lang-pl" onclick="setLanguage('pl')" class="px-2.5 py-1 rounded-full bg-purple-700 text-white transition">PL</button>
+          <button id="lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full text-purple-800 hover:text-purple-900 transition">EN</button>
+        </div>
+        <a href="#kontakt" class="px-5 py-2.5 text-sm font-semibold rounded-full bg-purple-700 hover:bg-purple-800 text-white shadow-sm hover:shadow transition" data-i18n="nav_cta">Zapisz się</a>
+      </div>
+
+      <!-- Hamburger mobilny -->
+      <div class="flex items-center gap-1.5 sm:gap-2 md:hidden shrink-0">
+        <div class="inline-flex items-center bg-purple-50 p-1 rounded-full border border-purple-200 text-xs font-bold mr-1">
+          <button id="m-lang-pl" onclick="setLanguage('pl')" class="px-2 py-0.5 rounded-full bg-purple-700 text-white">PL</button>
+          <button id="m-lang-en" onclick="setLanguage('en')" class="px-2 py-0.5 rounded-full text-purple-800">EN</button>
+        </div>
+        <button id="mobile-menu-btn" class="p-2 text-slate-700 hover:text-purple-700 focus:outline-none" aria-label="Menu">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobilne Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-purple-100 bg-white px-4 pt-2 pb-6 space-y-3">
+      <a href="#dlaczego-warto" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_why">Dlaczego warto</a>
+      <a href="#o-mnie" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_about">O lektorce</a>
+      <a href="#cennik" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_pricing">Cennik i Kalkulator</a>
+      <a href="#opinie" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_reviews">Opinie</a>
+      <a href="#kontakt" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_contact">Kontakt</a>
+      <a href="#kontakt" class="block text-center mt-3 py-2.5 rounded-full bg-purple-700 text-white font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_cta">Zapisz się</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="purple-soft-bg relative pt-12 pb-20 md:py-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-800 text-xs font-semibold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-purple-600 animate-pulse"></span>
+            <span data-i18n="hero_badge">Skuteczny angielski w Koszalinie i online</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <span data-i18n="hero_title_1">Swoboda mówienia,</span><br>
+            <span class="purple-gradient-text" data-i18n="hero_title_2">która przychodzi naturalnie.</span>
+          </h1>
+
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="hero_desc">
+            Zajęcia tworzone z myślą o młodzieży z klas 7–8, licealistach przygotowujących się do egzaminów oraz dorosłych, którzy chcą wreszcie swobodnie rozmawiać po angielsku. Łączymy bezpieczną atmosferę ze sprawdzonym międzynarodowym doświadczeniem.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#kontakt" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold text-center shadow-lg shadow-purple-600/20 transition-all hover:-translate-y-0.5" data-i18n="hero_cta_primary">
+              Umów się na bezpłatną konsultację
+            </a>
+            <a href="#cennik" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-purple-50 text-purple-800 border border-purple-200 font-semibold text-center transition" data-i18n="hero_cta_secondary">
+              Sprawdź cennik
+            </a>
+          </div>
+
+          <div class="pt-6 border-t border-purple-100 grid grid-cols-3 gap-4 text-center lg:text-left">
+            <div>
+              <div class="text-2xl font-bold text-purple-900" data-i18n="hero_stat_1_val">8+ lat</div>
+              <div class="text-xs text-slate-500 font-medium" data-i18n="hero_stat_1">doświadczenia</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-purple-900">STT</div>
+              <div class="text-xs text-slate-500 font-medium" data-i18n="hero_stat_2">nacisk na mówienie</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-purple-900">100%</div>
+              <div class="text-xs text-slate-500 font-medium" data-i18n="hero_stat_3">indywidualne podejście</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-purple-100 aspect-[4/3] flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="Przestrzeń edukacyjna do nauki języka" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white/50 text-slate-800 text-xs sm:text-sm">
+              <span class="font-semibold text-purple-900" data-i18n="hero_card_title">Przestrzeń bez stresu:</span>
+              <span class="text-slate-600 block mt-0.5" data-i18n="hero_card_sub">Ucz się w swoim tempie – stacjonarnie w Koszalinie lub wygodnie online.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DLACZEGO WARTO -->
+  <section id="dlaczego-warto" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="why_sub">Dlaczego warto</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="why_title">Nauka oparta na rozmowie, nie na mechanicznym wypełnianiu kserówek</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Filar 1: STT -->
+        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card1_title">Student Talking Time (STT)</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card1_desc">
+            To uczeń mówi przez większość czasu lekcji. Nie siedzisz cicho, słuchając wykładu lektora – aktywnie formułujesz myśli, testujesz nowe zwroty i budujesz naturalny automatyzm językowy od pierwszej minuty.
+          </p>
+        </div>
+
+        <!-- Filar 2: Egzamin ósmoklasisty & Matura -->
+        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card2_title">Egzamin ósmoklasisty i Matura</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card2_desc">
+            Dla klas 7–8 oraz uczniów szkół średnich: systematyczne oswajanie struktur egzaminacyjnych, arkuszy i części ustnej bez zbędnego stresu, z pełnym zrozumieniem poleceń.
+          </p>
+        </div>
+
+        <!-- Filar 3: Dorośli bez paraliżu -->
+        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card3_title">Swoboda dla dorosłych</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card3_desc">
+            Koniec z blokadą „wszystko rozumiem, ale boję się odezwać”. Pracujemy w bezpiecznych warunkach nad sytuacjami zawodowymi, podróżami i codziennym, płynnym small talkiem.
+          </p>
+        </div>
+
+        <!-- Filar 4: Doświadczenie międzynarodowe -->
+        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card4_title">Doświadczenie międzynarodowe</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card4_desc">
+            Wieloletnia praca ze słuchaczami z różnych kręgów kulturowych daje pewność elastycznego dopasowania metodyki do każdego poziomu i każdego typu trudności językowych.
+          </p>
+        </div>
+
+        <!-- Filar 5: Indywidualne materiały -->
+        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card5_title">Materiały szyte na miarę</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card5_desc">
+            Pracuję na podręcznikach dla dorosłych dobranych do ich poziomu, łącząc je z angażującymi materiałami źródłowymi, aktualnymi tematami i autorskimi pomocami dydaktycznymi dopasowanymi do Twoich celów.
+          </p>
+        </div>
+
+        <!-- Filar 6: Stacjonarnie i online -->
+        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
+            <i class="fa-solid fa-laptop-house"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card6_title">Stacjonarnie w Koszalinie lub online</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card6_desc">
+            Spotykamy się w przyjaznym gabinecie przy ul. Szczecińskiej 39-41 lub w interaktywnej sali online z każdego zakątka Polski i świata. Pełna wygoda.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- O MNIE / LEKTOR -->
+  <section id="o-mnie" class="py-20 bg-purple-50/40 border-y border-purple-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Portret lektorki -->
+        <div class="lg:col-span-5">
+          <div class="relative mx-auto max-w-sm rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-purple-200 aspect-[3/4]">
+            <img src="kobieta.png" alt="Patrycja Rosińska-Babiarz" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='Portret kobiety w okularach i lokach_2.png';">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/30 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-2xl text-center border border-purple-100">
+              <span class="font-bold text-purple-950 block text-base">Patrycja Rosińska-Babiarz</span>
+              <span class="text-xs text-purple-700 font-medium" data-i18n="about_role">Lektorka & Właścicielka Manufaktury Lingwistycznej</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Treść sekcji -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold uppercase tracking-wider">
+            <i class="fa-solid fa-user-check"></i>
+            <span data-i18n="about_badge">Lektorka & metodyka</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="about_title">
+            Uczę tak, jak sama chciałabym być uczona – z sensem, spokojem i zaangażowaniem.
+          </h2>
+
+          <div class="space-y-4 text-slate-600 leading-relaxed text-sm sm:text-base">
+            <p data-i18n="about_p1">
+              Nazywam się Patrycja Rosińska-Babiarz. Jestem magistrem filologii angielskiej o specjalności nauczycielskiej, z ponad 8-letnim stażem w codziennej pracy dydaktycznej. 
+            </p>
+            <p data-i18n="about_p2">
+              Przez lata prowadziłam zajęcia zarówno z polskimi uczniami (od ambitnej młodzieży klas 7–8, przez maturzystów, po zapracowanych dorosłych), jak i w środowisku międzynarodowym, ucząc osoby z różnych krajów i kultur. To doświadczenie nauczyło mnie jednego: kluczem do postępów nie jest sztywne trzymanie się podręcznika, lecz bezpieczna atmosfera i maksymalny czas, w którym to uczeń ma głos.
+            </p>
+          </div>
+
+          <!-- Kwalifikacje w pigułce -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">mgr</div>
+              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_1">mgr filologii angielskiej</span>
+            </div>
+            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">8+</div>
+              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_2">8 lat doświadczenia w nauczaniu</span>
+            </div>
+            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center text-xs"><i class="fa-solid fa-earth-americas"></i></div>
+              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_3">Doświadczenie międzynarodowe</span>
+            </div>
+            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center text-xs"><i class="fa-solid fa-bullhorn"></i></div>
+              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_4">Priorytet: Student Talking Time</span>
+            </div>
+          </div>
+
+          <!-- Cytat -->
+          <div class="relative bg-white p-6 rounded-2xl border-l-4 border-purple-600 shadow-sm mt-4">
+            <i class="fa-solid fa-quote-left text-2xl text-purple-200 absolute top-4 right-4"></i>
+            <p class="italic text-slate-700 text-sm sm:text-base leading-relaxed relative z-10" data-i18n="about_quote">
+              „Błąd to nie powód do wstydu, ale naturalny przystanek na drodze do płynności. Moim zadaniem jest stworzyć dla Ciebie takie warunki, w których przestajesz kalkulować każde słowo w głowie, a po prostu zaczynasz rozmawiać.”
+            </p>
+            <span class="block text-xs font-bold text-purple-900 mt-3">— Patrycja Rosińska-Babiarz</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CENNIK I KALKULATOR -->
+  <section id="cennik" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="pricing_sub">Przejrzyste zasady</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="pricing_title">Cennik zajęć i kalkulator kosztów</p>
+        <p class="text-slate-600 text-sm sm:text-base mt-3" data-i18n="pricing_desc">Wybierz formę zajęć najlepiej dopasowaną do Twojego rytmu dnia i celów językowych.</p>
+      </div>
+
+      <!-- KAFELKI Z CENNIKIEM -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        
+        <!-- Opcja 1 -->
+        <div class="bg-white rounded-3xl p-8 border border-purple-100 shadow-md hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-full mb-4" data-i18n="price1_badge">Indywidualnie</span>
+            <h3 class="text-xl font-bold text-slate-900" data-i18n="price1_title">Lekcja 45 minut</h3>
+            <p class="text-slate-500 text-xs mt-1 mb-6" data-i18n="price1_sub">Intensywny format idealny dla młodzieży lub regularnych powtórek</p>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="text-4xl font-extrabold text-purple-900">85 zł</span>
+              <span class="text-slate-500 text-xs" data-i18n="per_lesson">/ lekcja</span>
+            </div>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-600 border-t border-purple-50 pt-6">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat1">100% uwagi lektora</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
+            </ul>
+          </div>
+          <a href="#kontakt" class="mt-8 block w-full py-3 rounded-full text-center font-semibold text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 text-purple-900 transition" data-i18n="price_btn">Wybieram ten format</a>
+        </div>
+
+        <!-- Opcja 2 (Wyróżniona) -->
+        <div class="bg-gradient-to-b from-purple-900 to-purple-950 text-white rounded-3xl p-8 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-400 text-purple-950 font-extrabold text-[11px] uppercase tracking-wider px-4 py-1 rounded-full shadow-md" data-i18n="price2_badge">
+            Najczęściej wybierane
+          </div>
+          <div>
+            <span class="inline-block px-3 py-1 bg-white/10 text-purple-200 text-xs font-bold rounded-full mb-4" data-i18n="price1_badge">Indywidualnie</span>
+            <h3 class="text-xl font-bold text-white" data-i18n="price2_title">Lekcja 60 minut</h3>
+            <p class="text-purple-200 text-xs mt-1 mb-6" data-i18n="price2_sub">Optymalny czas na swobodną konwersację, analizę i praktykę</p>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="text-4xl font-extrabold text-white">120 zł</span>
+              <span class="text-purple-300 text-xs" data-i18n="per_lesson">/ lekcja</span>
+            </div>
+            <ul class="space-y-3 text-xs sm:text-sm text-purple-200 border-t border-white/10 pt-6">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat1">100% uwagi lektora</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat4">Głęboki nacisk na STT</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
+            </ul>
+          </div>
+          <a href="#kontakt" class="mt-8 block w-full py-3 rounded-full text-center font-bold text-xs sm:text-sm bg-purple-500 hover:bg-purple-400 text-white shadow-lg transition" data-i18n="price_btn">Wybieram ten format</a>
+        </div>
+
+        <!-- Opcja 3 -->
+        <div class="bg-white rounded-3xl p-8 border border-purple-100 shadow-md hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-full mb-4" data-i18n="price3_badge">W parze</span>
+            <h3 class="text-xl font-bold text-slate-900" data-i18n="price3_title">Lekcja 60 minut w parze</h3>
+            <p class="text-slate-500 text-xs mt-1 mb-6" data-i18n="price3_sub">Ucz się z partnerem, znajomym lub rodzeństwem na tym samym poziomie</p>
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-4xl font-extrabold text-purple-900">75 zł</span>
+              <span class="text-slate-500 text-xs" data-i18n="per_person">/ os. (150 zł razem)</span>
+            </div>
+            <div class="text-[11px] text-slate-400 mb-6" data-i18n="price3_note">Cena 75 zł dotyczy jednej osoby za lekcję 60 min</div>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-600 border-t border-purple-50 pt-6">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat5">Praktyczne dialogi we dwoje</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
+            </ul>
+          </div>
+          <a href="#kontakt" onclick="preselectCourse(3)" class="mt-8 block w-full py-3 rounded-full text-center font-semibold text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 text-purple-900 transition" data-i18n="price_btn">Wybieram ten format</a>
+        </div>
+
+      </div>
+
+      <!-- INTERAKTYWNY KALKULATOR KOSZTÓW -->
+      <div class="max-w-4xl mx-auto bg-purple-900/5 rounded-3xl border border-purple-200 p-8 sm:p-10 shadow-sm">
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold uppercase mb-2">
+            <i class="fa-solid fa-calculator"></i>
+            <span data-i18n="calc_badge">Kalkulator miesięczny</span>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900" data-i18n="calc_title">Oszacuj swój miesięczny budżet</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1" data-i18n="calc_sub">Sprawdź orientacyjny koszt nauki w skali typowego 4-tygodniowego miesiąca.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          <div class="space-y-6">
+            <!-- Typ zajęć -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2" data-i18n="calc_lbl_type">Wybierz wariant lekcji:</label>
+              <select id="calc-lesson-type" onchange="calculateMonthlyCost()" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-600">
+                <option value="120">Indywidualne 60 min – 120 zł</option>
+                <option value="85">Indywidualne 45 min – 85 zł</option>
+                <option value="75">W parze 60 min – 75 zł / osoba</option>
+              </select>
+            </div>
+
+            <!-- Częstotliwość -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-700" data-i18n="calc_lbl_freq">Liczba lekcji w tygodniu:</label>
+                <span id="freq-display" class="text-sm font-bold text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-full">1 lekcja / tydzień</span>
+              </div>
+              <input type="range" id="calc-freq" min="1" max="4" value="1" step="1" oninput="updateFreqDisplay(); calculateMonthlyCost();" class="w-full accent-purple-700 cursor-pointer">
+              <div class="flex justify-between text-[11px] text-slate-400 mt-1 px-1">
+                <span>1x</span>
+                <span>2x</span>
+                <span>3x</span>
+                <span>4x</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wynik kalkulatora -->
+          <div class="bg-white p-6 sm:p-8 rounded-2xl border border-purple-100 shadow-md text-center space-y-4">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-500" data-i18n="calc_res_lbl">Szacowany koszt miesięczny (4 tyg.):</span>
+            <div class="text-4xl sm:text-5xl font-black text-purple-900 tracking-tight" id="calc-total-result">
+              480 zł
+            </div>
+            <p class="text-xs text-slate-500" id="calc-breakdown-text">
+              4 spotkania w miesiącu × 120 zł
+            </p>
+            <div class="pt-2">
+              <a href="#kontakt" class="inline-block w-full py-3 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs sm:text-sm transition" data-i18n="calc_cta">
+                Zarezerwuj stały termin
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Informacja o płatnościach -->
+        <div class="mt-8 pt-6 border-t border-purple-200/70 text-xs sm:text-sm text-slate-600 space-y-2">
+          <p><strong class="text-slate-800" data-i18n="calc_payment_info_title">Rozliczenia i płatności:</strong> <span data-i18n="calc_payment_info_desc">Płatności za zajęcia realizowane są wygodnym przelewem bankowym na numer konta podawany przy zapisie. W tytule przelewu prosimy wpisać: [Imię i Nazwisko Ucznia] – [Miesiąc].</span></p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OPINIE (GOOGLE REVIEWS) -->
+  <section id="opinie" class="py-20 bg-purple-50/30 border-t border-purple-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-1 text-amber-400 mb-2 text-sm">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <span class="ml-2 font-bold text-slate-800 text-xs bg-amber-100 text-amber-900 px-2 py-0.5 rounded" data-i18n="reviews_rating">5.0 / 5.0 w Google</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="reviews_title">Opinie uczniów i rodziców</h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2" data-i18n="reviews_sub">Najlepszą wizytówką szkoły są sukcesy słuchaczy i swoboda, którą zyskują na zajęciach.</p>
+      </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Prawdziwa opinia 1 - Roksana -->
+        <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6" data-i18n="rev_text1">
+              „Patrycja to świetna nauczycielka z profesjonalnym podejściem! Lekcje są dobrze zorganizowane i ciekawe. :) Super atmosfera, zero stresu, a efekty są naprawdę zauważalne. Polecam każdemu, kto chce naprawdę nauczyć się angielskiego! 😊”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-purple-50 pt-4">
+            <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">R</div>
+            <div>
+              <span class="font-bold text-xs text-slate-900 block">Roksana</span>
+              <span class="text-[11px] text-slate-400" data-i18n="rev_role1">dorosła kursantka • Wizytówka Google</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prawdziwa opinia 2 - Artur -->
+        <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6" data-i18n="rev_text2">
+              „Najlepsza szkoła językowa do jakiej uczęszczałem. Patrycja jest przesympatyczną osobą z dużą wiedzą i chęcią nauczania młodszych jak i starszych. Zacząłem dzięki niej mówić po angielsku co wcześniej sprawiało mi nie małe trudności. Poprawiłem również swoją pisownię jak również umiejętność słuchania. Miałem już możliwość przetestowania moich „skilsów” i dzięki Patrycji są na odpowiednim poziomie. Polecam z czystym sumieniem 💖”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-purple-50 pt-4">
+            <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">A</div>
+            <div>
+              <span class="font-bold text-xs text-slate-900 block">Artur</span>
+              <span class="text-[11px] text-slate-400" data-i18n="rev_role2">kursant • Wizytówka Google</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prawdziwa opinia 3 - Ola -->
+        <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6" data-i18n="rev_text3">
+              „Z ręką na serduszku polecam jak najbardziej ! Minęło zaledwie kilka lekcji a ja już zaczynam mówić po angielsku i nie czuje blokady a o to mi chodziło ☺️ i nie mogę się doczekać dalszych lekcji 🫶🏻 Nauczycielka na medal 🥇🥇🥰”
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-purple-50 pt-4">
+            <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">O</div>
+            <div>
+              <span class="font-bold text-xs text-slate-900 block">Ola</span>
+              <span class="text-[11px] text-slate-400" data-i18n="rev_role3">kursantka • Wizytówka Google</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link do profilu Google -->
+      <div class="text-center mt-12">
+        <a href="https://www.google.com/search?q=Manufaktura+Lingwistyczna+Patrycja+Rosi%C5%84ska-Babiarz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-purple-700 hover:text-purple-900 bg-white px-5 py-2.5 rounded-full border border-purple-200 shadow-sm hover:shadow transition">
+          <i class="fa-brands fa-google text-purple-600"></i>
+          <span data-i18n="reviews_google_btn">Zobacz wszystkie opinie i profil w Google Maps</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KONTAKT I SOCIAL MEDIA -->
+  <section id="kontakt" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Dane teleadresowe i social media -->
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="contact_sub">Kontakt</h2>
+            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="contact_title">Zrób pierwszy krok ku swobodzie językowej</p>
+            <p class="text-slate-600 text-sm mt-3" data-i18n="contact_desc">
+              Masz pytania dotyczące terminów, przygotowania do egzaminów lub chcesz zapisać się na wstępną konsultację i napisać darmowy test poziomujący? Zadzwoń lub napisz.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Adres -->
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-purple-50/60 border border-purple-100">
+              <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_loc">Lokalizacja stacjonarna</span>
+                <span class="font-bold text-slate-900 text-sm sm:text-base">ul. Szczecińska 39-41, Koszalin</span>
+                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_loc_sub">Możliwość zajęć stacjonarnych oraz online</span>
+              </div>
+            </div>
+
+            <!-- Telefon -->
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-purple-50/60 border border-purple-100">
+              <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_phone">Zadzwoń do mnie</span>
+                <a href="tel:+48660031043" class="font-bold text-purple-900 hover:text-purple-700 text-base sm:text-lg transition">+48 660 031 043</a>
+                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_phone_sub">Odpowiadam w przerwach między zajęciami</span>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/48660031043?text=Dzie%C5%84%20dobry%2C%20pisz%C4%99%20w%20sprawie%20zaj%C4%99%C4%87%20z%20j%C4%99zyka%20angielskiego." target="_blank" rel="noopener noreferrer" data-whatsapp-link class="flex items-start gap-4 p-4 rounded-2xl bg-emerald-50/70 hover:bg-emerald-50 border border-emerald-200/80 transition group">
+              <div class="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+              </div>
+              <div>
+                <span class="text-xs text-emerald-700 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_whatsapp">Napisz na WhatsApp</span>
+                <span class="font-bold text-emerald-950 group-hover:text-emerald-700 text-base sm:text-lg transition block">+48 660 031 043</span>
+                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_whatsapp_sub">Szybki kontakt przez komunikator</span>
+              </div>
+            </a>
+
+            <!-- E-mail -->
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-purple-50/60 border border-purple-100">
+              <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_email">Napisz e-mail</span>
+                <a href="mailto:biuro.manufaktura1@gmail.com" class="font-bold text-purple-900 hover:text-purple-700 text-sm sm:text-base transition break-all">biuro.manufaktura1@gmail.com</a>
+                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_email_sub">Bezpośredni kontakt mailowy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media Buttons -->
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-3" data-i18n="contact_lbl_social">Obserwuj Manufakturę w sieci:</span>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://www.facebook.com/ManufakturaLingwistyczna/?locale=pl_PL" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#1877F2]/10 hover:bg-[#1877F2]/20 text-[#1877F2] font-semibold text-xs sm:text-sm border border-[#1877F2]/20 transition">
+                <i class="fa-brands fa-facebook text-lg"></i>
+                <span>Facebook</span>
+              </a>
+              <a href="https://www.instagram.com/manufakturalingwistyczna/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#E1306C]/10 hover:bg-[#E1306C]/20 text-[#E1306C] font-semibold text-xs sm:text-sm border border-[#E1306C]/20 transition">
+                <i class="fa-brands fa-instagram text-lg"></i>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Formularz kontaktowy (Web3Forms + antyspam + RODO) -->
+        <div class="lg:col-span-7">
+          <div class="bg-purple-50/50 p-5 sm:p-8 lg:p-10 rounded-3xl border border-purple-100 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 mb-2" data-i18n="form_title">Napisz wiadomość lub zapytaj o termin</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mb-6" data-i18n="form_sub">Wypełnij formularz – wiadomość trafi prosto na moją skrzynkę e-mail. Możesz tu też poprosić o darmowy test poziomujący.</p>
+
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
+              <!-- Konfiguracja Web3Forms -->
+              <input type="hidden" name="access_key" id="web3forms-key" value="ce250df9-329a-419f-ac8e-7e5d2f71a85b">
+              <input type="hidden" name="subject" value="Nowe zgłoszenie ze strony Manufaktura Lingwistyczna">
+              <input type="hidden" name="from_name" value="Manufaktura Lingwistyczna – Formularz">
+
+              <!-- Ochrona antyspamowa (honeypot obsługiwany natywnie przez Web3Forms) -->
+              <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off" class="hidden" style="display: none;" aria-hidden="true">
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="input-name" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_name">Twoje imię i nazwisko</label>
+                  <input id="input-name" type="text" name="imie_i_nazwisko" required autocomplete="name" placeholder="np. Anna Kowalska" data-i18n-placeholder="ph_name" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+                </div>
+                <div>
+                  <label for="input-phone" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_phone">Numer telefonu</label>
+                  <input id="input-phone" type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="np. 600 000 000" data-i18n-placeholder="ph_phone" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+                </div>
+              </div>
+
+              <div>
+                <label for="input-email" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_email">Twój adres e-mail (do odpowiedzi)</label>
+                <input id="input-email" type="email" name="email" required autocomplete="email" placeholder="np. kontakt@twojadomena.pl" data-i18n-placeholder="ph_email" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+              </div>
+
+              <div>
+                <label for="input-course" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_type">Interesujące Cię zajęcia</label>
+                <select id="input-course" name="rodzaj_zajec" class="w-full max-w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+                  <option data-i18n="opt_1">Przygotowanie do egzaminu ósmoklasisty (klasa 7–8)</option>
+                  <option data-i18n="opt_2">Angielski dla szkół średnich / Matura podstawowa i rozszerzona</option>
+                  <option data-i18n="opt_3">Konwersacje i angielski ogólny dla dorosłych</option>
+                  <option data-i18n="opt_4">Zajęcia w parze (60 min)</option>
+                  <option data-i18n="opt_5">Konsultacja wstępna / Darmowy test poziomujący</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="input-msg" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_msg">Treść wiadomości / preferowane godziny</label>
+                <textarea id="input-msg" name="wiadomosc" rows="4" placeholder="Opisz krótko swój cel językowy, poziom lub preferowaną porę zajęć..." data-i18n-placeholder="ph_msg" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800"></textarea>
+              </div>
+
+              <!-- Zgoda RODO -->
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer select-none">
+                  <input id="input-rodo" type="checkbox" name="zgoda_rodo" value="Tak" required class="mt-0.5 h-4 w-4 rounded border-purple-300 text-purple-700 focus:ring-purple-600 shrink-0 accent-purple-700">
+                  <span class="text-xs text-slate-600 leading-relaxed">
+                    <span data-i18n="form_rodo_prefix">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie zgodnie z</span>
+                    <button type="button" onclick="openPrivacyModal()" class="text-purple-700 hover:text-purple-900 font-semibold underline underline-offset-2" data-i18n="form_rodo_link">Polityką prywatności i klauzulą RODO</button><span data-i18n="form_rodo_suffix">.</span>
+                  </span>
+                </label>
+              </div>
+
+              <button id="submit-btn" type="submit" class="w-full py-3.5 rounded-xl bg-purple-700 hover:bg-purple-800 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-sm shadow-md shadow-purple-600/20 transition-all flex items-center justify-center gap-2">
+                <span data-i18n="form_btn">Wyślij zapytanie</span>
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+              </button>
+
+              <p class="text-[11px] text-slate-500 leading-relaxed" data-i18n="form_rodo_note">
+                Administratorem danych jest Manufaktura Lingwistyczna – Patrycja Rosińska-Babiarz (ul. Szczecińska 39-41, Koszalin, NIP: 499 068 15 08). Podanie danych jest dobrowolne, lecz niezbędne do kontaktu zwrotnego.
+              </p>
+
+              <div id="form-feedback" role="status" aria-live="polite" class="hidden text-center text-xs font-semibold py-3.5 px-4 rounded-xl mt-3"></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <footer class="bg-purple-950 text-white py-12 border-t border-purple-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+        <div>
+          <span class="font-bold text-lg text-white block">Manufaktura Lingwistyczna</span>
+          <span class="text-xs text-purple-300">Patrycja Rosińska-Babiarz • ul. Szczecińska 39-41, Koszalin • NIP: 499 068 15 08</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-purple-300">
+          <a href="#dlaczego-warto" class="hover:text-white transition" data-i18n="nav_why">Dlaczego warto</a>
+          <a href="#o-mnie" class="hover:text-white transition" data-i18n="nav_about">O lektorce</a>
+          <a href="#cennik" class="hover:text-white transition" data-i18n="nav_pricing">Cennik i Kalkulator</a>
+          <a href="#kontakt" class="hover:text-white transition" data-i18n="nav_contact">Kontakt</a>
+          <button type="button" onclick="openPrivacyModal()" class="hover:text-white transition underline underline-offset-4" data-i18n="footer_privacy">Polityka prywatności i RODO</button>
+          <button type="button" onclick="reopenCookieBanner()" class="hover:text-white transition" data-i18n="footer_cookies">Ustawienia cookies</button>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-purple-900/60 flex flex-col sm:flex-row justify-between items-center text-xs text-purple-400 gap-4">
+        <span data-i18n="footer_rights">&copy; 2026 Manufaktura Lingwistyczna. Wszelkie prawa zastrzeżone.</span>
+        <span data-i18n="footer_loc">Koszalin • Lekcje stacjonarne & online</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PŁYWAJĄCY PRZYCISK WHATSAPP -->
+  <a id="whatsapp-float" href="https://wa.me/48660031043?text=Dzie%C5%84%20dobry%2C%20pisz%C4%99%20w%20sprawie%20zaj%C4%99%C4%87%20z%20j%C4%99zyka%20angielskiego." target="_blank" rel="noopener noreferrer" data-whatsapp-link aria-label="WhatsApp" class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-3.5 sm:py-3 rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+    <i class="fa-brands fa-whatsapp text-2xl sm:text-xl leading-none"></i>
+    <span class="hidden sm:inline" data-i18n="whatsapp_float">Napisz na WhatsApp</span>
+  </a>
+
+  <!-- BANER PLIKÓW COOKIES -->
+  <div id="cookie-banner" role="dialog" aria-label="Informacja o plikach cookies" class="hidden fixed bottom-4 left-4 right-4 z-50 max-w-4xl mx-auto">
+    <div class="bg-white/95 backdrop-blur-md border border-purple-200 shadow-2xl rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="flex items-start gap-3">
+        <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
+          <i class="fa-solid fa-cookie-bite"></i>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <strong class="text-slate-900" data-i18n="cookie_title">Dbamy o Twoją prywatność.</strong>
+          <span data-i18n="cookie_desc">Ta strona wykorzystuje wyłącznie niezbędne pliki cookies i pamięć przeglądarki w celu poprawnego działania (m.in. zapamiętania Twojego wyboru) oraz zewnętrzne zasoby techniczne. Szczegóły znajdziesz w</span>
+          <button type="button" onclick="openPrivacyModal()" class="text-purple-700 hover:text-purple-900 font-semibold underline underline-offset-2" data-i18n="cookie_link">Polityce prywatności i cookies</button>.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row w-full md:w-auto gap-2 shrink-0">
+        <button type="button" onclick="saveCookieConsent('essential')" class="px-4 py-2.5 rounded-xl border border-purple-200 hover:bg-purple-50 text-purple-900 font-semibold text-xs transition whitespace-nowrap" data-i18n="cookie_essential">
+          Tylko niezbędne
+        </button>
+        <button type="button" onclick="saveCookieConsent('all')" class="px-5 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs shadow-sm transition whitespace-nowrap" data-i18n="cookie_accept">
+          Akceptuję
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: POLITYKA PRYWATNOŚCI, RODO I COOKIES -->
+  <div id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" class="hidden fixed inset-0 z-[60] items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-purple-100 overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-purple-100 bg-purple-50/60">
+        <h3 id="privacy-modal-title" class="text-base sm:text-lg font-bold text-slate-900" data-i18n="modal_title">Polityka prywatności, RODO i pliki cookies</h3>
+        <button type="button" onclick="closePrivacyModal()" aria-label="Zamknij" class="w-8 h-8 rounded-full hover:bg-purple-100 text-slate-600 hover:text-purple-900 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm text-slate-600 leading-relaxed space-y-4">
+        <!-- Treść PL -->
+        <div id="privacy-content-pl" class="space-y-4">
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">1. Administrator danych osobowych</h4>
+            <p>Administratorem Twoich danych osobowych jest <strong>Manufaktura Lingwistyczna – Patrycja Rosińska-Babiarz</strong>, ul. Szczecińska 39-41, Koszalin, NIP: 499 068 15 08. Kontakt w sprawach ochrony danych: <a href="mailto:biuro.manufaktura1@gmail.com" class="text-purple-700 underline">biuro.manufaktura1@gmail.com</a>, tel. <a href="tel:+48660031043" class="text-purple-700 underline">+48 660 031 043</a>.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">2. Cel i podstawa prawna przetwarzania (RODO)</h4>
+            <p>Dane podane w formularzu kontaktowym (imię i nazwisko, numer telefonu, adres e-mail, wybrane zajęcia oraz treść wiadomości) przetwarzane są w celu:</p>
+            <ul class="list-disc pl-5 mt-1 space-y-1">
+              <li>udzielenia odpowiedzi na przesłane zapytanie i umówienia konsultacji lub testu poziomującego (art. 6 ust. 1 lit. a oraz lit. f RODO),</li>
+              <li>podjęcia działań zmierzających do zawarcia i realizacji umowy o naukę języka angielskiego (art. 6 ust. 1 lit. b RODO).</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">3. Odbiorcy danych i czas przechowywania</h4>
+            <p>Do technicznego przekazania wiadomości z formularza na skrzynkę e-mail Administratora wykorzystywana jest usługa <strong>Web3Forms</strong> oraz dostawca poczty elektronicznej (Google Gmail). Dane nie są sprzedawane ani przekazywane podmiotom trzecim w celach marketingowych. Przechowywane są przez okres prowadzenia korespondencji, realizacji umowy lub do czasu wycofania zgody.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">4. Twoje prawa</h4>
+            <p>Przysługuje Ci prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, cofnięcia zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania sprzed cofnięcia) oraz wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (UODO). Podanie danych jest dobrowolne, ale niezbędne do udzielenia odpowiedzi.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">5. Pliki cookies i technologie lokalne</h4>
+            <p>Strona nie wykorzystuje reklamowych ani śledzących plików cookies. Stosujemy wyłącznie niezbędne mechanizmy techniczne (pamięć <code>localStorage</code> przeglądarki do zapisania Twojego wyboru z banera cookies) oraz zasoby niezbędne do poprawnego wyświetlenia strony (czcionki Google Fonts, ikony Font Awesome, style Tailwind). Możesz w każdej chwili wyłączyć lub usunąć pliki cookies w ustawieniach swojej przeglądarki.</p>
+          </div>
+        </div>
+
+        <!-- Treść EN -->
+        <div id="privacy-content-en" class="hidden space-y-4">
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">1. Data Controller</h4>
+            <p>The controller of your personal data is <strong>Manufaktura Lingwistyczna – Patrycja Rosińska-Babiarz</strong>, ul. Szczecińska 39-41, Koszalin, Poland, Tax ID (NIP): 499 068 15 08. Contact regarding personal data: <a href="mailto:biuro.manufaktura1@gmail.com" class="text-purple-700 underline">biuro.manufaktura1@gmail.com</a>, phone: <a href="tel:+48660031043" class="text-purple-700 underline">+48 660 031 043</a>.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">2. Purpose and Legal Basis (GDPR)</h4>
+            <p>Data provided via the contact form (full name, phone number, email address, selected course, and message) is processed to:</p>
+            <ul class="list-disc pl-5 mt-1 space-y-1">
+              <li>respond to your inquiry and schedule a consultation or free placement test (Art. 6(1)(a) and (f) GDPR),</li>
+              <li>take steps prior to entering into and performing a language tuition agreement (Art. 6(1)(b) GDPR).</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">3. Data Recipients &amp; Retention</h4>
+            <p>Form submissions are technically delivered to the Controller's inbox via <strong>Web3Forms</strong> and email hosting (Google Gmail). Your data is never sold or shared for third-party marketing. Data is retained for the duration of correspondence, contract performance, or until consent is withdrawn.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">4. Your Rights</h4>
+            <p>You have the right to access, rectify, erase, or restrict processing of your data, data portability, withdraw consent at any time, and lodge a complaint with the supervisory authority (President of the Personal Data Protection Office – UODO in Poland). Providing data is voluntary but necessary to receive a reply.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">5. Cookies &amp; Local Storage</h4>
+            <p>This website does not use advertising or tracking cookies. It only uses strictly necessary technical storage (browser <code>localStorage</code> to remember your cookie banner preference) and external technical assets (Google Fonts, Font Awesome, Tailwind CSS) to render the page properly. You can manage or clear cookies anytime in your browser settings.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-6 py-4 border-t border-purple-100 bg-purple-50/40 flex justify-end">
+        <button type="button" onclick="closePrivacyModal()" class="px-5 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs sm:text-sm transition" data-i18n="modal_close">
+          Zamknij
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKRYPTY: OBSŁUGA JĘZYKA, KALKULATORA I MENU -->
+  <script>
+    // Mobilne Menu
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function toggleMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+    menuBtn.addEventListener('click', toggleMenu);
+
+    // KALKULATOR
+    function updateFreqDisplay() {
+      const freq = document.getElementById('calc-freq').value;
+      const freqDisplay = document.getElementById('freq-display');
+      const lang = currentLang;
+      if (lang === 'pl') {
+        const word = freq == 1 ? 'lekcja' : (freq < 5 ? 'lekcje' : 'lekcji');
+        freqDisplay.textContent = `${freq} ${word} / tydzień`;
+      } else {
+        const word = freq == 1 ? 'lesson' : 'lessons';
+        freqDisplay.textContent = `${freq} ${word} / week`;
+      }
+    }
+
+    function calculateMonthlyCost() {
+      const pricePerLesson = parseInt(document.getElementById('calc-lesson-type').value, 10);
+      const lessonsPerWeek = parseInt(document.getElementById('calc-freq').value, 10);
+      const totalLessonsMonth = lessonsPerWeek * 4;
+      const monthlyTotal = totalLessonsMonth * pricePerLesson;
+      
+      const resultEl = document.getElementById('calc-total-result');
+      const breakdownEl = document.getElementById('calc-breakdown-text');
+
+      if (currentLang === 'pl') {
+        resultEl.textContent = `${monthlyTotal} zł`;
+        const lessonWord = totalLessonsMonth == 1 ? 'spotkanie' : (totalLessonsMonth < 5 ? 'spotkania' : 'spotkań');
+        breakdownEl.textContent = `${totalLessonsMonth} ${lessonWord} w miesiącu × ${pricePerLesson} zł`;
+      } else {
+        resultEl.textContent = `${monthlyTotal} PLN`;
+        const lessonWord = totalLessonsMonth == 1 ? 'lesson' : 'lessons';
+        breakdownEl.textContent = `${totalLessonsMonth} ${lessonWord} per month × ${pricePerLesson} PLN`;
+      }
+    }
+
+    // POMOCNICZE: wybór kursu z cennika
+    function preselectCourse(optionIndex) {
+      const courseSelect = document.getElementById('input-course');
+      if (courseSelect && courseSelect.options[optionIndex]) {
+        courseSelect.selectedIndex = optionIndex;
+      }
+    }
+
+    // FORMULARZ: WYSYŁKA PRZEZ WEB3FORMS + ANTYSPAM + WALIDACJA ODPOWIEDZI
+    let feedbackTimer = null;
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = document.getElementById('submit-btn');
+      const fb = document.getElementById('form-feedback');
+      const botcheck = document.getElementById('botcheck');
+      const accessKeyInput = document.getElementById('web3forms-key');
+      const t = translations[currentLang] || translations.pl;
+
+      // Antyspam (honeypot): jeśli bot zaznaczył ukryte pole, przerwij bez wysyłki
+      if (botcheck && botcheck.checked) {
+        form.reset();
+        return;
+      }
+
+      if (feedbackTimer) {
+        clearTimeout(feedbackTimer);
+        feedbackTimer = null;
+      }
+
+      // Zabezpieczenie przed wysłaniem z niewklejonym kluczem Web3Forms
+      if (!accessKeyInput || !accessKeyInput.value.trim() || accessKeyInput.value.includes('WKLEJ_TUTAJ')) {
+        console.error('Web3Forms: wklej swój klucz access_key w polu #web3forms-key.');
+        fb.className = "text-center text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-300 py-3.5 px-4 rounded-xl mt-3";
+        fb.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1.5"></i>${t.form_err_config}`;
+        return;
+      }
+
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> ${t.form_sending}`;
+      fb.classList.add('hidden');
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        let data = null;
+        try {
+          data = await response.json();
+        } catch (_) {
+          data = null;
+        }
+
+        if (response.ok && data && data.success) {
+          fb.className = "text-center text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-300 py-3.5 px-4 rounded-xl mt-3";
+          fb.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i>${t.form_success}`;
+          form.reset();
+          feedbackTimer = setTimeout(() => {
+            fb.classList.add('hidden');
+          }, 8000);
+        } else {
+          throw new Error((data && data.message) || `HTTP ${response.status}`);
+        }
+      } catch (error) {
+        console.error('Błąd wysyłki formularza:', error);
+        fb.className = "text-center text-xs font-semibold text-rose-800 bg-rose-50 border border-rose-300 py-3.5 px-4 rounded-xl mt-3";
+        fb.innerHTML = `<i class="fa-solid fa-circle-exclamation text-rose-600 mr-1.5"></i>${t.form_error}`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHTML;
+      }
+    }
+
+    // MODAL POLITYKI PRYWATNOŚCI I RODO
+    const privacyModal = document.getElementById('privacy-modal');
+
+    function openPrivacyModal() {
+      privacyModal.classList.remove('hidden');
+      privacyModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePrivacyModal() {
+      privacyModal.classList.add('hidden');
+      privacyModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    privacyModal.addEventListener('click', (e) => {
+      if (e.target === privacyModal) {
+        closePrivacyModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !privacyModal.classList.contains('hidden')) {
+        closePrivacyModal();
+      }
+    });
+
+    // BANER COOKIES
+    const COOKIE_STORAGE_KEY = 'ml_cookie_consent_v1';
+    const cookieBanner = document.getElementById('cookie-banner');
+
+    function initCookieBanner() {
+      let saved = null;
+      try {
+        saved = localStorage.getItem(COOKIE_STORAGE_KEY);
+      } catch (_) {
+        saved = null;
+      }
+      if (!saved) {
+        cookieBanner.classList.remove('hidden');
+      }
+    }
+
+    function saveCookieConsent(choice) {
+      try {
+        localStorage.setItem(COOKIE_STORAGE_KEY, JSON.stringify({
+          choice: choice,
+          date: new Date().toISOString()
+        }));
+      } catch (_) {
+        // Ignoruj brak dostępu do localStorage (np. tryb prywatny)
+      }
+      cookieBanner.classList.add('hidden');
+    }
+
+    function reopenCookieBanner() {
+      cookieBanner.classList.remove('hidden');
+    }
+
+    initCookieBanner();
+
+    // DWUJĘZYCZNOŚĆ (I18N)
+    let currentLang = 'pl';
+
+    const translations = {
+      pl: {
+        nav_why: "Dlaczego warto",
+        nav_about: "O lektorce",
+        nav_pricing: "Cennik i Kalkulator",
+        nav_reviews: "Opinie",
+        nav_contact: "Kontakt",
+        nav_cta: "Zapisz się",
+        hero_badge: "Skuteczny angielski w Koszalinie i online",
+        hero_title_1: "Swoboda mówienia,",
+        hero_title_2: "która przychodzi naturalnie.",
+        hero_desc: "Zajęcia tworzone z myślą o młodzieży z klas 7–8, licealistach przygotowujących się do egzaminów oraz dorosłych, którzy chcą wreszcie swobodnie rozmawiać po angielsku. Łączymy bezpieczną atmosferę ze sprawdzonym międzynarodowym doświadczeniem.",
+        hero_cta_primary: "Umów się na bezpłatną konsultację",
+        hero_cta_secondary: "Sprawdź cennik",
+        hero_stat_1_val: "8+ lat",
+        hero_stat_1: "doświadczenia",
+        hero_stat_2: "nacisk na mówienie",
+        hero_stat_3: "indywidualne podejście",
+        hero_card_title: "Przestrzeń bez stresu:",
+        hero_card_sub: "Ucz się w swoim tempie – stacjonarnie w Koszalinie lub wygodnie online.",
+        why_sub: "Dlaczego warto",
+        why_title: "Nauka oparta na rozmowie, nie na mechanicznym wypełnianiu kserówek",
+        why_card1_title: "Student Talking Time (STT)",
+        why_card1_desc: "To uczeń mówi przez większość czasu lekcji. Nie siedzisz cicho, słuchając wykładu lektora – aktywnie formułujesz myśli, testujesz nowe zwroty i budujesz naturalny automatyzm językowy od pierwszej minuty.",
+        why_card2_title: "Egzamin ósmoklasisty i Matura",
+        why_card2_desc: "Dla klas 7–8 oraz uczniów szkół średnich: systematyczne oswajanie struktur egzaminacyjnych, arkuszy i części ustnej bez zbędnego stresu, z pełnym zrozumieniem poleceń.",
+        why_card3_title: "Swoboda dla dorosłych",
+        why_card3_desc: "Koniec z blokadą „wszystko rozumiem, ale boję się odezwać”. Pracujemy w bezpiecznych warunkach nad sytuacjami zawodowymi, podróżami i codziennym, płynnym small talkiem.",
+        why_card4_title: "Doświadczenie międzynarodowe",
+        why_card4_desc: "Wieloletnia praca ze słuchaczami z różnych kręgów kulturowych daje pewność elastycznego dopasowania metodyki do każdego poziomu i każdego typu trudności językowych.",
+        why_card5_title: "Materiały szyte na miarę",
+        why_card5_desc: "Pracuję na podręcznikach dla dorosłych dobranych do ich poziomu, łącząc je z angażującymi materiałami źródłowymi, aktualnymi tematami i autorskimi pomocami dydaktycznymi dopasowanymi do Twoich celów.",
+        why_card6_title: "Stacjonarnie w Koszalinie lub online",
+        why_card6_desc: "Spotykamy się w przyjaznym gabinecie przy ul. Szczecińskiej 39-41 lub w interaktywnej sali online z każdego zakątka Polski i świata. Pełna wygoda.",
+        about_badge: "Lektorka & metodyka",
+        about_title: "Uczę tak, jak sama chciałabym być uczona – z sensem, spokojem i zaangażowaniem.",
+        about_role: "Lektorka & Właścicielka Manufaktury Lingwistycznej",
+        about_p1: "Nazywam się Patrycja Rosińska-Babiarz. Jestem magistrem filologii angielskiej o specjalności nauczycielskiej, z ponad 8-letnim stażem w codziennej pracy dydaktycznej.",
+        about_p2: "Przez lata prowadziłam zajęcia zarówno z polskimi uczniami (od ambitnej młodzieży klas 7–8, przez maturzystów, po zapracowanych dorosłych), jak i w środowisku międzynarodowym, ucząc osoby z różnych krajów i kultur. To doświadczenie nauczyło mnie jednego: kluczem do postępów nie jest sztywne trzymanie się podręcznika, lecz bezpieczna atmosfera i maksymalny czas, w którym to uczeń ma głos.",
+        about_pill_1: "mgr filologii angielskiej",
+        about_pill_2: "8 lat doświadczenia w nauczaniu",
+        about_pill_3: "Doświadczenie międzynarodowe",
+        about_pill_4: "Priorytet: Student Talking Time",
+        about_quote: "„Błąd to nie powód do wstydu, ale naturalny przystanek na drodze do płynności. Moim zadaniem jest stworzyć dla Ciebie takie warunki, w których przestajesz kalkulować każde słowo w głowie, a po prostu zaczynasz rozmawiać.”",
+        pricing_sub: "Przejrzyste zasady",
+        pricing_title: "Cennik zajęć i kalkulator kosztów",
+        pricing_desc: "Wybierz formę zajęć najlepiej dopasowaną do Twojego rytmu dnia i celów językowych.",
+        price1_badge: "Indywidualnie",
+        price1_title: "Lekcja 45 minut",
+        price1_sub: "Intensywny format idealny dla młodzieży lub regularnych powtórek",
+        per_lesson: "/ lekcja",
+        price_feat1: "100% uwagi lektora",
+        price_feat2: "Materiały w cenie",
+        price_feat3: "Stacjonarnie lub online",
+        price_btn: "Wybieram ten format",
+        price2_badge: "Najczęściej wybierane",
+        price2_title: "Lekcja 60 minut",
+        price2_sub: "Optymalny czas na swobodną konwersację, analizę i praktykę",
+        price_feat4: "Głęboki nacisk na STT",
+        price3_badge: "W parze",
+        price3_title: "Lekcja 60 minut w parze",
+        price3_sub: "Ucz się z partnerem, znajomym lub rodzeństwem na tym samym poziomie",
+        per_person: "/ os. (150 zł razem)",
+        price3_note: "Cena 75 zł dotyczy jednej osoby za lekcję 60 min",
+        price_feat5: "Praktyczne dialogi we dwoje",
+        calc_badge: "Kalkulator miesięczny",
+        calc_title: "Oszacuj swój miesięczny budżet",
+        calc_sub: "Sprawdź orientacyjny koszt nauki w skali typowego 4-tygodniowego miesiąca.",
+        calc_lbl_type: "Wybierz wariant lekcji:",
+        calc_lbl_freq: "Liczba lekcji w tygodniu:",
+        calc_res_lbl: "Szacowany koszt miesięczny (4 tyg.):",
+        calc_cta: "Zarezerwuj stały termin",
+        calc_payment_info_title: "Rozliczenia i płatności:",
+        calc_payment_info_desc: "Płatności za zajęcia realizowane są wygodnym przelewem bankowym na numer konta podawany przy zapisie. W tytule przelewu prosimy wpisać: [Imię i Nazwisko Ucznia] – [Miesiąc].",
+        reviews_rating: "5.0 / 5.0 w Google",
+        reviews_title: "Opinie uczniów i rodziców",
+        reviews_sub: "Najlepszą wizytówką szkoły są sukcesy słuchaczy i swoboda, którą zyskują na zajęciach.",
+        rev_text1: "„Patrycja to świetna nauczycielka z profesjonalnym podejściem! Lekcje są dobrze zorganizowane i ciekawe. :) Super atmosfera, zero stresu, a efekty są naprawdę zauważalne. Polecam każdemu, kto chce naprawdę nauczyć się angielskiego! 😊”",
+        rev_role1: "dorosła kursantka • Wizytówka Google",
+        rev_text2: "„Najlepsza szkoła językowa do jakiej uczęszczałem. Patrycja jest przesympatyczną osobą z dużą wiedzą i chęcią nauczania młodszych jak i starszych. Zacząłem dzięki niej mówić po angielsku co wcześniej sprawiało mi nie małe trudności. Poprawiłem również swoją pisownię jak również umiejętność słuchania. Miałem już możliwość przetestowania moich „skilsów” i dzięki Patrycji są na odpowiednim poziomie. Polecam z czystym sumieniem 💖”",
+        rev_role2: "kursant • Wizytówka Google",
+        rev_text3: "„Z ręką na serduszku polecam jak najbardziej ! Minęło zaledwie kilka lekcji a ja już zaczynam mówić po angielsku i nie czuje blokady a o to mi chodziło ☺️ i nie mogę się doczekać dalszych lekcji 🫶🏻 Nauczycielka na medal 🥇🥇🥰”",
+        rev_role3: "kursantka • Wizytówka Google",
+        reviews_google_btn: "Zobacz wszystkie opinie i profil w Google Maps",
+        contact_sub: "Kontakt",
+        contact_title: "Zrób pierwszy krok ku swobodzie językowej",
+        contact_desc: "Masz pytania dotyczące terminów, przygotowania do egzaminów lub chcesz zapisać się na wstępną konsultację i napisać darmowy test poziomujący? Zadzwoń lub napisz.",
+        contact_lbl_loc: "Lokalizacja stacjonarna",
+        contact_loc_sub: "Możliwość zajęć stacjonarnych oraz online",
+        contact_lbl_phone: "Zadzwoń do mnie",
+        contact_phone_sub: "Odpowiadam w przerwach między zajęciami",
+        contact_lbl_whatsapp: "Napisz na WhatsApp",
+        contact_whatsapp_sub: "Szybki kontakt przez komunikator",
+        whatsapp_float: "Napisz na WhatsApp",
+        contact_lbl_email: "Napisz e-mail",
+        contact_email_sub: "Bezpośredni kontakt mailowy",
+        form_email: "Twój adres e-mail (do odpowiedzi)",
+        contact_lbl_social: "Obserwuj Manufakturę w sieci:",
+        form_title: "Napisz wiadomość lub zapytaj o termin",
+        form_sub: "Wypełnij formularz – wiadomość trafi prosto na moją skrzynkę e-mail. Możesz tu też poprosić o darmowy test poziomujący.",
+        form_name: "Twoje imię i nazwisko",
+        form_phone: "Numer telefonu",
+        form_type: "Interesujące Cię zajęcia",
+        opt_1: "Przygotowanie do egzaminu ósmoklasisty (klasa 7–8)",
+        opt_2: "Angielski dla szkół średnich / Matura podstawowa i rozszerzona",
+        opt_3: "Konwersacje i angielski ogólny dla dorosłych",
+        opt_4: "Zajęcia w parze (60 min)",
+        opt_5: "Konsultacja wstępna / Darmowy test poziomujący",
+        form_msg: "Treść wiadomości / preferowane godziny",
+        ph_name: "np. Anna Kowalska",
+        ph_phone: "np. 600 000 000",
+        ph_email: "np. kontakt@twojadomena.pl",
+        ph_msg: "Opisz krótko swój cel językowy, poziom lub preferowaną porę zajęć...",
+        form_rodo_prefix: "Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie zgodnie z",
+        form_rodo_link: "Polityką prywatności i klauzulą RODO",
+        form_rodo_suffix: ".",
+        form_rodo_note: "Administratorem danych jest Manufaktura Lingwistyczna – Patrycja Rosińska-Babiarz (ul. Szczecińska 39-41, Koszalin, NIP: 499 068 15 08). Podanie danych jest dobrowolne, lecz niezbędne do kontaktu zwrotnego.",
+        form_btn: "Wyślij zapytanie",
+        form_sending: "Wysyłanie...",
+        form_success: "Dziękuję! Twoja wiadomość została wysłana. Odezwę się do Ciebie najszybciej, jak to możliwe!",
+        form_error: "Wystąpił problem z wysyłką. Prosimy o bezpośredni kontakt telefoniczny (660 031 043) lub mailowy: biuro.manufaktura1@gmail.com",
+        form_err_config: "Formularz wymaga jeszcze wklejenia klucza Web3Forms w kodzie strony. Tymczasem prosimy o kontakt na: biuro.manufaktura1@gmail.com",
+        footer_privacy: "Polityka prywatności i RODO",
+        footer_cookies: "Ustawienia cookies",
+        footer_rights: "© 2026 Manufaktura Lingwistyczna. Wszelkie prawa zastrzeżone.",
+        footer_loc: "Koszalin • Lekcje stacjonarne & online",
+        cookie_title: "Dbamy o Twoją prywatność.",
+        cookie_desc: "Ta strona wykorzystuje wyłącznie niezbędne pliki cookies i pamięć przeglądarki w celu poprawnego działania (m.in. zapamiętania Twojego wyboru) oraz zewnętrzne zasoby techniczne. Szczegóły znajdziesz w",
+        cookie_link: "Polityce prywatności i cookies",
+        cookie_essential: "Tylko niezbędne",
+        cookie_accept: "Akceptuję",
+        modal_title: "Polityka prywatności, RODO i pliki cookies",
+        modal_close: "Zamknij"
+      },
+      en: {
+        nav_why: "Why Us",
+        nav_about: "About Me",
+        nav_pricing: "Pricing & Calculator",
+        nav_reviews: "Reviews",
+        nav_contact: "Contact",
+        nav_cta: "Sign Up",
+        hero_badge: "Effective English in Koszalin & Online",
+        hero_title_1: "Speaking fluency",
+        hero_title_2: "that comes naturally.",
+        hero_desc: "Classes designed for 7th–8th graders, high school students preparing for exams, and adults who finally want to speak English with ease. Combining a comfortable atmosphere with international teaching experience.",
+        hero_cta_primary: "Book a Free Consultation",
+        hero_cta_secondary: "Check Pricing",
+        hero_stat_1_val: "8+ years",
+        hero_stat_1: "experience",
+        hero_stat_2: "focus on speaking",
+        hero_stat_3: "personalized approach",
+        hero_card_title: "Stress-free environment:",
+        hero_card_sub: "Learn at your own pace – on-site in Koszalin or conveniently online.",
+        why_sub: "Why Choose Us",
+        why_title: "Learning based on real dialogue, not mechanical worksheet filling",
+        why_card1_title: "Student Talking Time (STT)",
+        why_card1_desc: "The student speaks for most of the class. You won't just sit and listen to lectures – you actively formulate ideas, practice phrases, and build language confidence from minute one.",
+        why_card2_title: "8th Grade & Matura Exams",
+        why_card2_desc: "For grades 7–8 and high school students: systematic preparation for written and spoken exams without unnecessary anxiety, ensuring deep comprehension.",
+        why_card3_title: "Confidence for Adults",
+        why_card3_desc: "Overcome the barrier of 'I understand everything but freeze when speaking.' We practice in a supportive setting for work meetings, travel, and natural everyday conversation.",
+        why_card4_title: "International Experience",
+        why_card4_desc: "Years of experience teaching students from diverse cultural and language backgrounds ensures tailored methodology for any level or linguistic challenge.",
+        why_card5_title: "Tailor-Made Materials",
+        why_card5_desc: "I work with textbooks for adults matched to their level, combining them with engaging authentic sources, current topics, and custom learning aids tailored to your goals.",
+        why_card6_title: "On-site in Koszalin or Online",
+        why_card6_desc: "Meet in our welcoming classroom at ul. Szczecińska 39-41 or via interactive online lessons from anywhere in Poland and abroad.",
+        about_badge: "Instructor & Methodology",
+        about_title: "I teach the way I would want to be taught – with clarity, calm, and genuine commitment.",
+        about_role: "Lead Instructor & Owner of Manufaktura Lingwistyczna",
+        about_p1: "My name is Patrycja Rosińska-Babiarz. I hold a Master's degree in English Philology with a teaching specialization and bring over 8 years of dedicated teaching practice.",
+        about_p2: "Over the years, I have worked with Polish learners (from ambitious 7th–8th graders and high schoolers to busy professionals) as well as international adult learners from various countries. That experience taught me one clear principle: real progress comes from a safe learning atmosphere where the student holds the spotlight, not from rigid textbook routines.",
+        about_pill_1: "MA in English Philology",
+        about_pill_2: "8+ years teaching experience",
+        about_pill_3: "International teaching experience",
+        about_pill_4: "Student Talking Time priority",
+        about_quote: "“A mistake is not something to be ashamed of – it is a natural step toward fluency. My role is to create an environment where you stop overthinking every word and simply start speaking.”",
+        pricing_sub: "Transparent Pricing",
+        pricing_title: "Tuition Fees & Cost Calculator",
+        pricing_desc: "Choose the format that best fits your daily schedule and learning targets.",
+        price1_badge: "Individual",
+        price1_title: "45-Minute Lesson",
+        price1_sub: "Intensive session ideal for school students or regular revisions",
+        per_lesson: "/ lesson",
+        price_feat1: "100% tutor focus",
+        price_feat2: "All materials included",
+        price_feat3: "On-site or online",
+        price_btn: "Choose this option",
+        price2_badge: "Most Popular",
+        price2_title: "60-Minute Lesson",
+        price2_sub: "Optimal duration for conversation practice, analysis, and fluency",
+        price_feat4: "Deep focus on STT",
+        price3_badge: "In Pairs",
+        price3_title: "60-Minute Lesson in Pair",
+        price3_sub: "Learn together with a friend, partner, or sibling at a matching level",
+        per_person: "/ person (150 PLN total)",
+        price3_note: "Price 75 PLN per person for a 60 min session",
+        price_feat5: "Interactive dialogue practice",
+        calc_badge: "Monthly Calculator",
+        calc_title: "Estimate Your Monthly Investment",
+        calc_sub: "Check estimated costs based on a standard 4-week month.",
+        calc_lbl_type: "Select lesson type:",
+        calc_lbl_freq: "Lessons per week:",
+        calc_res_lbl: "Estimated monthly cost (4 weeks):",
+        calc_cta: "Reserve a Fixed Slot",
+        calc_payment_info_title: "Payments & Invoicing:",
+        calc_payment_info_desc: "Tuition is settled conveniently via bank transfer to the account provided upon enrollment. Transfer title: [Student Name] – [Month].",
+        reviews_rating: "5.0 / 5.0 on Google",
+        reviews_title: "Student & Parent Reviews",
+        reviews_sub: "The best reflection of our school is the confidence and success our students achieve.",
+        rev_text1: "“Patrycja is a wonderful teacher with a truly professional approach! Lessons are well-organized and engaging. :) Great atmosphere, zero stress, and the results are truly noticeable. Highly recommended to anyone who genuinely wants to learn English! 😊”",
+        rev_role1: "Adult student • Google Review",
+        rev_text2: "“The best language school I have ever attended. Patrycja is an extremely kind person with vast knowledge and passion for teaching both younger and older students. Thanks to her, I started speaking English, which previously gave me considerable difficulty. I also improved my writing and listening skills. I have already had the chance to test my skills, and thanks to Patrycja, they are at the right level. Recommended with a clear conscience 💖”",
+        rev_role2: "Student • Google Review",
+        rev_text3: "“With hand on heart, I recommend her wholeheartedly! Only a few lessons have passed and I am already starting to speak English without feeling blocked, which is exactly what I wanted ☺️ and I cannot wait for more lessons 🫶🏻 A top-notch teacher 🥇🥇🥰”",
+        rev_role3: "Student • Google Review",
+        reviews_google_btn: "View all reviews on Google Maps",
+        contact_sub: "Contact",
+        contact_title: "Take the First Step Toward Fluency",
+        contact_desc: "Have questions about schedules, exam preparation, or want to schedule an intro call and take a free placement test? Call or send a message.",
+        contact_lbl_loc: "Classroom Location",
+        contact_loc_sub: "Available on-site and online",
+        contact_lbl_phone: "Call directly",
+        contact_phone_sub: "I return calls between classes",
+        contact_lbl_whatsapp: "Chat on WhatsApp",
+        contact_whatsapp_sub: "Quick message via WhatsApp",
+        whatsapp_float: "Chat on WhatsApp",
+        contact_lbl_email: "Send an Email",
+        contact_email_sub: "Direct email contact",
+        form_email: "Your email address (for reply)",
+        contact_lbl_social: "Follow Manufaktura online:",
+        form_title: "Send a Message or Inquire About Availability",
+        form_sub: "Fill out the form – your message will go straight to my inbox. You can also request a free placement test here.",
+        form_name: "Full Name",
+        form_phone: "Phone Number",
+        form_type: "Preferred Course",
+        opt_1: "8th Grade Exam Prep (Grades 7–8)",
+        opt_2: "High School English / Matura Exam",
+        opt_3: "Conversational & General English for Adults",
+        opt_4: "Lessons in Pair (60 min)",
+        opt_5: "Preliminary Consultation / Free Placement Test",
+        form_msg: "Message / preferred hours",
+        ph_name: "e.g. Anna Kowalska",
+        ph_phone: "e.g. +48 600 000 000",
+        ph_email: "e.g. name@example.com",
+        ph_msg: "Briefly describe your language goal, current level, or preferred schedule...",
+        form_rodo_prefix: "I consent to the processing of my personal data to respond to my inquiry in accordance with the",
+        form_rodo_link: "Privacy Policy & GDPR Notice",
+        form_rodo_suffix: ".",
+        form_rodo_note: "Data controller: Manufaktura Lingwistyczna – Patrycja Rosińska-Babiarz (ul. Szczecińska 39-41, Koszalin, Poland, NIP: 499 068 15 08). Providing data is voluntary but necessary to reply.",
+        form_btn: "Send Inquiry",
+        form_sending: "Sending...",
+        form_success: "Thank you! Your message has been sent. I will get back to you as soon as possible!",
+        form_error: "Something went wrong while sending. Please contact me directly by phone (+48 660 031 043) or email: biuro.manufaktura1@gmail.com",
+        form_err_config: "The form requires a Web3Forms access key in the page code. Meanwhile, please email: biuro.manufaktura1@gmail.com",
+        footer_privacy: "Privacy Policy & GDPR",
+        footer_cookies: "Cookie Settings",
+        footer_rights: "© 2026 Manufaktura Lingwistyczna. All rights reserved.",
+        footer_loc: "Koszalin • On-site & Online Lessons",
+        cookie_title: "We value your privacy.",
+        cookie_desc: "This website uses only strictly necessary cookies/browser storage to function properly (such as remembering your preference) and technical external resources. Learn more in our",
+        cookie_link: "Privacy & Cookie Policy",
+        cookie_essential: "Essential only",
+        cookie_accept: "Accept",
+        modal_title: "Privacy Policy, GDPR & Cookies",
+        modal_close: "Close"
+      }
+    };
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      const btnPl = document.getElementById('lang-pl');
+      const btnEn = document.getElementById('lang-en');
+      const mBtnPl = document.getElementById('m-lang-pl');
+      const mBtnEn = document.getElementById('m-lang-en');
+
+      if (lang === 'pl') {
+        btnPl.className = "px-2.5 py-1 rounded-full bg-purple-700 text-white transition";
+        btnEn.className = "px-2.5 py-1 rounded-full text-purple-800 hover:text-purple-900 transition";
+        mBtnPl.className = "px-2 py-0.5 rounded-full bg-purple-700 text-white";
+        mBtnEn.className = "px-2 py-0.5 rounded-full text-purple-800";
+      } else {
+        btnEn.className = "px-2.5 py-1 rounded-full bg-purple-700 text-white transition";
+        btnPl.className = "px-2.5 py-1 rounded-full text-purple-800 hover:text-purple-900 transition";
+        mBtnEn.className = "px-2 py-0.5 rounded-full bg-purple-700 text-white";
+        mBtnPl.className = "px-2 py-0.5 rounded-full text-purple-800";
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+          el.placeholder = translations[lang][key];
+        }
+      });
+
+      // Przełącz język treści w modalu Polityki prywatności / RODO
+      const modalPl = document.getElementById('privacy-content-pl');
+      const modalEn = document.getElementById('privacy-content-en');
+      if (modalPl && modalEn) {
+        modalPl.classList.toggle('hidden', lang !== 'pl');
+        modalEn.classList.toggle('hidden', lang === 'pl');
+      }
+
+      // Dopasuj domyślną wiadomość w linkach WhatsApp do wybranego języka
+      const waMsg = lang === 'pl'
+        ? 'Dzień dobry, piszę w sprawie zajęć z języka angielskiego.'
+        : 'Hello, I would like to inquire about English lessons.';
+      document.querySelectorAll('[data-whatsapp-link]').forEach(link => {
+        link.href = `https://wa.me/48660031043?text=${encodeURIComponent(waMsg)}`;
+      });
+
+      const select = document.getElementById('calc-lesson-type');
+      if (lang === 'pl') {
+        select.options[0].text = "Indywidualne 60 min – 120 zł";
+        select.options[1].text = "Indywidualne 45 min – 85 zł";
+        select.options[2].text = "W parze 60 min – 75 zł / osoba";
+      } else {
+        select.options[0].text = "Individual 60 min – 120 PLN";
+        select.options[1].text = "Individual 45 min – 85 PLN";
+        select.options[2].text = "In pair 60 min – 75 PLN / person";
+      }
+
+      updateFreqDisplay();
+      calculateMonthlyCost();
+    }
+  </script>
+</body>
+</html>
