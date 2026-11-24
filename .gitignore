@@ -1,6 +1,10 @@
 # Backup copies
 index (*).html
 
+# Build & Cloudflare local output
+.cloudflare/
+dist/
+
 # OS files
 .DS_Store
 Thumbs.db
