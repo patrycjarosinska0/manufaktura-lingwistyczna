@@ -1,0 +1,7 @@
+# Backup copies
+index (*).html
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
