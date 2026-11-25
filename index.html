@@ -1011,16 +1011,23 @@
             </a>
 
             <!-- Adres -->
-            <div class="col-span-2 md:col-span-1 md:order-first flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-purple-50/60 border border-purple-100">
-              <div class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0 text-sm md:text-base">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Szczeci%C5%84ska+39-41%2C+75-122+Koszalin%2C+Poland" target="_blank" rel="noopener noreferrer" class="col-span-2 md:col-span-1 md:order-first flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-purple-50/60 hover:bg-purple-50 border border-purple-100 hover:border-purple-200 transition group">
+              <div class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0 text-sm md:text-base group-hover:scale-105 transition">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
-              <div>
+              <div class="min-w-0 flex-1">
                 <span class="text-[10px] md:text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_loc">Lokalizacja stacjonarna</span>
-                <span class="font-bold text-slate-900 text-sm md:text-base">ul. Szczecińska 39-41, Koszalin</span>
+                <span class="font-bold text-slate-900 group-hover:text-purple-700 text-sm md:text-base transition inline-flex items-center gap-1.5">
+                  <span>ul. Szczecińska 39-41, Koszalin</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[11px] text-purple-600 opacity-75 group-hover:opacity-100 transition"></i>
+                </span>
                 <span class="text-[11px] md:text-xs text-slate-500 block mt-0.5" data-i18n="contact_loc_sub">Możliwość zajęć stacjonarnych oraz online</span>
+                <span class="inline-flex items-center gap-1.5 text-[11px] md:text-xs font-semibold text-purple-700 group-hover:text-purple-900 mt-1.5 transition">
+                  <i class="fa-solid fa-diamond-turn-right text-xs"></i>
+                  <span data-i18n="contact_loc_directions">Wskazówki dojazdu w Google Maps</span>
+                </span>
               </div>
-            </div>
+            </a>
 
             <!-- E-mail -->
             <div class="col-span-2 md:col-span-1 flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-purple-50/60 border border-purple-100">
@@ -1790,6 +1797,7 @@
         contact_desc: "Masz pytania dotyczące terminów, przygotowania do egzaminów lub chcesz zapisać się na wstępną konsultację i napisać darmowy test poziomujący? Zadzwoń lub napisz.",
         contact_lbl_loc: "Lokalizacja stacjonarna",
         contact_loc_sub: "Możliwość zajęć stacjonarnych oraz online",
+        contact_loc_directions: "Wskazówki dojazdu w Google Maps",
         contact_lbl_phone: "Zadzwoń do mnie",
         contact_phone_sub: "Odpowiadam w przerwach między zajęciami",
         contact_lbl_whatsapp: "Napisz na WhatsApp",
@@ -1954,6 +1962,7 @@
         contact_desc: "Have questions about schedules, exam preparation, or want to schedule an intro call and take a free placement test? Call or send a message.",
         contact_lbl_loc: "Classroom Location",
         contact_loc_sub: "Available on-site and online",
+        contact_loc_directions: "Get directions on Google Maps",
         contact_lbl_phone: "Call directly",
         contact_phone_sub: "I return calls between classes",
         contact_lbl_whatsapp: "Chat on WhatsApp",
