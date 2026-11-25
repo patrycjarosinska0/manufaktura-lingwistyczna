@@ -2,7 +2,7 @@
 <html lang="pl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Manufaktura Lingwistyczna – Angielski Koszalin i Online | Patrycja Rosińska-Babiarz</title>
 
   <!-- SEO Podstawowe -->
@@ -176,18 +176,39 @@
     summary::-webkit-details-marker {
       display: none;
     }
+    @media (max-width: 767px), (pointer: coarse) {
+      html, body {
+        touch-action: pan-x pan-y;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        overscroll-behavior-x: none;
+      }
+    }
+    @media (max-width: 767px) {
+      html, body {
+        overflow-x: clip;
+      }
+      .mobile-carousel {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mobile-carousel::-webkit-scrollbar {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-purple-200 selection:text-purple-900">
 
   <!-- NAWIGACJA -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-purple-100 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 md:h-20 flex items-center justify-between gap-2">
       
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-2 sm:gap-3 min-w-0">
-        <img src="logo.png?v=3" alt="Manufaktura Lingwistyczna Logo" width="511" height="272" decoding="async" class="h-10 sm:h-12 w-auto object-contain shrink-0" onerror="this.style.display='none'">
-        <span class="font-bold text-base sm:text-xl text-purple-900 tracking-tight truncate">Manufaktura<span class="text-purple-600">Lingwistyczna</span></span>
+      <a href="#" class="flex items-center gap-1.5 sm:gap-3 min-w-0">
+        <img src="logo.png?v=3" alt="Manufaktura Lingwistyczna Logo" width="511" height="272" decoding="async" class="h-7 sm:h-10 md:h-12 w-auto object-contain shrink-0" onerror="this.style.display='none'">
+        <span class="font-bold text-[13px] sm:text-base md:text-xl text-purple-900 tracking-tighter sm:tracking-tight truncate">Manufaktura<span class="text-purple-600">Lingwistyczna</span></span>
       </a>
 
       <!-- Menu Desktop -->
@@ -210,75 +231,127 @@
       </div>
 
       <!-- Hamburger mobilny -->
-      <div class="flex items-center gap-1.5 sm:gap-2 md:hidden shrink-0">
-        <div class="inline-flex items-center bg-purple-50 p-1 rounded-full border border-purple-200 text-xs font-bold mr-1">
-          <button id="m-lang-pl" onclick="setLanguage('pl')" class="px-2 py-0.5 rounded-full bg-purple-700 text-white">PL</button>
-          <button id="m-lang-en" onclick="setLanguage('en')" class="px-2 py-0.5 rounded-full text-purple-800">EN</button>
+      <div class="flex items-center gap-1 sm:gap-2 md:hidden shrink-0">
+        <div class="inline-flex items-center bg-purple-50 p-0.5 rounded-full border border-purple-200 text-[11px] font-bold">
+          <button id="m-lang-pl" onclick="setLanguage('pl')" class="px-1.5 py-0.5 rounded-full bg-purple-700 text-white">PL</button>
+          <button id="m-lang-en" onclick="setLanguage('en')" class="px-1.5 py-0.5 rounded-full text-purple-800">EN</button>
         </div>
-        <button id="mobile-menu-btn" class="p-2 text-slate-700 hover:text-purple-700 focus:outline-none" aria-label="Menu">
-          <i class="fa-solid fa-bars text-xl"></i>
+        <button id="mobile-menu-btn" class="p-1.5 -mr-1 text-slate-700 hover:text-purple-700 focus:outline-none" aria-label="Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobilne Menu Dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden border-b border-purple-100 bg-white px-4 pt-2 pb-6 space-y-3">
-      <a href="#dlaczego-warto" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_why">Dlaczego warto</a>
-      <a href="#o-mnie" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_about">O lektorce</a>
-      <a href="#cennik" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_pricing">Cennik i Kalkulator</a>
-      <a href="#opinie" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_reviews">Opinie</a>
-      <a href="#faq" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
-      <a href="#kontakt" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_contact">Kontakt</a>
-      <a href="#kontakt" class="block text-center mt-3 py-2.5 rounded-full bg-purple-700 text-white font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_cta">Zapisz się</a>
+    <div id="mobile-menu" class="hidden md:hidden border-b border-purple-100 bg-white px-4 pt-1 pb-4 space-y-1 shadow-lg">
+      <a href="#cennik" class="block py-2 text-purple-900 font-bold text-sm" onclick="toggleMenu()" data-i18n="nav_pricing">Cennik i Kalkulator</a>
+      <a href="#dlaczego-warto" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_why">Dlaczego warto</a>
+      <a href="#o-mnie" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_about">O lektorce</a>
+      <a href="#opinie" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_reviews">Opinie</a>
+      <a href="#faq" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
+      <a href="#kontakt" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_contact">Kontakt</a>
+      <div class="grid grid-cols-2 gap-2 pt-2">
+        <a href="tel:+48660031043" class="flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-purple-50 text-purple-900 border border-purple-200 font-semibold text-xs" onclick="toggleMenu()">
+          <i class="fa-solid fa-phone text-[11px]"></i>
+          <span data-i18n="mob_menu_call">Zadzwoń</span>
+        </a>
+        <a href="#kontakt" class="block text-center py-2.5 rounded-full bg-purple-700 text-white font-semibold text-xs" onclick="toggleMenu()" data-i18n="nav_cta">Zapisz się</a>
+      </div>
     </div>
   </header>
 
+  <main class="flex flex-col">
+
   <!-- HERO SECTION -->
-  <section class="purple-soft-bg relative pt-12 pb-20 md:py-24 overflow-hidden">
+  <section class="order-1 md:order-none purple-soft-bg relative pt-4 pb-6 md:py-24 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-12 items-center">
         
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-800 text-xs font-semibold uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-purple-600 animate-pulse"></span>
+        <div class="lg:col-span-7 space-y-3 md:space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-1.5 md:gap-2 px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-800 text-[11px] md:text-xs font-semibold uppercase tracking-wider">
+            <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-600 animate-pulse"></span>
             <span data-i18n="hero_badge">Skuteczny angielski w Koszalinie i online</span>
           </div>
           
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h1 class="text-[1.75rem] leading-[1.15] sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight md:leading-tight">
             <span data-i18n="hero_title_1">Swoboda mówienia,</span><br>
             <span class="purple-gradient-text" data-i18n="hero_title_2">która przychodzi naturalnie.</span>
           </h1>
 
-          <p class="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="hero_desc">
+          <!-- Opis mobilny: tagi odbiorców + 1 zwięzłe zdanie (tylko mobile) -->
+          <div class="md:hidden space-y-2">
+            <div class="flex flex-wrap items-center justify-center gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
+                <i class="fa-solid fa-graduation-cap text-purple-600 text-[10px]"></i>
+                <span data-i18n="mob_hero_tag_1">Klasy 7–8</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
+                <i class="fa-solid fa-award text-purple-600 text-[10px]"></i>
+                <span data-i18n="mob_hero_tag_2">Matura</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
+                <i class="fa-solid fa-comments text-purple-600 text-[10px]"></i>
+                <span data-i18n="mob_hero_tag_3">Dorośli</span>
+              </span>
+            </div>
+            <p class="text-sm leading-snug text-slate-600 max-w-sm mx-auto" data-i18n="mob_hero_desc">
+              Bezpieczna atmosfera i naturalne przełamanie bariery mówienia.
+            </p>
+          </div>
+
+          <!-- Opis desktopowy (oryginalny, bez zmian) -->
+          <p class="hidden md:block text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
             Zajęcia tworzone z myślą o młodzieży z klas 7–8, licealistach przygotowujących się do egzaminów oraz dorosłych, którzy chcą wreszcie swobodnie rozmawiać po angielsku. Łączymy bezpieczną atmosferę ze sprawdzonym międzynarodowym doświadczeniem.
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#kontakt" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold text-center shadow-lg shadow-purple-600/20 transition-all hover:-translate-y-0.5" data-i18n="hero_cta_primary">
+          <!-- Szybki podgląd cen (tylko mobile) -->
+          <a href="#cennik" class="md:hidden block bg-white border border-purple-200/90 rounded-2xl p-2 shadow-sm">
+            <div class="grid grid-cols-3 gap-1.5 text-center">
+              <div class="py-1.5 px-1 rounded-xl bg-purple-50/70">
+                <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-tight" data-i18n="mob_price_45">45 min</div>
+                <div class="text-base font-extrabold text-purple-900 leading-tight mt-0.5">85 zł</div>
+              </div>
+              <div class="py-1.5 px-1 rounded-xl bg-purple-900 text-white shadow-sm">
+                <div class="text-[10px] font-semibold text-amber-300 uppercase tracking-tight" data-i18n="mob_price_60">60 min ★</div>
+                <div class="text-base font-extrabold leading-tight mt-0.5">120 zł</div>
+              </div>
+              <div class="py-1.5 px-1 rounded-xl bg-purple-50/70">
+                <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-tight" data-i18n="mob_price_pair">W parze</div>
+                <div class="text-base font-extrabold text-purple-900 leading-tight mt-0.5">75 zł<span class="text-[10px] font-medium text-slate-500" data-i18n="mob_price_per_person">/os</span></div>
+              </div>
+            </div>
+            <div class="text-[11px] font-semibold text-purple-700 mt-1.5 flex items-center justify-center gap-1">
+              <span data-i18n="mob_price_hint">Pełny cennik i kalkulator poniżej</span>
+              <i class="fa-solid fa-arrow-down text-[10px]"></i>
+            </div>
+          </a>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 md:gap-4 pt-0.5 md:pt-2">
+            <a href="#kontakt" class="w-full sm:w-auto px-6 md:px-7 py-3 md:py-3.5 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold text-sm md:text-base text-center shadow-lg shadow-purple-600/20 transition-all hover:-translate-y-0.5" data-i18n="hero_cta_primary">
               Umów się na bezpłatną konsultację
             </a>
-            <a href="#cennik" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-purple-50 text-purple-800 border border-purple-200 font-semibold text-center transition" data-i18n="hero_cta_secondary">
+            <a href="#cennik" class="hidden md:inline-block w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-purple-50 text-purple-800 border border-purple-200 font-semibold text-center transition" data-i18n="hero_cta_secondary">
               Sprawdź cennik
             </a>
           </div>
 
-          <div class="pt-6 border-t border-purple-100 grid grid-cols-3 gap-4 text-center lg:text-left">
+          <div class="pt-3 md:pt-6 border-t border-purple-100 grid grid-cols-3 gap-2 md:gap-4 text-center lg:text-left">
             <div>
-              <div class="text-2xl font-bold text-purple-900" data-i18n="hero_stat_1_val">8+ lat</div>
-              <div class="text-xs text-slate-500 font-medium" data-i18n="hero_stat_1">doświadczenia</div>
+              <div class="text-lg md:text-2xl font-bold text-purple-900" data-i18n="hero_stat_1_val">8+ lat</div>
+              <div class="text-[11px] md:text-xs text-slate-500 font-medium leading-tight" data-i18n="hero_stat_1">doświadczenia</div>
             </div>
             <div>
-              <div class="text-2xl font-bold text-purple-900">STT</div>
-              <div class="text-xs text-slate-500 font-medium" data-i18n="hero_stat_2">nacisk na mówienie</div>
+              <div class="text-lg md:text-2xl font-bold text-purple-900">STT</div>
+              <div class="text-[11px] md:text-xs text-slate-500 font-medium leading-tight" data-i18n="hero_stat_2">nacisk na mówienie</div>
             </div>
             <div>
-              <div class="text-2xl font-bold text-purple-900">100%</div>
-              <div class="text-xs text-slate-500 font-medium" data-i18n="hero_stat_3">indywidualne podejście</div>
+              <div class="text-lg md:text-2xl font-bold text-purple-900">100%</div>
+              <div class="text-[11px] md:text-xs text-slate-500 font-medium leading-tight" data-i18n="hero_stat_3">indywidualne podejście</div>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-5 relative">
+        <div class="hidden md:block lg:col-span-5 relative">
           <div class="relative mx-auto max-w-md rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-purple-100 aspect-[4/3] flex items-center justify-center">
             <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="Przestrzeń edukacyjna do nauki języka angielskiego w Koszalinie i online" width="900" height="675" fetchpriority="high" decoding="async" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-purple-950/40 via-transparent to-transparent"></div>
@@ -294,151 +367,177 @@
   </section>
 
   <!-- DLACZEGO WARTO -->
-  <section id="dlaczego-warto" class="py-20 bg-white">
+  <section id="dlaczego-warto" class="order-3 md:order-none scroll-mt-14 md:scroll-mt-20 py-10 md:py-20 bg-white border-t border-purple-100 md:border-t-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="why_sub">Dlaczego warto</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="why_title">Nauka oparta na rozmowie, nie na mechanicznym wypełnianiu kserówek</p>
+      <div class="text-center max-w-3xl mx-auto mb-6 md:mb-16">
+        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1.5 md:mb-2" data-i18n="why_sub">Dlaczego warto</h2>
+        <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug" data-i18n="why_title">Nauka oparta na rozmowie, nie na mechanicznym wypełnianiu kserówek</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div id="why-carousel" class="mobile-carousel flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
         
         <!-- Filar 1: STT -->
-        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
-          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
-            <i class="fa-solid fa-comments"></i>
+        <div class="w-[82vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-purple-50/50 hover:bg-purple-50/80 p-5 md:p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="flex items-center gap-3 md:block mb-2.5 md:mb-0">
+            <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-purple-700 text-white flex items-center justify-center text-base md:text-xl md:mb-6 shadow-md shadow-purple-600/20">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-900 md:mb-3 leading-snug" data-i18n="why_card1_title">Student Talking Time (STT)</h3>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card1_title">Student Talking Time (STT)</h3>
-          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card1_desc">
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="why_card1_desc">
             To uczeń mówi przez większość czasu lekcji. Nie siedzisz cicho, słuchając wykładu lektora – aktywnie formułujesz myśli, testujesz nowe zwroty i budujesz naturalny automatyzm językowy od pierwszej minuty.
           </p>
         </div>
 
         <!-- Filar 2: Egzamin ósmoklasisty & Matura -->
-        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
-          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
-            <i class="fa-solid fa-graduation-cap"></i>
+        <div class="w-[82vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-purple-50/50 hover:bg-purple-50/80 p-5 md:p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="flex items-center gap-3 md:block mb-2.5 md:mb-0">
+            <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-purple-700 text-white flex items-center justify-center text-base md:text-xl md:mb-6 shadow-md shadow-purple-600/20">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-900 md:mb-3 leading-snug" data-i18n="why_card2_title">Egzamin ósmoklasisty i Matura</h3>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card2_title">Egzamin ósmoklasisty i Matura</h3>
-          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card2_desc">
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="why_card2_desc">
             Dla klas 7–8 oraz uczniów szkół średnich: systematyczne oswajanie struktur egzaminacyjnych, arkuszy i części ustnej bez zbędnego stresu, z pełnym zrozumieniem poleceń.
           </p>
         </div>
 
         <!-- Filar 3: Dorośli bez paraliżu -->
-        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
-          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
-            <i class="fa-solid fa-shield-heart"></i>
+        <div class="w-[82vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-purple-50/50 hover:bg-purple-50/80 p-5 md:p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="flex items-center gap-3 md:block mb-2.5 md:mb-0">
+            <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-purple-700 text-white flex items-center justify-center text-base md:text-xl md:mb-6 shadow-md shadow-purple-600/20">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-900 md:mb-3 leading-snug" data-i18n="why_card3_title">Swoboda dla dorosłych</h3>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card3_title">Swoboda dla dorosłych</h3>
-          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card3_desc">
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="why_card3_desc">
             Koniec z blokadą „wszystko rozumiem, ale boję się odezwać”. Pracujemy w bezpiecznych warunkach nad sytuacjami zawodowymi, podróżami i codziennym, płynnym small talkiem.
           </p>
         </div>
 
         <!-- Filar 4: Doświadczenie międzynarodowe -->
-        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
-          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
-            <i class="fa-solid fa-globe"></i>
+        <div class="w-[82vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-purple-50/50 hover:bg-purple-50/80 p-5 md:p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="flex items-center gap-3 md:block mb-2.5 md:mb-0">
+            <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-purple-700 text-white flex items-center justify-center text-base md:text-xl md:mb-6 shadow-md shadow-purple-600/20">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-900 md:mb-3 leading-snug" data-i18n="why_card4_title">Doświadczenie międzynarodowe</h3>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card4_title">Doświadczenie międzynarodowe</h3>
-          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card4_desc">
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="why_card4_desc">
             Wieloletnia praca ze słuchaczami z różnych kręgów kulturowych daje pewność elastycznego dopasowania metodyki do każdego poziomu i każdego typu trudności językowych.
           </p>
         </div>
 
         <!-- Filar 5: Indywidualne materiały -->
-        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
-          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
-            <i class="fa-solid fa-sliders"></i>
+        <div class="w-[82vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-purple-50/50 hover:bg-purple-50/80 p-5 md:p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="flex items-center gap-3 md:block mb-2.5 md:mb-0">
+            <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-purple-700 text-white flex items-center justify-center text-base md:text-xl md:mb-6 shadow-md shadow-purple-600/20">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-900 md:mb-3 leading-snug" data-i18n="why_card5_title">Materiały szyte na miarę</h3>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card5_title">Materiały szyte na miarę</h3>
-          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card5_desc">
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="why_card5_desc">
             Pracuję na podręcznikach dla dorosłych dobranych do ich poziomu, łącząc je z angażującymi materiałami źródłowymi, aktualnymi tematami i autorskimi pomocami dydaktycznymi dopasowanymi do Twoich celów.
           </p>
         </div>
 
         <!-- Filar 6: Stacjonarnie i online -->
-        <div class="bg-purple-50/50 hover:bg-purple-50/80 p-8 rounded-2xl border border-purple-100 transition duration-300">
-          <div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center text-xl mb-6 shadow-md shadow-purple-600/20">
-            <i class="fa-solid fa-laptop-house"></i>
+        <div class="w-[82vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-purple-50/50 hover:bg-purple-50/80 p-5 md:p-8 rounded-2xl border border-purple-100 transition duration-300">
+          <div class="flex items-center gap-3 md:block mb-2.5 md:mb-0">
+            <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-purple-700 text-white flex items-center justify-center text-base md:text-xl md:mb-6 shadow-md shadow-purple-600/20">
+              <i class="fa-solid fa-laptop-house"></i>
+            </div>
+            <h3 class="text-base md:text-xl font-bold text-slate-900 md:mb-3 leading-snug" data-i18n="why_card6_title">Stacjonarnie w Koszalinie lub online</h3>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="why_card6_title">Stacjonarnie w Koszalinie lub online</h3>
-          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="why_card6_desc">
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="why_card6_desc">
             Spotykamy się w przyjaznym gabinecie przy ul. Szczecińskiej 39-41 lub w interaktywnej sali online z każdego zakątka Polski i świata. Pełna wygoda.
           </p>
         </div>
 
       </div>
+
+      <!-- Wskaźnik przesuwania (tylko mobile) -->
+      <div class="md:hidden mt-3 flex flex-col items-center gap-1.5">
+        <div id="why-dots" class="flex items-center gap-1.5" aria-hidden="true"></div>
+        <span class="text-[11px] text-slate-400 font-medium" data-i18n="mob_swipe_hint">Przesuń w bok, aby zobaczyć więcej →</span>
+      </div>
     </div>
   </section>
 
   <!-- O MNIE / LEKTOR -->
-  <section id="o-mnie" class="py-20 bg-purple-50/40 border-y border-purple-100">
+  <section id="o-mnie" class="order-4 md:order-none scroll-mt-14 md:scroll-mt-20 py-10 md:py-20 bg-purple-50/40 border-y border-purple-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-12 items-center">
         
         <!-- Portret lektorki -->
         <div class="lg:col-span-5">
-          <div class="relative mx-auto max-w-sm rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-purple-200 aspect-[3/4]">
+          <div class="relative mx-auto max-w-[250px] aspect-[4/5] md:max-w-sm md:aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-purple-200">
             <img src="kobieta.jpg" alt="Patrycja Rosińska-Babiarz – lektorka języka angielskiego Koszalin" width="900" height="1125" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='kobieta.png';">
             <div class="absolute inset-0 bg-gradient-to-t from-purple-950/30 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-2xl text-center border border-purple-100">
-              <span class="font-bold text-purple-950 block text-base">Patrycja Rosińska-Babiarz</span>
-              <span class="text-xs text-purple-700 font-medium" data-i18n="about_role">Lektorka & Właścicielka Manufaktury Lingwistycznej</span>
+            <div class="absolute bottom-2.5 left-2.5 right-2.5 md:bottom-4 md:left-4 md:right-4 bg-white/95 backdrop-blur-sm px-2.5 py-1.5 md:px-4 md:py-3 rounded-xl md:rounded-2xl text-center border border-purple-100">
+              <span class="font-bold text-purple-950 block text-[13px] md:text-base leading-tight whitespace-nowrap">Patrycja Rosińska-Babiarz</span>
+              <span class="text-[10px] md:text-xs text-purple-700 font-medium leading-tight block mt-0.5" data-i18n="about_role">Lektorka & Właścicielka Manufaktury Lingwistycznej</span>
             </div>
           </div>
         </div>
 
         <!-- Treść sekcji -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold uppercase tracking-wider">
-            <i class="fa-solid fa-user-check"></i>
-            <span data-i18n="about_badge">Lektorka & metodyka</span>
+        <div class="lg:col-span-7 space-y-4 md:space-y-6">
+          <div class="text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold uppercase tracking-wider mb-2 md:mb-0">
+              <i class="fa-solid fa-user-check"></i>
+              <span data-i18n="about_badge">Lektorka & metodyka</span>
+            </div>
           </div>
 
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="about_title">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight text-center md:text-left leading-snug" data-i18n="about_title">
             Uczę tak, jak sama chciałabym być uczona – z sensem, spokojem i zaangażowaniem.
           </h2>
 
-          <div class="space-y-4 text-slate-600 leading-relaxed text-sm sm:text-base">
+          <div class="space-y-3 md:space-y-4 text-slate-600 leading-relaxed text-sm md:text-base">
             <p data-i18n="about_p1">
               Nazywam się Patrycja Rosińska-Babiarz. Jestem magistrem filologii angielskiej o specjalności nauczycielskiej, z ponad 8-letnim stażem w codziennej pracy dydaktycznej. 
             </p>
-            <p data-i18n="about_p2">
-              Przez lata prowadziłam zajęcia zarówno z polskimi uczniami (od ambitnej młodzieży klas 7–8, przez maturzystów, po zapracowanych dorosłych), jak i w środowisku międzynarodowym, ucząc osoby z różnych krajów i kultur. To doświadczenie nauczyło mnie jednego: kluczem do postępów nie jest sztywne trzymanie się podręcznika, lecz bezpieczna atmosfera i maksymalny czas, w którym to uczeń ma głos.
-            </p>
+            <div id="about-extra-text" class="hidden md:block">
+              <p data-i18n="about_p2">
+                Przez lata prowadziłam zajęcia zarówno z polskimi uczniami (od ambitnej młodzieży klas 7–8, przez maturzystów, po zapracowanych dorosłych), jak i w środowisku międzynarodowym, ucząc osoby z różnych krajów i kultur. To doświadczenie nauczyło mnie jednego: kluczem do postępów nie jest sztywne trzymanie się podręcznika, lecz bezpieczna atmosfera i maksymalny czas, w którym to uczeń ma głos.
+              </p>
+            </div>
+            <button id="about-more-btn" type="button" onclick="toggleAboutMore()" class="md:hidden inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 hover:text-purple-900">
+              <span data-i18n="about_more_btn">Czytaj więcej o doświadczeniu</span>
+              <i id="about-more-icon" class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+            </button>
           </div>
 
           <!-- Kwalifikacje w pigułce -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
-              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">mgr</div>
-              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_1">mgr filologii angielskiej</span>
+          <div class="grid grid-cols-2 gap-2 md:gap-3 pt-1 md:pt-2">
+            <div class="flex items-center gap-2 md:gap-3 bg-white p-2.5 md:p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-7 h-7 md:w-8 md:h-8 shrink-0 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-[11px] md:text-xs">mgr</div>
+              <span class="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-800 leading-tight" data-i18n="about_pill_1">mgr filologii angielskiej</span>
             </div>
-            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
-              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">8+</div>
-              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_2">8 lat doświadczenia w nauczaniu</span>
+            <div class="flex items-center gap-2 md:gap-3 bg-white p-2.5 md:p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-7 h-7 md:w-8 md:h-8 shrink-0 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-[11px] md:text-xs">8+</div>
+              <span class="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-800 leading-tight" data-i18n="about_pill_2">8 lat doświadczenia w nauczaniu</span>
             </div>
-            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
-              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center text-xs"><i class="fa-solid fa-earth-americas"></i></div>
-              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_3">Doświadczenie międzynarodowe</span>
+            <div class="flex items-center gap-2 md:gap-3 bg-white p-2.5 md:p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-7 h-7 md:w-8 md:h-8 shrink-0 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center text-[11px] md:text-xs"><i class="fa-solid fa-earth-americas"></i></div>
+              <span class="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-800 leading-tight" data-i18n="about_pill_3">Doświadczenie międzynarodowe</span>
             </div>
-            <div class="flex items-center gap-3 bg-white p-3.5 rounded-xl border border-purple-100 shadow-sm">
-              <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center text-xs"><i class="fa-solid fa-bullhorn"></i></div>
-              <span class="text-xs sm:text-sm font-semibold text-slate-800" data-i18n="about_pill_4">Priorytet: Student Talking Time</span>
+            <div class="flex items-center gap-2 md:gap-3 bg-white p-2.5 md:p-3.5 rounded-xl border border-purple-100 shadow-sm">
+              <div class="w-7 h-7 md:w-8 md:h-8 shrink-0 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center text-[11px] md:text-xs"><i class="fa-solid fa-bullhorn"></i></div>
+              <span class="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-800 leading-tight" data-i18n="about_pill_4">Priorytet: Student Talking Time</span>
             </div>
           </div>
 
           <!-- Cytat -->
-          <div class="relative bg-white p-6 rounded-2xl border-l-4 border-purple-600 shadow-sm mt-4">
-            <i class="fa-solid fa-quote-left text-2xl text-purple-200 absolute top-4 right-4"></i>
-            <p class="italic text-slate-700 text-sm sm:text-base leading-relaxed relative z-10" data-i18n="about_quote">
+          <div class="relative bg-white p-4 md:p-6 rounded-2xl border-l-4 border-purple-600 shadow-sm mt-2 md:mt-4">
+            <i class="fa-solid fa-quote-left text-xl md:text-2xl text-purple-200 absolute top-3 right-3 md:top-4 md:right-4"></i>
+            <p class="italic text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed relative z-10" data-i18n="about_quote">
               „Błąd to nie powód do wstydu, ale naturalny przystanek na drodze do płynności. Moim zadaniem jest stworzyć dla Ciebie takie warunki, w których przestajesz kalkulować każde słowo w głowie, a po prostu zaczynasz rozmawiać.”
             </p>
-            <span class="block text-xs font-bold text-purple-900 mt-3">— Patrycja Rosińska-Babiarz</span>
+            <span class="block text-xs font-bold text-purple-900 mt-2 md:mt-3">— Patrycja Rosińska-Babiarz</span>
           </div>
 
         </div>
@@ -449,97 +548,121 @@
   </section>
 
   <!-- CENNIK I KALKULATOR -->
-  <section id="cennik" class="py-20 bg-white">
+  <section id="cennik" class="order-2 md:order-none scroll-mt-14 md:scroll-mt-20 py-8 md:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="pricing_sub">Przejrzyste zasady</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="pricing_title">Cennik zajęć i kalkulator kosztów</p>
-        <p class="text-slate-600 text-sm sm:text-base mt-3" data-i18n="pricing_desc">Wybierz formę zajęć najlepiej dopasowaną do Twojego rytmu dnia i celów językowych.</p>
+      <div class="text-center max-w-3xl mx-auto mb-5 md:mb-16">
+        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1 md:mb-2" data-i18n="pricing_sub">Przejrzyste zasady</h2>
+        <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="pricing_title">Cennik zajęć i kalkulator kosztów</p>
+        <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-1.5 md:mt-3" data-i18n="pricing_desc">Wybierz formę zajęć najlepiej dopasowaną do Twojego rytmu dnia i celów językowych.</p>
       </div>
 
       <!-- KAFELKI Z CENNIKIEM -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-8 mb-7 md:mb-16">
         
         <!-- Opcja 1 -->
-        <div class="bg-white rounded-3xl p-8 border border-purple-100 shadow-md hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between">
+        <div class="bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 border border-purple-100 shadow-md hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between">
           <div>
-            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-full mb-4" data-i18n="price1_badge">Indywidualnie</span>
-            <h3 class="text-xl font-bold text-slate-900" data-i18n="price1_title">Lekcja 45 minut</h3>
-            <p class="text-slate-500 text-xs mt-1 mb-6" data-i18n="price1_sub">Intensywny format idealny dla młodzieży lub regularnych powtórek</p>
-            <div class="flex items-baseline gap-1 mb-6">
-              <span class="text-4xl font-extrabold text-purple-900">85 zł</span>
-              <span class="text-slate-500 text-xs" data-i18n="per_lesson">/ lekcja</span>
+            <div class="grid grid-cols-[1fr_auto] md:block gap-x-3 items-start">
+              <div class="min-w-0">
+                <span class="inline-block px-2.5 py-0.5 md:px-3 md:py-1 bg-purple-50 text-purple-700 text-[11px] md:text-xs font-bold rounded-full mb-1.5 md:mb-4" data-i18n="price1_badge">Indywidualnie</span>
+                <h3 class="text-base md:text-xl font-bold text-slate-900 leading-tight" data-i18n="price1_title">Lekcja 45 minut</h3>
+              </div>
+              <div class="text-right md:hidden pt-0.5 shrink-0">
+                <span class="text-2xl font-extrabold text-purple-900 block leading-none">85 zł</span>
+                <span class="text-slate-500 text-[11px]" data-i18n="per_lesson">/ lekcja</span>
+              </div>
+              <p class="col-span-2 text-slate-500 text-xs mt-1.5 mb-3 md:mt-1 md:mb-6" data-i18n="price1_sub">Intensywny format idealny dla młodzieży lub regularnych powtórek</p>
+              <div class="hidden md:flex items-baseline gap-1 mb-6">
+                <span class="text-4xl font-extrabold text-purple-900">85 zł</span>
+                <span class="text-slate-500 text-xs" data-i18n="per_lesson">/ lekcja</span>
+              </div>
             </div>
-            <ul class="space-y-3 text-xs sm:text-sm text-slate-600 border-t border-purple-50 pt-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat1">100% uwagi lektora</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
+            <ul class="flex flex-wrap gap-x-4 gap-y-1.5 md:block md:space-y-3 text-xs sm:text-sm text-slate-600 border-t border-purple-50 pt-3 md:pt-6">
+              <li class="flex items-center gap-1.5 md:gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat1">100% uwagi lektora</span></li>
+              <li class="flex items-center gap-1.5 md:gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
             </ul>
           </div>
-          <a href="#kontakt" class="mt-8 block w-full py-3 rounded-full text-center font-semibold text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 text-purple-900 transition" data-i18n="price_btn">Wybieram ten format</a>
+          <a href="#kontakt" class="mt-3.5 md:mt-8 block w-full py-2.5 md:py-3 rounded-full text-center font-semibold text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 text-purple-900 transition" data-i18n="price_btn">Wybieram ten format</a>
         </div>
 
         <!-- Opcja 2 (Wyróżniona) -->
-        <div class="bg-gradient-to-b from-purple-900 to-purple-950 text-white rounded-3xl p-8 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-400 text-purple-950 font-extrabold text-[11px] uppercase tracking-wider px-4 py-1 rounded-full shadow-md" data-i18n="price2_badge">
+        <div class="mt-2 md:mt-0 bg-gradient-to-b from-purple-900 to-purple-950 text-white rounded-2xl md:rounded-3xl p-4 pt-5 md:p-8 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2">
+          <div class="absolute -top-3 md:-top-3.5 left-1/2 -translate-x-1/2 bg-amber-400 text-purple-950 font-extrabold text-[10px] md:text-[11px] uppercase tracking-wider px-3.5 md:px-4 py-0.5 md:py-1 rounded-full shadow-md whitespace-nowrap" data-i18n="price2_badge">
             Najczęściej wybierane
           </div>
           <div>
-            <span class="inline-block px-3 py-1 bg-white/10 text-purple-200 text-xs font-bold rounded-full mb-4" data-i18n="price1_badge">Indywidualnie</span>
-            <h3 class="text-xl font-bold text-white" data-i18n="price2_title">Lekcja 60 minut</h3>
-            <p class="text-purple-200 text-xs mt-1 mb-6" data-i18n="price2_sub">Optymalny czas na swobodną konwersację, analizę i praktykę</p>
-            <div class="flex items-baseline gap-1 mb-6">
-              <span class="text-4xl font-extrabold text-white">120 zł</span>
-              <span class="text-purple-300 text-xs" data-i18n="per_lesson">/ lekcja</span>
+            <div class="grid grid-cols-[1fr_auto] md:block gap-x-3 items-start">
+              <div class="min-w-0">
+                <span class="inline-block px-2.5 py-0.5 md:px-3 md:py-1 bg-white/10 text-purple-200 text-[11px] md:text-xs font-bold rounded-full mb-1.5 md:mb-4" data-i18n="price1_badge">Indywidualnie</span>
+                <h3 class="text-base md:text-xl font-bold text-white leading-tight" data-i18n="price2_title">Lekcja 60 minut</h3>
+              </div>
+              <div class="text-right md:hidden pt-0.5 shrink-0">
+                <span class="text-2xl font-extrabold text-white block leading-none">120 zł</span>
+                <span class="text-purple-300 text-[11px]" data-i18n="per_lesson">/ lekcja</span>
+              </div>
+              <p class="col-span-2 text-purple-200 text-xs mt-1.5 mb-3 md:mt-1 md:mb-6" data-i18n="price2_sub">Optymalny czas na swobodną konwersację, analizę i praktykę</p>
+              <div class="hidden md:flex items-baseline gap-1 mb-6">
+                <span class="text-4xl font-extrabold text-white">120 zł</span>
+                <span class="text-purple-300 text-xs" data-i18n="per_lesson">/ lekcja</span>
+              </div>
             </div>
-            <ul class="space-y-3 text-xs sm:text-sm text-purple-200 border-t border-white/10 pt-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat1">100% uwagi lektora</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat4">Głęboki nacisk na STT</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
+            <ul class="flex flex-wrap gap-x-4 gap-y-1.5 md:block md:space-y-3 text-xs sm:text-sm text-purple-200 border-t border-white/10 pt-3 md:pt-6">
+              <li class="flex items-center gap-1.5 md:gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat1">100% uwagi lektora</span></li>
+              <li class="flex items-center gap-1.5 md:gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat4">Głęboki nacisk na STT</span></li>
+              <li class="flex items-center gap-1.5 md:gap-2"><i class="fa-solid fa-check text-amber-400"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
             </ul>
           </div>
-          <a href="#kontakt" class="mt-8 block w-full py-3 rounded-full text-center font-bold text-xs sm:text-sm bg-purple-500 hover:bg-purple-400 text-white shadow-lg transition" data-i18n="price_btn">Wybieram ten format</a>
+          <a href="#kontakt" class="mt-3.5 md:mt-8 block w-full py-2.5 md:py-3 rounded-full text-center font-bold text-xs sm:text-sm bg-purple-500 hover:bg-purple-400 text-white shadow-lg transition" data-i18n="price_btn">Wybieram ten format</a>
         </div>
 
         <!-- Opcja 3 -->
-        <div class="bg-white rounded-3xl p-8 border border-purple-100 shadow-md hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between">
+        <div class="bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 border border-purple-100 shadow-md hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between">
           <div>
-            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-full mb-4" data-i18n="price3_badge">W parze</span>
-            <h3 class="text-xl font-bold text-slate-900" data-i18n="price3_title">Lekcja 60 minut w parze</h3>
-            <p class="text-slate-500 text-xs mt-1 mb-6" data-i18n="price3_sub">Ucz się z partnerem, znajomym lub rodzeństwem na tym samym poziomie</p>
-            <div class="flex items-baseline gap-1 mb-1">
-              <span class="text-4xl font-extrabold text-purple-900">75 zł</span>
-              <span class="text-slate-500 text-xs" data-i18n="per_person">/ os. (150 zł razem)</span>
+            <div class="grid grid-cols-[1fr_auto] md:block gap-x-3 items-start">
+              <div class="min-w-0">
+                <span class="inline-block px-2.5 py-0.5 md:px-3 md:py-1 bg-purple-50 text-purple-700 text-[11px] md:text-xs font-bold rounded-full mb-1.5 md:mb-4" data-i18n="price3_badge">W parze</span>
+                <h3 class="text-base md:text-xl font-bold text-slate-900 leading-tight" data-i18n="price3_title">Lekcja 60 minut w parze</h3>
+              </div>
+              <div class="text-right md:hidden pt-0.5 shrink-0">
+                <span class="text-2xl font-extrabold text-purple-900 block leading-none">75 zł</span>
+                <span class="text-slate-500 text-[10px] block leading-tight mt-0.5" data-i18n="per_person">/ os. (150 zł razem)</span>
+              </div>
+              <p class="col-span-2 text-slate-500 text-xs mt-1.5 mb-3 md:mt-1 md:mb-6" data-i18n="price3_sub">Ucz się z partnerem, znajomym lub rodzeństwem na tym samym poziomie</p>
+              <div class="hidden md:flex items-baseline gap-1 mb-1">
+                <span class="text-4xl font-extrabold text-purple-900">75 zł</span>
+                <span class="text-slate-500 text-xs" data-i18n="per_person">/ os. (150 zł razem)</span>
+              </div>
+              <div class="hidden md:block text-[11px] text-slate-400 mb-6" data-i18n="price3_note">Cena 75 zł dotyczy jednej osoby za lekcję 60 min</div>
             </div>
-            <div class="text-[11px] text-slate-400 mb-6" data-i18n="price3_note">Cena 75 zł dotyczy jednej osoby za lekcję 60 min</div>
-            <ul class="space-y-3 text-xs sm:text-sm text-slate-600 border-t border-purple-50 pt-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat5">Praktyczne dialogi we dwoje</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
+            <ul class="flex flex-wrap gap-x-4 gap-y-1.5 md:block md:space-y-3 text-xs sm:text-sm text-slate-600 border-t border-purple-50 pt-3 md:pt-6">
+              <li class="flex items-center gap-1.5 md:gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat5">Praktyczne dialogi we dwoje</span></li>
+              <li class="flex items-center gap-1.5 md:gap-2"><i class="fa-solid fa-check text-purple-600"></i> <span data-i18n="price_feat3">Stacjonarnie lub online</span></li>
             </ul>
           </div>
-          <a href="#kontakt" onclick="preselectCourse(3)" class="mt-8 block w-full py-3 rounded-full text-center font-semibold text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 text-purple-900 transition" data-i18n="price_btn">Wybieram ten format</a>
+          <a href="#kontakt" onclick="preselectCourse(3)" class="mt-3.5 md:mt-8 block w-full py-2.5 md:py-3 rounded-full text-center font-semibold text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 text-purple-900 transition" data-i18n="price_btn">Wybieram ten format</a>
         </div>
 
       </div>
 
       <!-- INTERAKTYWNY KALKULATOR KOSZTÓW -->
-      <div class="max-w-4xl mx-auto bg-purple-900/5 rounded-3xl border border-purple-200 p-8 sm:p-10 shadow-sm">
-        <div class="text-center max-w-xl mx-auto mb-8">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold uppercase mb-2">
+      <div class="max-w-4xl mx-auto bg-purple-900/5 rounded-2xl md:rounded-3xl border border-purple-200 p-4 sm:p-6 md:p-10 shadow-sm">
+        <div class="text-center max-w-xl mx-auto mb-4 md:mb-8">
+          <div class="inline-flex items-center gap-1.5 md:gap-2 px-2.5 py-0.5 md:px-3 md:py-1 rounded-full bg-purple-100 text-purple-800 text-[11px] md:text-xs font-semibold uppercase mb-1.5 md:mb-2">
             <i class="fa-solid fa-calculator"></i>
             <span data-i18n="calc_badge">Kalkulator miesięczny</span>
           </div>
-          <h3 class="text-2xl font-bold text-slate-900" data-i18n="calc_title">Oszacuj swój miesięczny budżet</h3>
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-slate-900" data-i18n="calc_title">Oszacuj swój miesięczny budżet</h3>
           <p class="text-xs sm:text-sm text-slate-600 mt-1" data-i18n="calc_sub">Sprawdź orientacyjny koszt nauki w skali typowego 4-tygodniowego miesiąca.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
           
-          <div class="space-y-6">
+          <div class="space-y-4 md:space-y-6">
             <!-- Typ zajęć -->
             <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2" data-i18n="calc_lbl_type">Wybierz wariant lekcji:</label>
-              <select id="calc-lesson-type" onchange="calculateMonthlyCost()" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-600">
+              <label for="calc-lesson-type" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 md:mb-2" data-i18n="calc_lbl_type">Wybierz wariant lekcji:</label>
+              <select id="calc-lesson-type" onchange="calculateMonthlyCost()" class="w-full bg-white border border-purple-200 rounded-xl px-3.5 md:px-4 py-2.5 md:py-3 text-base md:text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-600">
                 <option value="120">Indywidualne 60 min – 120 zł</option>
                 <option value="85">Indywidualne 45 min – 85 zł</option>
                 <option value="75">W parze 60 min – 75 zł / osoba</option>
@@ -548,11 +671,11 @@
 
             <!-- Częstotliwość -->
             <div>
-              <div class="flex justify-between items-center mb-2">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-700" data-i18n="calc_lbl_freq">Liczba lekcji w tygodniu:</label>
-                <span id="freq-display" class="text-sm font-bold text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-full">1 lekcja / tydzień</span>
+              <div class="flex justify-between items-center gap-2 mb-1.5 md:mb-2">
+                <label for="calc-freq" class="text-[11px] md:text-xs font-bold uppercase tracking-wider text-slate-700 leading-tight" data-i18n="calc_lbl_freq">Liczba lekcji w tygodniu:</label>
+                <span id="freq-display" class="text-xs md:text-sm font-bold text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0">1 lekcja / tydzień</span>
               </div>
-              <input type="range" id="calc-freq" min="1" max="4" value="1" step="1" oninput="updateFreqDisplay(); calculateMonthlyCost();" class="w-full accent-purple-700 cursor-pointer">
+              <input type="range" id="calc-freq" min="1" max="4" value="1" step="1" oninput="updateFreqDisplay(); calculateMonthlyCost();" class="w-full h-2 accent-purple-700 cursor-pointer">
               <div class="flex justify-between text-[11px] text-slate-400 mt-1 px-1">
                 <span>1x</span>
                 <span>2x</span>
@@ -563,16 +686,16 @@
           </div>
 
           <!-- Wynik kalkulatora -->
-          <div class="bg-white p-6 sm:p-8 rounded-2xl border border-purple-100 shadow-md text-center space-y-4">
-            <span class="text-xs font-semibold uppercase tracking-wider text-slate-500" data-i18n="calc_res_lbl">Szacowany koszt miesięczny (4 tyg.):</span>
-            <div class="text-4xl sm:text-5xl font-black text-purple-900 tracking-tight" id="calc-total-result">
+          <div class="bg-white p-4 sm:p-6 md:p-8 rounded-2xl border border-purple-100 shadow-md text-center space-y-2 md:space-y-4">
+            <span class="text-[11px] md:text-xs font-semibold uppercase tracking-wider text-slate-500 block" data-i18n="calc_res_lbl">Szacowany koszt miesięczny (4 tyg.):</span>
+            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-purple-900 tracking-tight" id="calc-total-result">
               480 zł
             </div>
             <p class="text-xs text-slate-500" id="calc-breakdown-text">
               4 spotkania w miesiącu × 120 zł
             </p>
-            <div class="pt-2">
-              <a href="#kontakt" class="inline-block w-full py-3 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs sm:text-sm transition" data-i18n="calc_cta">
+            <div class="pt-1 md:pt-2">
+              <a href="#kontakt" class="inline-block w-full py-2.5 md:py-3 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs sm:text-sm transition" data-i18n="calc_cta">
                 Zarezerwuj stały termin
               </a>
             </div>
@@ -581,7 +704,7 @@
         </div>
 
         <!-- Informacja o płatnościach -->
-        <div class="mt-8 pt-6 border-t border-purple-200/70 text-xs sm:text-sm text-slate-600 space-y-2">
+        <div class="mt-4 pt-3.5 md:mt-8 md:pt-6 border-t border-purple-200/70 text-[11px] sm:text-xs md:text-sm text-slate-600 space-y-2">
           <p><strong class="text-slate-800" data-i18n="calc_payment_info_title">Rozliczenia i płatności:</strong> <span data-i18n="calc_payment_info_desc">Płatności za zajęcia realizowane są wygodnym przelewem bankowym na numer konta podawany przy zapisie. W tytule przelewu prosimy wpisać: [Imię i Nazwisko Ucznia] – [Miesiąc].</span></p>
         </div>
 
@@ -591,11 +714,11 @@
   </section>
 
   <!-- OPINIE (GOOGLE REVIEWS) -->
-  <section id="opinie" class="py-20 bg-purple-50/30 border-t border-purple-100">
+  <section id="opinie" class="order-5 md:order-none scroll-mt-14 md:scroll-mt-20 py-10 md:py-20 bg-purple-50/30 border-t border-purple-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-1 text-amber-400 mb-2 text-sm">
+      <div class="text-center max-w-3xl mx-auto mb-6 md:mb-16">
+        <div class="inline-flex items-center gap-1 text-amber-400 mb-1.5 md:mb-2 text-xs md:text-sm">
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
@@ -603,24 +726,24 @@
           <i class="fa-solid fa-star"></i>
           <span class="ml-2 font-bold text-slate-800 text-xs bg-amber-100 text-amber-900 px-2 py-0.5 rounded" data-i18n="reviews_rating">5.0 / 5.0 w Google</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="reviews_title">Opinie uczniów i rodziców</h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-2" data-i18n="reviews_sub">Najlepszą wizytówką szkoły są sukcesy słuchaczy i swoboda, którą zyskują na zajęciach.</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="reviews_title">Opinie uczniów i rodziców</h2>
+        <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-1.5 md:mt-2" data-i18n="reviews_sub">Najlepszą wizytówką szkoły są sukcesy słuchaczy i swoboda, którą zyskują na zajęciach.</p>
       </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div id="reviews-carousel" class="mobile-carousel flex md:grid md:grid-cols-3 gap-3.5 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
         
         <!-- Prawdziwa opinia 1 - Roksana -->
-        <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
+        <div class="w-[84vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-white p-5 md:p-8 rounded-2xl md:rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
           <div>
-            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+            <div class="flex text-amber-400 text-xs gap-1 mb-3 md:mb-4">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
-            <p class="text-slate-700 text-sm leading-relaxed mb-6" data-i18n="rev_text1">
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 md:mb-6" data-i18n="rev_text1">
               „Patrycja to świetna nauczycielka z profesjonalnym podejściem! Lekcje są dobrze zorganizowane i ciekawe. :) Super atmosfera, zero stresu, a efekty są naprawdę zauważalne. Polecam każdemu, kto chce naprawdę nauczyć się angielskiego! 😊”
             </p>
           </div>
-          <div class="flex items-center gap-3 border-t border-purple-50 pt-4">
-            <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">R</div>
+          <div class="flex items-center gap-3 border-t border-purple-50 pt-3 md:pt-4">
+            <div class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">R</div>
             <div>
               <span class="font-bold text-xs text-slate-900 block">Roksana</span>
               <span class="text-[11px] text-slate-400" data-i18n="rev_role1">dorosła kursantka • Wizytówka Google</span>
@@ -629,17 +752,17 @@
         </div>
 
         <!-- Prawdziwa opinia 2 - Artur -->
-        <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
+        <div class="w-[84vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-white p-5 md:p-8 rounded-2xl md:rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
           <div>
-            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+            <div class="flex text-amber-400 text-xs gap-1 mb-3 md:mb-4">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
-            <p class="text-slate-700 text-sm leading-relaxed mb-6" data-i18n="rev_text2">
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 md:mb-6" data-i18n="rev_text2">
               „Najlepsza szkoła językowa do jakiej uczęszczałem. Patrycja jest przesympatyczną osobą z dużą wiedzą i chęcią nauczania młodszych jak i starszych. Zacząłem dzięki niej mówić po angielsku co wcześniej sprawiało mi nie małe trudności. Poprawiłem również swoją pisownię jak również umiejętność słuchania. Miałem już możliwość przetestowania moich „skilsów” i dzięki Patrycji są na odpowiednim poziomie. Polecam z czystym sumieniem 💖”
             </p>
           </div>
-          <div class="flex items-center gap-3 border-t border-purple-50 pt-4">
-            <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">A</div>
+          <div class="flex items-center gap-3 border-t border-purple-50 pt-3 md:pt-4">
+            <div class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">A</div>
             <div>
               <span class="font-bold text-xs text-slate-900 block">Artur</span>
               <span class="text-[11px] text-slate-400" data-i18n="rev_role2">kursant • Wizytówka Google</span>
@@ -648,17 +771,17 @@
         </div>
 
         <!-- Prawdziwa opinia 3 - Ola -->
-        <div class="bg-white p-8 rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
+        <div class="w-[84vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink bg-white p-5 md:p-8 rounded-2xl md:rounded-3xl border border-purple-100 shadow-sm relative flex flex-col justify-between">
           <div>
-            <div class="flex text-amber-400 text-xs gap-1 mb-4">
+            <div class="flex text-amber-400 text-xs gap-1 mb-3 md:mb-4">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
-            <p class="text-slate-700 text-sm leading-relaxed mb-6" data-i18n="rev_text3">
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 md:mb-6" data-i18n="rev_text3">
               „Z ręką na serduszku polecam jak najbardziej ! Minęło zaledwie kilka lekcji a ja już zaczynam mówić po angielsku i nie czuje blokady a o to mi chodziło ☺️ i nie mogę się doczekać dalszych lekcji 🫶🏻 Nauczycielka na medal 🥇🥇🥰”
             </p>
           </div>
-          <div class="flex items-center gap-3 border-t border-purple-50 pt-4">
-            <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">O</div>
+          <div class="flex items-center gap-3 border-t border-purple-50 pt-3 md:pt-4">
+            <div class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">O</div>
             <div>
               <span class="font-bold text-xs text-slate-900 block">Ola</span>
               <span class="text-[11px] text-slate-400" data-i18n="rev_role3">kursantka • Wizytówka Google</span>
@@ -668,9 +791,14 @@
 
       </div>
 
+      <!-- Wskaźnik przesuwania opinii (tylko mobile) -->
+      <div class="md:hidden mt-3 flex justify-center">
+        <div id="reviews-dots" class="flex items-center gap-1.5" aria-hidden="true"></div>
+      </div>
+
       <!-- Link do profilu Google -->
-      <div class="text-center mt-12">
-        <a href="https://www.google.com/search?q=Manufaktura+Lingwistyczna+Patrycja+Rosi%C5%84ska-Babiarz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-purple-700 hover:text-purple-900 bg-white px-5 py-2.5 rounded-full border border-purple-200 shadow-sm hover:shadow transition">
+      <div class="text-center mt-5 md:mt-12">
+        <a href="https://www.google.com/search?q=Manufaktura+Lingwistyczna+Patrycja+Rosi%C5%84ska-Babiarz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-purple-700 hover:text-purple-900 bg-white px-4 md:px-5 py-2 md:py-2.5 rounded-full border border-purple-200 shadow-sm hover:shadow transition">
           <i class="fa-brands fa-google text-purple-600"></i>
           <span data-i18n="reviews_google_btn">Zobacz wszystkie opinie i profil w Google Maps</span>
         </a>
@@ -680,72 +808,72 @@
   </section>
 
   <!-- FAQ / NAJCZĘSTSZE PYTANIA -->
-  <section id="faq" class="py-20 bg-white border-t border-purple-100">
+  <section id="faq" class="order-6 md:order-none scroll-mt-14 md:scroll-mt-20 py-10 md:py-20 bg-white border-t border-purple-100">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="faq_sub">Najczęstsze pytania</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="faq_title">Wszystko, co warto wiedzieć przed pierwszą lekcją</p>
-        <p class="text-slate-600 text-sm sm:text-base mt-3" data-i18n="faq_desc">Sprawdź odpowiedzi na najczęstsze pytania o lekcje angielskiego w Koszalinie i online.</p>
+      <div class="text-center max-w-2xl mx-auto mb-6 md:mb-12">
+        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1.5 md:mb-2" data-i18n="faq_sub">Najczęstsze pytania</h2>
+        <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="faq_title">Wszystko, co warto wiedzieć przed pierwszą lekcją</p>
+        <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-2 md:mt-3" data-i18n="faq_desc">Sprawdź odpowiedzi na najczęstsze pytania o lekcje angielskiego w Koszalinie i online.</p>
       </div>
 
-      <div class="space-y-3">
-        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+      <div class="space-y-2 md:space-y-3">
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-xl md:rounded-2xl border border-purple-100 px-4 sm:px-6 py-3 md:py-4 transition">
+          <summary class="flex items-center justify-between gap-3 md:gap-4 cursor-pointer list-none font-bold text-slate-900 text-xs sm:text-sm md:text-base">
             <span data-i18n="faq_q1">Gdzie odbywają się zajęcia z angielskiego w Koszalinie i czy prowadzisz lekcje online?</span>
             <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
           </summary>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a1">
+          <p class="mt-2.5 md:mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="faq_a1">
             Zajęcia stacjonarne odbywają się w gabinecie przy ul. Szczecińskiej 39-41 w Koszalinie. Prowadzę również pełnowartościowe lekcje online, dzięki czemu możesz uczyć się wygodnie z dowolnego miejsca w Polsce i za granicą.
           </p>
         </details>
 
-        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-xl md:rounded-2xl border border-purple-100 px-4 sm:px-6 py-3 md:py-4 transition">
+          <summary class="flex items-center justify-between gap-3 md:gap-4 cursor-pointer list-none font-bold text-slate-900 text-xs sm:text-sm md:text-base">
             <span data-i18n="faq_q2">Dla kogo przeznaczone są zajęcia w Manufakturze Lingwistycznej?</span>
             <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
           </summary>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a2">
+          <p class="mt-2.5 md:mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="faq_a2">
             Zajęcia prowadzę dla młodzieży z klas 7–8 (przygotowanie do egzaminu ósmoklasisty), uczniów szkół średnich (matura podstawowa i rozszerzona) oraz dorosłych, którzy chcą przełamać barierę językową i swobodnie rozmawiać po angielsku.
           </p>
         </details>
 
-        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-xl md:rounded-2xl border border-purple-100 px-4 sm:px-6 py-3 md:py-4 transition">
+          <summary class="flex items-center justify-between gap-3 md:gap-4 cursor-pointer list-none font-bold text-slate-900 text-xs sm:text-sm md:text-base">
             <span data-i18n="faq_q3">Ile kosztują lekcje języka angielskiego i jak wyglądają rozliczenia?</span>
             <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
           </summary>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a3">
+          <p class="mt-2.5 md:mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="faq_a3">
             Lekcja indywidualna 45 minut kosztuje 85 zł, lekcja indywidualna 60 minut 120 zł, a zajęcia 60 minut w parze 75 zł za osobę (150 zł razem). Rozliczenia realizowane są wygodnym przelewem bankowym.
           </p>
         </details>
 
-        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-xl md:rounded-2xl border border-purple-100 px-4 sm:px-6 py-3 md:py-4 transition">
+          <summary class="flex items-center justify-between gap-3 md:gap-4 cursor-pointer list-none font-bold text-slate-900 text-xs sm:text-sm md:text-base">
             <span data-i18n="faq_q4">Jak wygląda bezpłatna konsultacja i darmowy test poziomujący?</span>
             <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
           </summary>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a4">
+          <p class="mt-2.5 md:mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="faq_a4">
             Przed rozpoczęciem nauki rozmawiamy o Twoich celach i preferowanych godzinach, a także możesz rozwiązać darmowy test poziomujący. Dzięki temu od pierwszej lekcji pracujemy na materiałach idealnie dopasowanych do Twojego poziomu.
           </p>
         </details>
 
-        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-xl md:rounded-2xl border border-purple-100 px-4 sm:px-6 py-3 md:py-4 transition">
+          <summary class="flex items-center justify-between gap-3 md:gap-4 cursor-pointer list-none font-bold text-slate-900 text-xs sm:text-sm md:text-base">
             <span data-i18n="faq_q5">Czym jest metoda Student Talking Time (STT)?</span>
             <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
           </summary>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a5">
+          <p class="mt-2.5 md:mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="faq_a5">
             Student Talking Time (STT) oznacza, że to uczeń mówi przez większość lekcji, a nie słucha biernie wykładu lektora. W bezpiecznej, bezstresowej atmosferze ćwiczysz żywą komunikację, nowe zwroty i naturalną płynność mówienia.
           </p>
         </details>
 
-        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-xl md:rounded-2xl border border-purple-100 px-4 sm:px-6 py-3 md:py-4 transition">
+          <summary class="flex items-center justify-between gap-3 md:gap-4 cursor-pointer list-none font-bold text-slate-900 text-xs sm:text-sm md:text-base">
             <span data-i18n="faq_q6">Czy przygotowujesz do egzaminu ósmoklasisty i matury z angielskiego?</span>
             <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
           </summary>
-          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a6">
+          <p class="mt-2.5 md:mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed" data-i18n="faq_a6">
             Tak. Systematycznie pracujemy z arkuszami egzaminacyjnymi, strukturami gramatyczno-leksykalnymi, zadaniami pisemnymi oraz częścią ustną, oswajając format egzaminu bez niepotrzebnego stresu.
           </p>
         </details>
@@ -755,81 +883,81 @@
   </section>
 
   <!-- KONTAKT I SOCIAL MEDIA -->
-  <section id="kontakt" class="py-20 bg-purple-50/20 border-t border-purple-100">
+  <section id="kontakt" class="order-7 md:order-none scroll-mt-14 md:scroll-mt-20 py-10 md:py-20 bg-purple-50/20 border-t border-purple-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12">
         
         <!-- Dane teleadresowe i social media -->
-        <div class="lg:col-span-5 space-y-8">
-          <div>
-            <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="contact_sub">Kontakt</h2>
-            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="contact_title">Zrób pierwszy krok ku swobodzie językowej</p>
-            <p class="text-slate-600 text-sm mt-3" data-i18n="contact_desc">
+        <div class="lg:col-span-5 space-y-4 md:space-y-8">
+          <div class="text-center md:text-left">
+            <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-1.5 md:mb-2" data-i18n="contact_sub">Kontakt</h2>
+            <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="contact_title">Zrób pierwszy krok ku swobodzie językowej</p>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 md:mt-3" data-i18n="contact_desc">
               Masz pytania dotyczące terminów, przygotowania do egzaminów lub chcesz zapisać się na wstępną konsultację i napisać darmowy test poziomujący? Zadzwoń lub napisz.
             </p>
           </div>
 
-          <div class="space-y-4">
-            <!-- Adres -->
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-purple-50/60 border border-purple-100">
-              <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_loc">Lokalizacja stacjonarna</span>
-                <span class="font-bold text-slate-900 text-sm sm:text-base">ul. Szczecińska 39-41, Koszalin</span>
-                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_loc_sub">Możliwość zajęć stacjonarnych oraz online</span>
-              </div>
-            </div>
-
+          <div class="grid grid-cols-2 md:grid-cols-1 gap-2.5 md:gap-4">
             <!-- Telefon -->
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-purple-50/60 border border-purple-100">
-              <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0">
+            <a href="tel:+48660031043" class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-2 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-purple-50/60 hover:bg-purple-50 border border-purple-100 transition">
+              <div class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0 text-sm md:text-base">
                 <i class="fa-solid fa-phone"></i>
               </div>
-              <div>
-                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_phone">Zadzwoń do mnie</span>
-                <a href="tel:+48660031043" class="font-bold text-purple-900 hover:text-purple-700 text-base sm:text-lg transition">+48 660 031 043</a>
-                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_phone_sub">Odpowiadam w przerwach między zajęciami</span>
-              </div>
-            </div>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/48660031043?text=Dzie%C5%84%20dobry%2C%20pisz%C4%99%20w%20sprawie%20zaj%C4%99%C4%87%20z%20j%C4%99zyka%20angielskiego." target="_blank" rel="noopener noreferrer" data-whatsapp-link class="flex items-start gap-4 p-4 rounded-2xl bg-emerald-50/70 hover:bg-emerald-50 border border-emerald-200/80 transition group">
-              <div class="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition">
-                <i class="fa-brands fa-whatsapp text-xl"></i>
-              </div>
-              <div>
-                <span class="text-xs text-emerald-700 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_whatsapp">Napisz na WhatsApp</span>
-                <span class="font-bold text-emerald-950 group-hover:text-emerald-700 text-base sm:text-lg transition block">+48 660 031 043</span>
-                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_whatsapp_sub">Szybki kontakt przez komunikator</span>
+              <div class="min-w-0">
+                <span class="text-[10px] md:text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_phone">Zadzwoń do mnie</span>
+                <span class="font-bold text-purple-900 text-xs sm:text-sm md:text-lg block mt-0.5">+48 660 031 043</span>
+                <span class="hidden md:block text-xs text-slate-500 mt-0.5" data-i18n="contact_phone_sub">Odpowiadam w przerwach między zajęciami</span>
               </div>
             </a>
 
-            <!-- E-mail -->
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-purple-50/60 border border-purple-100">
-              <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-envelope"></i>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/48660031043?text=Dzie%C5%84%20dobry%2C%20pisz%C4%99%20w%20sprawie%20zaj%C4%99%C4%87%20z%20j%C4%99zyka%20angielskiego." target="_blank" rel="noopener noreferrer" data-whatsapp-link class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-2 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-emerald-50/70 hover:bg-emerald-50 border border-emerald-200/80 transition group">
+              <div class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition">
+                <i class="fa-brands fa-whatsapp text-lg md:text-xl"></i>
+              </div>
+              <div class="min-w-0">
+                <span class="text-[10px] md:text-xs text-emerald-700 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_whatsapp">Napisz na WhatsApp</span>
+                <span class="font-bold text-emerald-950 group-hover:text-emerald-700 text-xs sm:text-sm md:text-lg transition block mt-0.5">+48 660 031 043</span>
+                <span class="hidden md:block text-xs text-slate-500 mt-0.5" data-i18n="contact_whatsapp_sub">Szybki kontakt przez komunikator</span>
+              </div>
+            </a>
+
+            <!-- Adres -->
+            <div class="col-span-2 md:col-span-1 md:order-first flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-purple-50/60 border border-purple-100">
+              <div class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0 text-sm md:text-base">
+                <i class="fa-solid fa-location-dot"></i>
               </div>
               <div>
-                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_email">Napisz e-mail</span>
-                <a href="mailto:biuro.manufaktura1@gmail.com" class="font-bold text-purple-900 hover:text-purple-700 text-sm sm:text-base transition break-all">biuro.manufaktura1@gmail.com</a>
-                <span class="text-xs text-slate-500 block mt-0.5" data-i18n="contact_email_sub">Bezpośredni kontakt mailowy</span>
+                <span class="text-[10px] md:text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_loc">Lokalizacja stacjonarna</span>
+                <span class="font-bold text-slate-900 text-sm md:text-base">ul. Szczecińska 39-41, Koszalin</span>
+                <span class="text-[11px] md:text-xs text-slate-500 block mt-0.5" data-i18n="contact_loc_sub">Możliwość zajęć stacjonarnych oraz online</span>
+              </div>
+            </div>
+
+            <!-- E-mail -->
+            <div class="col-span-2 md:col-span-1 flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-purple-50/60 border border-purple-100">
+              <div class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center shrink-0 text-sm md:text-base">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="min-w-0">
+                <span class="text-[10px] md:text-xs text-slate-500 font-semibold uppercase tracking-wider block" data-i18n="contact_lbl_email">Napisz e-mail</span>
+                <a href="mailto:biuro.manufaktura1@gmail.com" class="font-bold text-purple-900 hover:text-purple-700 text-sm md:text-base transition break-all">biuro.manufaktura1@gmail.com</a>
+                <span class="hidden md:block text-xs text-slate-500 mt-0.5" data-i18n="contact_email_sub">Bezpośredni kontakt mailowy</span>
               </div>
             </div>
           </div>
 
           <!-- Social Media Buttons -->
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-3" data-i18n="contact_lbl_social">Obserwuj Manufakturę w sieci:</span>
-            <div class="flex flex-col sm:flex-row gap-3">
-              <a href="https://www.facebook.com/ManufakturaLingwistyczna/?locale=pl_PL" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#1877F2]/10 hover:bg-[#1877F2]/20 text-[#1877F2] font-semibold text-xs sm:text-sm border border-[#1877F2]/20 transition">
-                <i class="fa-brands fa-facebook text-lg"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2 md:mb-3 text-center md:text-left" data-i18n="contact_lbl_social">Obserwuj Manufakturę w sieci:</span>
+            <div class="grid grid-cols-2 sm:flex gap-2.5 sm:gap-3">
+              <a href="https://www.facebook.com/ManufakturaLingwistyczna/?locale=pl_PL" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-xl bg-[#1877F2]/10 hover:bg-[#1877F2]/20 text-[#1877F2] font-semibold text-xs sm:text-sm border border-[#1877F2]/20 transition">
+                <i class="fa-brands fa-facebook text-base md:text-lg"></i>
                 <span>Facebook</span>
               </a>
-              <a href="https://www.instagram.com/manufakturalingwistyczna/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-[#E1306C]/10 hover:bg-[#E1306C]/20 text-[#E1306C] font-semibold text-xs sm:text-sm border border-[#E1306C]/20 transition">
-                <i class="fa-brands fa-instagram text-lg"></i>
+              <a href="https://www.instagram.com/manufakturalingwistyczna/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-xl bg-[#E1306C]/10 hover:bg-[#E1306C]/20 text-[#E1306C] font-semibold text-xs sm:text-sm border border-[#E1306C]/20 transition">
+                <i class="fa-brands fa-instagram text-base md:text-lg"></i>
                 <span>Instagram</span>
               </a>
             </div>
@@ -839,11 +967,11 @@
 
         <!-- Formularz kontaktowy (Web3Forms + antyspam + RODO) -->
         <div class="lg:col-span-7">
-          <div class="bg-purple-50/50 p-5 sm:p-8 lg:p-10 rounded-3xl border border-purple-100 shadow-sm">
-            <h3 class="text-xl font-bold text-slate-900 mb-2" data-i18n="form_title">Napisz wiadomość lub zapytaj o termin</h3>
-            <p class="text-xs sm:text-sm text-slate-600 mb-6" data-i18n="form_sub">Wypełnij formularz – wiadomość trafi prosto na moją skrzynkę e-mail. Możesz tu też poprosić o darmowy test poziomujący.</p>
+          <div class="bg-purple-50/50 p-4 sm:p-8 lg:p-10 rounded-2xl md:rounded-3xl border border-purple-100 shadow-sm">
+            <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-1.5 md:mb-2" data-i18n="form_title">Napisz wiadomość lub zapytaj o termin</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mb-4 md:mb-6" data-i18n="form_sub">Wypełnij formularz – wiadomość trafi prosto na moją skrzynkę e-mail. Możesz tu też poprosić o darmowy test poziomujący.</p>
 
-            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-3 md:space-y-4">
               <!-- Konfiguracja Web3Forms -->
               <input type="hidden" name="access_key" id="web3forms-key" value="ce250df9-329a-419f-ac8e-7e5d2f71a85b">
               <input type="hidden" name="subject" value="Nowe zgłoszenie ze strony Manufaktura Lingwistyczna">
@@ -852,25 +980,25 @@
               <!-- Ochrona antyspamowa (honeypot obsługiwany natywnie przez Web3Forms) -->
               <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off" class="hidden" style="display: none;" aria-hidden="true">
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                 <div>
                   <label for="input-name" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_name">Twoje imię i nazwisko</label>
-                  <input id="input-name" type="text" name="imie_i_nazwisko" required autocomplete="name" placeholder="np. Anna Kowalska" data-i18n-placeholder="ph_name" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+                  <input id="input-name" type="text" name="imie_i_nazwisko" required autocomplete="name" placeholder="np. Anna Kowalska" data-i18n-placeholder="ph_name" class="w-full bg-white border border-purple-200 rounded-xl px-3.5 md:px-4 py-2.5 md:py-3 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
                 </div>
                 <div>
                   <label for="input-phone" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_phone">Numer telefonu</label>
-                  <input id="input-phone" type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="np. 600 000 000" data-i18n-placeholder="ph_phone" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+                  <input id="input-phone" type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="np. 600 000 000" data-i18n-placeholder="ph_phone" class="w-full bg-white border border-purple-200 rounded-xl px-3.5 md:px-4 py-2.5 md:py-3 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
                 </div>
               </div>
 
               <div>
                 <label for="input-email" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_email">Twój adres e-mail (do odpowiedzi)</label>
-                <input id="input-email" type="email" name="email" required autocomplete="email" placeholder="np. kontakt@twojadomena.pl" data-i18n-placeholder="ph_email" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+                <input id="input-email" type="email" name="email" required autocomplete="email" placeholder="np. kontakt@twojadomena.pl" data-i18n-placeholder="ph_email" class="w-full bg-white border border-purple-200 rounded-xl px-3.5 md:px-4 py-2.5 md:py-3 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
               </div>
 
               <div>
                 <label for="input-course" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_type">Interesujące Cię zajęcia</label>
-                <select id="input-course" name="rodzaj_zajec" class="w-full max-w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
+                <select id="input-course" name="rodzaj_zajec" class="w-full max-w-full bg-white border border-purple-200 rounded-xl px-3.5 md:px-4 py-2.5 md:py-3 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800">
                   <option data-i18n="opt_1">Przygotowanie do egzaminu ósmoklasisty (klasa 7–8)</option>
                   <option data-i18n="opt_2">Angielski dla szkół średnich / Matura podstawowa i rozszerzona</option>
                   <option data-i18n="opt_3">Konwersacje i angielski ogólny dla dorosłych</option>
@@ -881,12 +1009,12 @@
 
               <div>
                 <label for="input-msg" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="form_msg">Treść wiadomości / preferowane godziny</label>
-                <textarea id="input-msg" name="wiadomosc" rows="4" placeholder="Opisz krótko swój cel językowy, poziom lub preferowaną porę zajęć..." data-i18n-placeholder="ph_msg" class="w-full bg-white border border-purple-200 rounded-xl px-4 py-3 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800"></textarea>
+                <textarea id="input-msg" name="wiadomosc" rows="3" placeholder="Opisz krótko swój cel językowy, poziom lub preferowaną porę zajęć..." data-i18n-placeholder="ph_msg" class="w-full bg-white border border-purple-200 rounded-xl px-3.5 md:px-4 py-2.5 md:py-3 text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 text-slate-800"></textarea>
               </div>
 
               <!-- Zgoda RODO -->
               <div class="pt-1">
-                <label class="flex items-start gap-3 cursor-pointer select-none">
+                <label class="flex items-start gap-2.5 md:gap-3 cursor-pointer select-none">
                   <input id="input-rodo" type="checkbox" name="zgoda_rodo" value="Tak" required class="mt-0.5 h-4 w-4 rounded border-purple-300 text-purple-700 focus:ring-purple-600 shrink-0 accent-purple-700">
                   <span class="text-xs text-slate-600 leading-relaxed">
                     <span data-i18n="form_rodo_prefix">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie zgodnie z</span>
@@ -895,7 +1023,7 @@
                 </label>
               </div>
 
-              <button id="submit-btn" type="submit" class="w-full py-3.5 rounded-xl bg-purple-700 hover:bg-purple-800 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-sm shadow-md shadow-purple-600/20 transition-all flex items-center justify-center gap-2">
+              <button id="submit-btn" type="submit" class="w-full py-3 md:py-3.5 rounded-xl bg-purple-700 hover:bg-purple-800 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-sm shadow-md shadow-purple-600/20 transition-all flex items-center justify-center gap-2">
                 <span data-i18n="form_btn">Wyślij zapytanie</span>
                 <i class="fa-solid fa-paper-plane text-xs"></i>
               </button>
@@ -914,15 +1042,17 @@
     </div>
   </section>
 
+  </main>
+
   <!-- STOPKA -->
-  <footer class="bg-purple-950 text-white py-12 border-t border-purple-900">
+  <footer class="bg-purple-950 text-white pt-8 pb-20 md:py-12 border-t border-purple-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 md:gap-6">
         <div>
-          <span class="font-bold text-lg text-white block">Manufaktura Lingwistyczna</span>
-          <span class="text-xs text-purple-300">Patrycja Rosińska-Babiarz • ul. Szczecińska 39-41, Koszalin • NIP: 499 068 15 08</span>
+          <span class="font-bold text-base md:text-lg text-white block">Manufaktura Lingwistyczna</span>
+          <span class="text-[11px] md:text-xs text-purple-300">Patrycja Rosińska-Babiarz • ul. Szczecińska 39-41, Koszalin • NIP: 499 068 15 08</span>
         </div>
-        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-purple-300">
+        <div class="flex flex-wrap justify-center gap-x-4 md:gap-x-6 gap-y-2 text-xs md:text-sm text-purple-300">
           <a href="#dlaczego-warto" class="hover:text-white transition" data-i18n="nav_why">Dlaczego warto</a>
           <a href="#o-mnie" class="hover:text-white transition" data-i18n="nav_about">O lektorce</a>
           <a href="#cennik" class="hover:text-white transition" data-i18n="nav_pricing">Cennik i Kalkulator</a>
@@ -932,37 +1062,42 @@
           <button type="button" onclick="reopenCookieBanner()" class="hover:text-white transition" data-i18n="footer_cookies">Ustawienia cookies</button>
         </div>
       </div>
-      <div class="mt-8 pt-8 border-t border-purple-900/60 flex flex-col sm:flex-row justify-between items-center text-xs text-purple-400 gap-4">
+      <div class="mt-5 pt-5 md:mt-8 md:pt-8 border-t border-purple-900/60 flex flex-col sm:flex-row justify-between items-center text-[11px] md:text-xs text-purple-400 gap-2 md:gap-4">
         <span data-i18n="footer_rights">&copy; 2026 Manufaktura Lingwistyczna. Wszelkie prawa zastrzeżone.</span>
         <span data-i18n="footer_loc">Koszalin • Lekcje stacjonarne & online</span>
       </div>
     </div>
   </footer>
 
+  <!-- PRZYCISK POWROTU NA GÓRĘ (TYLKO MOBILE) -->
+  <button id="scroll-top-btn" type="button" onclick="scrollToTop()" aria-label="Wróć na górę strony" title="Wróć na górę strony" class="md:hidden fixed bottom-[76px] right-4 z-40 w-12 h-12 rounded-full bg-white/95 hover:bg-purple-50 text-purple-800 border border-purple-200 shadow-lg shadow-purple-900/15 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none translate-y-2 transition-all duration-200 active:scale-95">
+    <i class="fa-solid fa-arrow-up text-base leading-none"></i>
+  </button>
+
   <!-- PŁYWAJĄCY PRZYCISK WHATSAPP -->
-  <a id="whatsapp-float" href="https://wa.me/48660031043?text=Dzie%C5%84%20dobry%2C%20pisz%C4%99%20w%20sprawie%20zaj%C4%99%C4%87%20z%20j%C4%99zyka%20angielskiego." target="_blank" rel="noopener noreferrer" data-whatsapp-link aria-label="WhatsApp" class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-3.5 sm:py-3 rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+  <a id="whatsapp-float" href="https://wa.me/48660031043?text=Dzie%C5%84%20dobry%2C%20pisz%C4%99%20w%20sprawie%20zaj%C4%99%C4%87%20z%20j%C4%99zyka%20angielskiego." target="_blank" rel="noopener noreferrer" data-whatsapp-link aria-label="WhatsApp" class="fixed bottom-4 right-4 md:bottom-5 md:right-5 z-40 w-12 h-12 sm:w-auto sm:h-auto inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-xs sm:text-sm sm:px-4 sm:py-3 rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:-translate-y-0.5 transition-all">
     <i class="fa-brands fa-whatsapp text-2xl sm:text-xl leading-none"></i>
     <span class="hidden sm:inline" data-i18n="whatsapp_float">Napisz na WhatsApp</span>
   </a>
 
   <!-- BANER PLIKÓW COOKIES -->
-  <div id="cookie-banner" role="dialog" aria-label="Informacja o plikach cookies" class="hidden fixed bottom-4 left-4 right-4 z-50 max-w-4xl mx-auto">
-    <div class="bg-white/95 backdrop-blur-md border border-purple-200 shadow-2xl rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div class="flex items-start gap-3">
-        <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
+  <div id="cookie-banner" role="dialog" aria-label="Informacja o plikach cookies" class="hidden fixed bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 z-50 max-w-4xl mx-auto">
+    <div class="bg-white/95 backdrop-blur-md border border-purple-200 shadow-2xl rounded-2xl p-3.5 md:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4">
+      <div class="flex items-start gap-2.5 md:gap-3">
+        <div class="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5 text-sm">
           <i class="fa-solid fa-cookie-bite"></i>
         </div>
-        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <p class="text-[11px] sm:text-xs md:text-sm text-slate-600 leading-snug md:leading-relaxed">
           <strong class="text-slate-900" data-i18n="cookie_title">Dbamy o Twoją prywatność.</strong>
           <span data-i18n="cookie_desc">Ta strona wykorzystuje wyłącznie niezbędne pliki cookies i pamięć przeglądarki w celu poprawnego działania (m.in. zapamiętania Twojego wyboru) oraz zewnętrzne zasoby techniczne. Szczegóły znajdziesz w</span>
           <button type="button" onclick="openPrivacyModal()" class="text-purple-700 hover:text-purple-900 font-semibold underline underline-offset-2" data-i18n="cookie_link">Polityce prywatności i cookies</button>.
         </p>
       </div>
-      <div class="flex flex-col sm:flex-row w-full md:w-auto gap-2 shrink-0">
-        <button type="button" onclick="saveCookieConsent('essential')" class="px-4 py-2.5 rounded-xl border border-purple-200 hover:bg-purple-50 text-purple-900 font-semibold text-xs transition whitespace-nowrap" data-i18n="cookie_essential">
+      <div class="grid grid-cols-2 sm:flex w-full md:w-auto gap-2 shrink-0">
+        <button type="button" onclick="saveCookieConsent('essential')" class="px-3 md:px-4 py-2 md:py-2.5 rounded-xl border border-purple-200 hover:bg-purple-50 text-purple-900 font-semibold text-xs transition whitespace-nowrap" data-i18n="cookie_essential">
           Tylko niezbędne
         </button>
-        <button type="button" onclick="saveCookieConsent('all')" class="px-5 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs shadow-sm transition whitespace-nowrap" data-i18n="cookie_accept">
+        <button type="button" onclick="saveCookieConsent('all')" class="px-4 md:px-5 py-2 md:py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs shadow-sm transition whitespace-nowrap" data-i18n="cookie_accept">
           Akceptuję
         </button>
       </div>
@@ -1047,6 +1182,24 @@
 
   <!-- SKRYPTY: OBSŁUGA JĘZYKA, KALKULATORA I MENU -->
   <script>
+    // Blokada zoomowania na urządzeniach mobilnych (pinch-to-zoom i iOS Safari gesture zoom)
+    (function lockMobileZoom() {
+      const preventZoom = (e) => e.preventDefault();
+      document.addEventListener('gesturestart', preventZoom, { passive: false });
+      document.addEventListener('gesturechange', preventZoom, { passive: false });
+      document.addEventListener('gestureend', preventZoom, { passive: false });
+      document.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 1) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+      document.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 1) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+
     // Mobilne Menu
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -1054,6 +1207,101 @@
       mobileMenu.classList.toggle('hidden');
     }
     menuBtn.addEventListener('click', toggleMenu);
+
+    // Mobilne rozwijanie rozszerzonego opisu w sekcji "O mnie"
+    let aboutExpanded = false;
+    function updateAboutToggleLabel() {
+      const btnText = document.querySelector('#about-more-btn span');
+      const icon = document.getElementById('about-more-icon');
+      const t = (typeof translations !== 'undefined' && translations[currentLang]) ? translations[currentLang] : null;
+      if (btnText && t) {
+        btnText.textContent = aboutExpanded ? t.about_less_btn : t.about_more_btn;
+      }
+      if (icon) {
+        icon.style.transform = aboutExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
+    }
+    function toggleAboutMore() {
+      const extra = document.getElementById('about-extra-text');
+      if (!extra) return;
+      aboutExpanded = !aboutExpanded;
+      extra.classList.toggle('hidden', !aboutExpanded);
+      updateAboutToggleLabel();
+    }
+
+    // Mobilne wskaźniki (kropki) dla karuzel poziomych
+    function initMobileCarousel(carouselId, dotsId) {
+      const carousel = document.getElementById(carouselId);
+      const dotsContainer = document.getElementById(dotsId);
+      if (!carousel || !dotsContainer) return;
+      const slides = Array.from(carousel.children);
+      if (slides.length <= 1) return;
+
+      dotsContainer.innerHTML = '';
+      const dots = slides.map((_, idx) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Slajd ${idx + 1}`);
+        dot.className = idx === 0
+          ? 'h-1.5 w-5 rounded-full bg-purple-700 transition-all'
+          : 'h-1.5 w-1.5 rounded-full bg-purple-200 transition-all';
+        dot.addEventListener('click', () => {
+          slides[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+        dotsContainer.appendChild(dot);
+        return dot;
+      });
+
+      let rafId = null;
+      const updateActiveDot = () => {
+        rafId = null;
+        const center = carousel.scrollLeft + carousel.clientWidth / 2;
+        let closestIdx = 0;
+        let minDist = Infinity;
+        slides.forEach((slide, idx) => {
+          const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+          const dist = Math.abs(slideCenter - center);
+          if (dist < minDist) {
+            minDist = dist;
+            closestIdx = idx;
+          }
+        });
+        dots.forEach((dot, idx) => {
+          dot.className = idx === closestIdx
+            ? 'h-1.5 w-5 rounded-full bg-purple-700 transition-all'
+            : 'h-1.5 w-1.5 rounded-full bg-purple-200 transition-all';
+        });
+      };
+
+      carousel.addEventListener('scroll', () => {
+        if (!rafId) rafId = requestAnimationFrame(updateActiveDot);
+      }, { passive: true });
+    }
+    initMobileCarousel('why-carousel', 'why-dots');
+    initMobileCarousel('reviews-carousel', 'reviews-dots');
+
+    // Przycisk powrotu na górę strony (mobile)
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (scrollTopBtn) {
+      let scrollBtnRaf = null;
+      const updateScrollTopBtn = () => {
+        scrollBtnRaf = null;
+        const show = window.scrollY > 250;
+        scrollTopBtn.classList.toggle('opacity-0', !show);
+        scrollTopBtn.classList.toggle('pointer-events-none', !show);
+        scrollTopBtn.classList.toggle('translate-y-2', !show);
+        scrollTopBtn.classList.toggle('opacity-100', show);
+        scrollTopBtn.classList.toggle('pointer-events-auto', show);
+        scrollTopBtn.classList.toggle('translate-y-0', show);
+      };
+      window.addEventListener('scroll', () => {
+        if (!scrollBtnRaf) scrollBtnRaf = requestAnimationFrame(updateScrollTopBtn);
+      }, { passive: true });
+      updateScrollTopBtn();
+    }
 
     // KALKULATOR
     function updateFreqDisplay() {
@@ -1382,7 +1630,20 @@
         cookie_essential: "Tylko niezbędne",
         cookie_accept: "Akceptuję",
         modal_title: "Polityka prywatności, RODO i pliki cookies",
-        modal_close: "Zamknij"
+        modal_close: "Zamknij",
+        mob_menu_call: "Zadzwoń",
+        mob_hero_tag_1: "Klasy 7–8",
+        mob_hero_tag_2: "Matura",
+        mob_hero_tag_3: "Dorośli",
+        mob_hero_desc: "Bezpieczna atmosfera i naturalne przełamanie bariery mówienia.",
+        mob_price_45: "45 min",
+        mob_price_60: "60 min ★",
+        mob_price_pair: "W parze",
+        mob_price_per_person: "/os",
+        mob_price_hint: "Pełny cennik i kalkulator poniżej",
+        mob_swipe_hint: "Przesuń w bok, aby zobaczyć więcej →",
+        about_more_btn: "Czytaj więcej o doświadczeniu",
+        about_less_btn: "Zwiń opis"
       },
       en: {
         nav_why: "Why Us",
@@ -1531,7 +1792,20 @@
         cookie_essential: "Essential only",
         cookie_accept: "Accept",
         modal_title: "Privacy Policy, GDPR & Cookies",
-        modal_close: "Close"
+        modal_close: "Close",
+        mob_menu_call: "Call now",
+        mob_hero_tag_1: "Grades 7–8",
+        mob_hero_tag_2: "Matura Exam",
+        mob_hero_tag_3: "Adults",
+        mob_hero_desc: "A supportive atmosphere and natural speaking confidence.",
+        mob_price_45: "45 min",
+        mob_price_60: "60 min ★",
+        mob_price_pair: "In pair",
+        mob_price_per_person: "/pp",
+        mob_price_hint: "Full pricing & calculator below",
+        mob_swipe_hint: "Swipe sideways to see more →",
+        about_more_btn: "Read more about my experience",
+        about_less_btn: "Show less"
       }
     };
 
@@ -1550,13 +1824,13 @@
       if (lang === 'pl') {
         btnPl.className = "px-2.5 py-1 rounded-full bg-purple-700 text-white transition";
         btnEn.className = "px-2.5 py-1 rounded-full text-purple-800 hover:text-purple-900 transition";
-        mBtnPl.className = "px-2 py-0.5 rounded-full bg-purple-700 text-white";
-        mBtnEn.className = "px-2 py-0.5 rounded-full text-purple-800";
+        mBtnPl.className = "px-1.5 py-0.5 rounded-full bg-purple-700 text-white";
+        mBtnEn.className = "px-1.5 py-0.5 rounded-full text-purple-800";
       } else {
         btnEn.className = "px-2.5 py-1 rounded-full bg-purple-700 text-white transition";
         btnPl.className = "px-2.5 py-1 rounded-full text-purple-800 hover:text-purple-900 transition";
-        mBtnEn.className = "px-2 py-0.5 rounded-full bg-purple-700 text-white";
-        mBtnPl.className = "px-2 py-0.5 rounded-full text-purple-800";
+        mBtnEn.className = "px-1.5 py-0.5 rounded-full bg-purple-700 text-white";
+        mBtnPl.className = "px-1.5 py-0.5 rounded-full text-purple-800";
       }
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1602,6 +1876,12 @@
 
       updateFreqDisplay();
       calculateMonthlyCost();
+      updateAboutToggleLabel();
+      if (scrollTopBtn) {
+        const label = lang === 'pl' ? 'Wróć na górę strony' : 'Back to top';
+        scrollTopBtn.setAttribute('aria-label', label);
+        scrollTopBtn.setAttribute('title', label);
+      }
     }
   </script>
 </body>
