@@ -196,6 +196,26 @@
       .mobile-carousel::-webkit-scrollbar {
         display: none;
       }
+      /* Płynna animacja ikony hamburgera -> X */
+      .hamburger-bar {
+        display: block;
+        width: 20px;
+        height: 2px;
+        border-radius: 9999px;
+        background-color: currentColor;
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+        transform-origin: center;
+      }
+      #mobile-menu-btn.is-open .hamburger-bar-1 {
+        transform: translateY(6px) rotate(45deg);
+      }
+      #mobile-menu-btn.is-open .hamburger-bar-2 {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      #mobile-menu-btn.is-open .hamburger-bar-3 {
+        transform: translateY(-6px) rotate(-45deg);
+      }
     }
   </style>
 </head>
@@ -236,29 +256,76 @@
           <button id="m-lang-pl" onclick="setLanguage('pl')" class="px-1.5 py-0.5 rounded-full bg-purple-700 text-white">PL</button>
           <button id="m-lang-en" onclick="setLanguage('en')" class="px-1.5 py-0.5 rounded-full text-purple-800">EN</button>
         </div>
-        <button id="mobile-menu-btn" class="p-1.5 -mr-1 text-slate-700 hover:text-purple-700 focus:outline-none" aria-label="Menu">
-          <i class="fa-solid fa-bars text-lg"></i>
+        <button id="mobile-menu-btn" type="button" class="w-10 h-10 -mr-1.5 rounded-xl flex flex-col items-center justify-center gap-[4px] text-slate-700 hover:text-purple-700 active:bg-purple-50 focus:outline-none transition-colors" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="hamburger-bar hamburger-bar-1"></span>
+          <span class="hamburger-bar hamburger-bar-2"></span>
+          <span class="hamburger-bar hamburger-bar-3"></span>
         </button>
       </div>
     </div>
-
-    <!-- Mobilne Menu Dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden border-b border-purple-100 bg-white px-4 pt-1 pb-4 space-y-1 shadow-lg">
-      <a href="#cennik" class="block py-2 text-purple-900 font-bold text-sm" onclick="toggleMenu()" data-i18n="nav_pricing">Cennik i Kalkulator</a>
-      <a href="#dlaczego-warto" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_why">Dlaczego warto</a>
-      <a href="#o-mnie" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_about">O lektorce</a>
-      <a href="#opinie" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_reviews">Opinie</a>
-      <a href="#faq" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
-      <a href="#kontakt" class="block py-2 text-slate-700 font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_contact">Kontakt</a>
-      <div class="grid grid-cols-2 gap-2 pt-2">
-        <a href="tel:+48660031043" class="flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-purple-50 text-purple-900 border border-purple-200 font-semibold text-xs" onclick="toggleMenu()">
-          <i class="fa-solid fa-phone text-[11px]"></i>
-          <span data-i18n="mob_menu_call">Zadzwoń</span>
-        </a>
-        <a href="#kontakt" class="block text-center py-2.5 rounded-full bg-purple-700 text-white font-semibold text-xs" onclick="toggleMenu()" data-i18n="nav_cta">Zapisz się</a>
-      </div>
-    </div>
   </header>
+
+  <!-- Tło (backdrop) pod mobilnym menu — kliknięcie zamyka menu -->
+  <div id="mobile-menu-backdrop" aria-hidden="true" class="md:hidden fixed inset-0 top-14 z-[45] bg-slate-950/40 backdrop-blur-[2px] opacity-0 pointer-events-none transition-opacity duration-200 ease-out"></div>
+
+  <!-- Mobilne Menu (płynnie wysuwany panel nakładkowy) -->
+  <nav id="mobile-menu" aria-label="Nawigacja mobilna" aria-hidden="true" class="md:hidden fixed inset-x-0 top-14 z-[48] bg-white/98 backdrop-blur-md rounded-b-3xl border-b border-purple-100 shadow-2xl shadow-purple-950/15 px-4 pt-3 pb-3 max-h-[calc(100dvh-3.5rem)] overflow-y-auto opacity-0 -translate-y-3 pointer-events-none transition-all duration-200 ease-out">
+    <div class="space-y-1">
+      <a href="#cennik" class="flex items-center justify-between px-3.5 py-3 rounded-xl bg-purple-50/90 border border-purple-100 text-purple-900 font-bold text-sm active:bg-purple-100 transition-colors" onclick="closeMenu()">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-tag text-purple-600 w-4 text-center text-xs"></i>
+          <span data-i18n="nav_pricing">Cennik i Kalkulator</span>
+        </span>
+        <i class="fa-solid fa-chevron-right text-purple-400 text-[11px]"></i>
+      </a>
+      <a href="#dlaczego-warto" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-comments text-purple-500 w-4 text-center text-xs"></i>
+          <span data-i18n="nav_why">Dlaczego warto</span>
+        </span>
+        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+      </a>
+      <a href="#o-mnie" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-user-graduate text-purple-500 w-4 text-center text-xs"></i>
+          <span data-i18n="nav_about">O lektorce</span>
+        </span>
+        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+      </a>
+      <a href="#opinie" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-star text-amber-400 w-4 text-center text-xs"></i>
+          <span data-i18n="nav_reviews">Opinie</span>
+        </span>
+        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+      </a>
+      <a href="#faq" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-circle-question text-purple-500 w-4 text-center text-xs"></i>
+          <span data-i18n="nav_faq">FAQ</span>
+        </span>
+        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+      </a>
+      <a href="#kontakt" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-envelope text-purple-500 w-4 text-center text-xs"></i>
+          <span data-i18n="nav_contact">Kontakt</span>
+        </span>
+        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2.5 mt-3 pt-3 border-t border-purple-100">
+      <a href="tel:+48660031043" class="flex items-center justify-center gap-2 py-3 rounded-full bg-purple-50 active:bg-purple-100 text-purple-900 border border-purple-200 font-semibold text-xs transition-colors" onclick="closeMenu()">
+        <i class="fa-solid fa-phone text-[11px]"></i>
+        <span data-i18n="mob_menu_call">Zadzwoń</span>
+      </a>
+      <a href="#kontakt" class="flex items-center justify-center py-3 rounded-full bg-purple-700 active:bg-purple-800 text-white font-semibold text-xs shadow-sm shadow-purple-600/20 transition-colors" onclick="closeMenu()" data-i18n="nav_cta">Zapisz się</a>
+    </div>
+
+    <!-- Uchwyt wizualny (przesunięcie w górę również zamyka menu) -->
+    <div class="w-10 h-1 rounded-full bg-purple-200/80 mx-auto mt-3" aria-hidden="true"></div>
+  </nav>
 
   <main class="flex flex-col">
 
@@ -1199,13 +1266,110 @@
       }, { passive: false });
     })();
 
-    // Mobilne Menu
+    // Mobilne Menu (płynny panel nakładkowy + zamykanie kliknięciem poza, gestem w górę i klawiszem Esc)
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    function toggleMenu() {
-      mobileMenu.classList.toggle('hidden');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+    let isMobileMenuOpen = false;
+
+    function updateMenuAriaLabel() {
+      if (!menuBtn) return;
+      const isPl = (typeof currentLang === 'undefined' || currentLang === 'pl');
+      menuBtn.setAttribute('aria-label', isMobileMenuOpen
+        ? (isPl ? 'Zamknij menu' : 'Close menu')
+        : (isPl ? 'Otwórz menu' : 'Open menu'));
     }
-    menuBtn.addEventListener('click', toggleMenu);
+
+    function openMenu() {
+      if (isMobileMenuOpen || !mobileMenu) return;
+      isMobileMenuOpen = true;
+      menuBtn.classList.add('is-open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      updateMenuAriaLabel();
+
+      mobileMenu.classList.remove('opacity-0', '-translate-y-3', 'pointer-events-none');
+      mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+
+      if (mobileMenuBackdrop) {
+        mobileMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        mobileMenuBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      if (!isMobileMenuOpen || !mobileMenu) return;
+      isMobileMenuOpen = false;
+      menuBtn.classList.remove('is-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      updateMenuAriaLabel();
+
+      mobileMenu.classList.add('opacity-0', '-translate-y-3', 'pointer-events-none');
+      mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+
+      if (mobileMenuBackdrop) {
+        mobileMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        mobileMenuBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+      const pm = document.getElementById('privacy-modal');
+      if (!pm || pm.classList.contains('hidden')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function toggleMenu() {
+      if (isMobileMenuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    if (menuBtn) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+    }
+    if (mobileMenuBackdrop) {
+      mobileMenuBackdrop.addEventListener('click', closeMenu);
+    }
+    // Zamknij menu przy kliknięciu w dowolne miejsce poza menu i przyciskiem hamburgera (np. logo lub przełącznik języka)
+    document.addEventListener('click', (e) => {
+      if (!isMobileMenuOpen) return;
+      if (mobileMenu && !mobileMenu.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    // Zamknij menu klawiszem Escape lub po rozszerzeniu okna do widoku desktopowego
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        closeMenu();
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (isMobileMenuOpen && window.innerWidth >= 768) {
+        closeMenu();
+      }
+    });
+    // Zamknij menu gestem przesunięcia palcem w górę na panelu menu
+    if (mobileMenu) {
+      let menuTouchStartY = 0;
+      mobileMenu.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length === 1) {
+          menuTouchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+      mobileMenu.addEventListener('touchend', (e) => {
+        if (!isMobileMenuOpen || !e.changedTouches || e.changedTouches.length !== 1) return;
+        const deltaY = e.changedTouches[0].clientY - menuTouchStartY;
+        if (deltaY < -45 && mobileMenu.scrollTop <= 0) {
+          closeMenu();
+        }
+      }, { passive: true });
+    }
 
     // Mobilne rozwijanie rozszerzonego opisu w sekcji "O mnie"
     let aboutExpanded = false;
@@ -1880,6 +2044,7 @@
       updateFreqDisplay();
       calculateMonthlyCost();
       updateAboutToggleLabel();
+      updateMenuAriaLabel();
       if (scrollTopBtn) {
         const label = lang === 'pl' ? 'Wróć na górę strony' : 'Back to top';
         scrollTopBtn.setAttribute('aria-label', label);
