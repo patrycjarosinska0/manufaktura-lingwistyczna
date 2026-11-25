@@ -21,14 +21,14 @@
   <meta property="og:title" content="Manufaktura Lingwistyczna – Angielski w Koszalinie i Online">
   <meta property="og:description" content="Swoboda mówienia, która przychodzi naturalnie. Indywidualne zajęcia z angielskiego dla młodzieży (klasy 7–8, liceum, matura) i dorosłych – Koszalin i online.">
   <meta property="og:url" content="https://mlingwistyczna.pl/">
-  <meta property="og:image" content="https://mlingwistyczna.pl/kobieta.png">
+  <meta property="og:image" content="https://mlingwistyczna.pl/kobieta.jpg">
   <meta property="og:image:alt" content="Patrycja Rosińska-Babiarz – Manufaktura Lingwistyczna Koszalin">
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Manufaktura Lingwistyczna – Angielski w Koszalinie i Online">
   <meta name="twitter:description" content="Skuteczne lekcje języka angielskiego w Koszalinie i online – egzamin ósmoklasisty, matura, konwersacje dla dorosłych.">
-  <meta name="twitter:image" content="https://mlingwistyczna.pl/kobieta.png">
+  <meta name="twitter:image" content="https://mlingwistyczna.pl/kobieta.jpg">
 
   <!-- Ikony -->
   <link rel="icon" type="image/png" href="favicon.png?v=2">
@@ -45,7 +45,7 @@
     "description": "Szkoła języka angielskiego w Koszalinie i online. Zajęcia indywidualne i w parach dla klas 7–8, maturzystów i dorosłych z naciskiem na mówienie (Student Talking Time).",
     "url": "https://mlingwistyczna.pl/",
     "logo": "https://mlingwistyczna.pl/logo.png",
-    "image": "https://mlingwistyczna.pl/kobieta.png",
+    "image": "https://mlingwistyczna.pl/kobieta.jpg",
     "telephone": "+48660031043",
     "email": "biuro.manufaktura1@gmail.com",
     "taxID": "4990681508",
@@ -93,6 +93,64 @@
     }
   }
   </script>
+
+  <!-- Dane strukturalne FAQPage (Najczęstsze pytania dla Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Gdzie odbywają się zajęcia z angielskiego w Koszalinie i czy prowadzisz lekcje online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zajęcia stacjonarne odbywają się w gabinecie przy ul. Szczecińskiej 39-41 w Koszalinie. Prowadzę również pełnowartościowe lekcje online, dzięki czemu możesz uczyć się wygodnie z dowolnego miejsca w Polsce i za granicą."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dla kogo przeznaczone są zajęcia w Manufakturze Lingwistycznej?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zajęcia prowadzę dla młodzieży z klas 7–8 (przygotowanie do egzaminu ósmoklasisty), uczniów szkół średnich (matura podstawowa i rozszerzona) oraz dorosłych, którzy chcą przełamać barierę językową i swobodnie rozmawiać po angielsku."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ile kosztują lekcje języka angielskiego i jak wyglądają rozliczenia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lekcja indywidualna 45 minut kosztuje 85 zł, lekcja indywidualna 60 minut 120 zł, a zajęcia 60 minut w parze 75 zł za osobę (150 zł razem). Rozliczenia realizowane są wygodnym przelewem bankowym."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak wygląda bezpłatna konsultacja i darmowy test poziomujący?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Przed rozpoczęciem nauki rozmawiamy o Twoich celach i preferowanych godzinach, a także możesz rozwiązać darmowy test poziomujący. Dzięki temu od pierwszej lekcji pracujemy na materiałach idealnie dopasowanych do Twojego poziomu."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czym jest metoda Student Talking Time (STT)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Student Talking Time (STT) oznacza, że to uczeń mówi przez większość lekcji, a nie słucha biernie wykładu lektora. W bezpiecznej, bezstresowej atmosferze ćwiczysz żywą komunikację, nowe zwroty i naturalną płynność mówienia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy przygotowujesz do egzaminu ósmoklasisty i matury z angielskiego?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak. Systematycznie pracujemy z arkuszami egzaminacyjnymi, strukturami gramatyczno-leksykalnymi, zadaniami pisemnymi oraz częścią ustną, oswajając format egzaminu bez niepotrzebnego stresu."
+        }
+      }
+    ]
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,6 +173,9 @@
     .purple-soft-bg {
       background: linear-gradient(180deg, #faf5ff 0%, #ffffff 100%);
     }
+    summary::-webkit-details-marker {
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-purple-200 selection:text-purple-900">
@@ -125,16 +186,17 @@
       
       <!-- Logo -->
       <a href="#" class="flex items-center gap-2 sm:gap-3 min-w-0">
-        <img src="logo.png?v=3" alt="Manufaktura Lingwistyczna Logo" class="h-10 sm:h-12 w-auto object-contain shrink-0" onerror="this.style.display='none'">
+        <img src="logo.png?v=3" alt="Manufaktura Lingwistyczna Logo" width="511" height="272" decoding="async" class="h-10 sm:h-12 w-auto object-contain shrink-0" onerror="this.style.display='none'">
         <span class="font-bold text-base sm:text-xl text-purple-900 tracking-tight truncate">Manufaktura<span class="text-purple-600">Lingwistyczna</span></span>
       </a>
 
       <!-- Menu Desktop -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-700">
         <a href="#dlaczego-warto" class="hover:text-purple-700 transition" data-i18n="nav_why">Dlaczego warto</a>
         <a href="#o-mnie" class="hover:text-purple-700 transition" data-i18n="nav_about">O lektorce</a>
         <a href="#cennik" class="hover:text-purple-700 transition" data-i18n="nav_pricing">Cennik i Kalkulator</a>
         <a href="#opinie" class="hover:text-purple-700 transition" data-i18n="nav_reviews">Opinie</a>
+        <a href="#faq" class="hover:text-purple-700 transition" data-i18n="nav_faq">FAQ</a>
         <a href="#kontakt" class="hover:text-purple-700 transition" data-i18n="nav_contact">Kontakt</a>
       </nav>
 
@@ -165,6 +227,7 @@
       <a href="#o-mnie" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_about">O lektorce</a>
       <a href="#cennik" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_pricing">Cennik i Kalkulator</a>
       <a href="#opinie" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_reviews">Opinie</a>
+      <a href="#faq" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
       <a href="#kontakt" class="block py-2 text-slate-700 font-medium" onclick="toggleMenu()" data-i18n="nav_contact">Kontakt</a>
       <a href="#kontakt" class="block text-center mt-3 py-2.5 rounded-full bg-purple-700 text-white font-medium text-sm" onclick="toggleMenu()" data-i18n="nav_cta">Zapisz się</a>
     </div>
@@ -217,7 +280,7 @@
 
         <div class="lg:col-span-5 relative">
           <div class="relative mx-auto max-w-md rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-purple-100 aspect-[4/3] flex items-center justify-center">
-            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="Przestrzeń edukacyjna do nauki języka" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="Przestrzeń edukacyjna do nauki języka angielskiego w Koszalinie i online" width="900" height="675" fetchpriority="high" decoding="async" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-purple-950/40 via-transparent to-transparent"></div>
             <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white/50 text-slate-800 text-xs sm:text-sm">
               <span class="font-semibold text-purple-900" data-i18n="hero_card_title">Przestrzeń bez stresu:</span>
@@ -320,7 +383,7 @@
         <!-- Portret lektorki -->
         <div class="lg:col-span-5">
           <div class="relative mx-auto max-w-sm rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-purple-200 aspect-[3/4]">
-            <img src="kobieta.png" alt="Patrycja Rosińska-Babiarz" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='Portret kobiety w okularach i lokach_2.png';">
+            <img src="kobieta.jpg" alt="Patrycja Rosińska-Babiarz – lektorka języka angielskiego Koszalin" width="900" height="1125" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='kobieta.png';">
             <div class="absolute inset-0 bg-gradient-to-t from-purple-950/30 via-transparent to-transparent"></div>
             <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-2xl text-center border border-purple-100">
               <span class="font-bold text-purple-950 block text-base">Patrycja Rosińska-Babiarz</span>
@@ -616,8 +679,83 @@
     </div>
   </section>
 
+  <!-- FAQ / NAJCZĘSTSZE PYTANIA -->
+  <section id="faq" class="py-20 bg-white border-t border-purple-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2" data-i18n="faq_sub">Najczęstsze pytania</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="faq_title">Wszystko, co warto wiedzieć przed pierwszą lekcją</p>
+        <p class="text-slate-600 text-sm sm:text-base mt-3" data-i18n="faq_desc">Sprawdź odpowiedzi na najczęstsze pytania o lekcje angielskiego w Koszalinie i online.</p>
+      </div>
+
+      <div class="space-y-3">
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+            <span data-i18n="faq_q1">Gdzie odbywają się zajęcia z angielskiego w Koszalinie i czy prowadzisz lekcje online?</span>
+            <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a1">
+            Zajęcia stacjonarne odbywają się w gabinecie przy ul. Szczecińskiej 39-41 w Koszalinie. Prowadzę również pełnowartościowe lekcje online, dzięki czemu możesz uczyć się wygodnie z dowolnego miejsca w Polsce i za granicą.
+          </p>
+        </details>
+
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+            <span data-i18n="faq_q2">Dla kogo przeznaczone są zajęcia w Manufakturze Lingwistycznej?</span>
+            <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a2">
+            Zajęcia prowadzę dla młodzieży z klas 7–8 (przygotowanie do egzaminu ósmoklasisty), uczniów szkół średnich (matura podstawowa i rozszerzona) oraz dorosłych, którzy chcą przełamać barierę językową i swobodnie rozmawiać po angielsku.
+          </p>
+        </details>
+
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+            <span data-i18n="faq_q3">Ile kosztują lekcje języka angielskiego i jak wyglądają rozliczenia?</span>
+            <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a3">
+            Lekcja indywidualna 45 minut kosztuje 85 zł, lekcja indywidualna 60 minut 120 zł, a zajęcia 60 minut w parze 75 zł za osobę (150 zł razem). Rozliczenia realizowane są wygodnym przelewem bankowym.
+          </p>
+        </details>
+
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+            <span data-i18n="faq_q4">Jak wygląda bezpłatna konsultacja i darmowy test poziomujący?</span>
+            <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a4">
+            Przed rozpoczęciem nauki rozmawiamy o Twoich celach i preferowanych godzinach, a także możesz rozwiązać darmowy test poziomujący. Dzięki temu od pierwszej lekcji pracujemy na materiałach idealnie dopasowanych do Twojego poziomu.
+          </p>
+        </details>
+
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+            <span data-i18n="faq_q5">Czym jest metoda Student Talking Time (STT)?</span>
+            <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a5">
+            Student Talking Time (STT) oznacza, że to uczeń mówi przez większość lekcji, a nie słucha biernie wykładu lektora. W bezpiecznej, bezstresowej atmosferze ćwiczysz żywą komunikację, nowe zwroty i naturalną płynność mówienia.
+          </p>
+        </details>
+
+        <details class="group bg-purple-50/40 open:bg-purple-50/70 rounded-2xl border border-purple-100 px-5 sm:px-6 py-4 transition">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-slate-900 text-sm sm:text-base">
+            <span data-i18n="faq_q6">Czy przygotowujesz do egzaminu ósmoklasisty i matury z angielskiego?</span>
+            <i class="fa-solid fa-chevron-down text-purple-600 text-xs shrink-0 transition-transform duration-200 group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-3 text-slate-600 text-sm leading-relaxed" data-i18n="faq_a6">
+            Tak. Systematycznie pracujemy z arkuszami egzaminacyjnymi, strukturami gramatyczno-leksykalnymi, zadaniami pisemnymi oraz częścią ustną, oswajając format egzaminu bez niepotrzebnego stresu.
+          </p>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
   <!-- KONTAKT I SOCIAL MEDIA -->
-  <section id="kontakt" class="py-20 bg-white">
+  <section id="kontakt" class="py-20 bg-purple-50/20 border-t border-purple-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -788,6 +926,7 @@
           <a href="#dlaczego-warto" class="hover:text-white transition" data-i18n="nav_why">Dlaczego warto</a>
           <a href="#o-mnie" class="hover:text-white transition" data-i18n="nav_about">O lektorce</a>
           <a href="#cennik" class="hover:text-white transition" data-i18n="nav_pricing">Cennik i Kalkulator</a>
+          <a href="#faq" class="hover:text-white transition" data-i18n="nav_faq">FAQ</a>
           <a href="#kontakt" class="hover:text-white transition" data-i18n="nav_contact">Kontakt</a>
           <button type="button" onclick="openPrivacyModal()" class="hover:text-white transition underline underline-offset-4" data-i18n="footer_privacy">Polityka prywatności i RODO</button>
           <button type="button" onclick="reopenCookieBanner()" class="hover:text-white transition" data-i18n="footer_cookies">Ustawienia cookies</button>
@@ -1101,6 +1240,7 @@
         nav_about: "O lektorce",
         nav_pricing: "Cennik i Kalkulator",
         nav_reviews: "Opinie",
+        nav_faq: "FAQ",
         nav_contact: "Kontakt",
         nav_cta: "Zapisz się",
         hero_badge: "Skuteczny angielski w Koszalinie i online",
@@ -1179,6 +1319,21 @@
         rev_text3: "„Z ręką na serduszku polecam jak najbardziej ! Minęło zaledwie kilka lekcji a ja już zaczynam mówić po angielsku i nie czuje blokady a o to mi chodziło ☺️ i nie mogę się doczekać dalszych lekcji 🫶🏻 Nauczycielka na medal 🥇🥇🥰”",
         rev_role3: "kursantka • Wizytówka Google",
         reviews_google_btn: "Zobacz wszystkie opinie i profil w Google Maps",
+        faq_sub: "Najczęstsze pytania",
+        faq_title: "Wszystko, co warto wiedzieć przed pierwszą lekcją",
+        faq_desc: "Sprawdź odpowiedzi na najczęstsze pytania o lekcje angielskiego w Koszalinie i online.",
+        faq_q1: "Gdzie odbywają się zajęcia z angielskiego w Koszalinie i czy prowadzisz lekcje online?",
+        faq_a1: "Zajęcia stacjonarne odbywają się w gabinecie przy ul. Szczecińskiej 39-41 w Koszalinie. Prowadzę również pełnowartościowe lekcje online, dzięki czemu możesz uczyć się wygodnie z dowolnego miejsca w Polsce i za granicą.",
+        faq_q2: "Dla kogo przeznaczone są zajęcia w Manufakturze Lingwistycznej?",
+        faq_a2: "Zajęcia prowadzę dla młodzieży z klas 7–8 (przygotowanie do egzaminu ósmoklasisty), uczniów szkół średnich (matura podstawowa i rozszerzona) oraz dorosłych, którzy chcą przełamać barierę językową i swobodnie rozmawiać po angielsku.",
+        faq_q3: "Ile kosztują lekcje języka angielskiego i jak wyglądają rozliczenia?",
+        faq_a3: "Lekcja indywidualna 45 minut kosztuje 85 zł, lekcja indywidualna 60 minut 120 zł, a zajęcia 60 minut w parze 75 zł za osobę (150 zł razem). Rozliczenia realizowane są wygodnym przelewem bankowym.",
+        faq_q4: "Jak wygląda bezpłatna konsultacja i darmowy test poziomujący?",
+        faq_a4: "Przed rozpoczęciem nauki rozmawiamy o Twoich celach i preferowanych godzinach, a także możesz rozwiązać darmowy test poziomujący. Dzięki temu od pierwszej lekcji pracujemy na materiałach idealnie dopasowanych do Twojego poziomu.",
+        faq_q5: "Czym jest metoda Student Talking Time (STT)?",
+        faq_a5: "Student Talking Time (STT) oznacza, że to uczeń mówi przez większość lekcji, a nie słucha biernie wykładu lektora. W bezpiecznej, bezstresowej atmosferze ćwiczysz żywą komunikację, nowe zwroty i naturalną płynność mówienia.",
+        faq_q6: "Czy przygotowujesz do egzaminu ósmoklasisty i matury z angielskiego?",
+        faq_a6: "Tak. Systematycznie pracujemy z arkuszami egzaminacyjnymi, strukturami gramatyczno-leksykalnymi, zadaniami pisemnymi oraz częścią ustną, oswajając format egzaminu bez niepotrzebnego stresu.",
         contact_sub: "Kontakt",
         contact_title: "Zrób pierwszy krok ku swobodzie językowej",
         contact_desc: "Masz pytania dotyczące terminów, przygotowania do egzaminów lub chcesz zapisać się na wstępną konsultację i napisać darmowy test poziomujący? Zadzwoń lub napisz.",
@@ -1234,6 +1389,7 @@
         nav_about: "About Me",
         nav_pricing: "Pricing & Calculator",
         nav_reviews: "Reviews",
+        nav_faq: "FAQ",
         nav_contact: "Contact",
         nav_cta: "Sign Up",
         hero_badge: "Effective English in Koszalin & Online",
@@ -1312,6 +1468,21 @@
         rev_text3: "“With hand on heart, I recommend her wholeheartedly! Only a few lessons have passed and I am already starting to speak English without feeling blocked, which is exactly what I wanted ☺️ and I cannot wait for more lessons 🫶🏻 A top-notch teacher 🥇🥇🥰”",
         rev_role3: "Student • Google Review",
         reviews_google_btn: "View all reviews on Google Maps",
+        faq_sub: "FAQ",
+        faq_title: "Everything You Need to Know Before Your First Lesson",
+        faq_desc: "Answers to the most common questions about English lessons in Koszalin and online.",
+        faq_q1: "Where do on-site lessons in Koszalin take place, and do you teach online?",
+        faq_a1: "On-site lessons are held in our classroom at ul. Szczecińska 39-41 in Koszalin. I also offer interactive online lessons so you can learn conveniently from anywhere in Poland or abroad.",
+        faq_q2: "Who are the lessons at Manufaktura Lingwistyczna designed for?",
+        faq_a2: "Lessons are tailored for 7th–8th grade students (8th Grade Exam prep), high school students (basic and extended Matura exam), and adults who want to overcome the speaking barrier and converse naturally in English.",
+        faq_q3: "How much do lessons cost and how are payments handled?",
+        faq_a3: "An individual 45-minute lesson is 85 PLN, an individual 60-minute lesson is 120 PLN, and a 60-minute lesson in a pair is 75 PLN per person (150 PLN total). Payments are settled conveniently by bank transfer.",
+        faq_q4: "How does the free consultation and placement test work?",
+        faq_a4: "Before we start, we discuss your goals and preferred schedule, and you can take a free placement test. This ensures we choose materials perfectly matched to your level from the very first class.",
+        faq_q5: "What is the Student Talking Time (STT) approach?",
+        faq_a5: "Student Talking Time (STT) means the student speaks for most of the lesson instead of passively listening to a lecture. In a safe, stress-free atmosphere, you actively practice real communication and build lasting fluency.",
+        faq_q6: "Do you prepare students for the 8th Grade Exam and Matura?",
+        faq_a6: "Yes. We systematically work through exam papers, grammar and vocabulary structures, writing tasks, and speaking practice so you feel calm and confident on exam day.",
         contact_sub: "Contact",
         contact_title: "Take the First Step Toward Fluency",
         contact_desc: "Have questions about schedules, exam preparation, or want to schedule an intro call and take a free placement test? Call or send a message.",
@@ -1367,6 +1538,9 @@
     function setLanguage(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
+      document.title = lang === 'pl'
+        ? 'Manufaktura Lingwistyczna – Angielski Koszalin i Online | Patrycja Rosińska-Babiarz'
+        : 'Manufaktura Lingwistyczna – English Lessons in Koszalin & Online | Patrycja Rosińska-Babiarz';
 
       const btnPl = document.getElementById('lang-pl');
       const btnEn = document.getElementById('lang-en');
