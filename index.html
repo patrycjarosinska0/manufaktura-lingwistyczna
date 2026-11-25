@@ -216,6 +216,19 @@
       #mobile-menu-btn.is-open .hamburger-bar-3 {
         transform: translateY(-6px) rotate(-45deg);
       }
+      /* White glassmorphism dla mobilnego menu */
+      #mobile-menu {
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 0 20px 44px -12px rgba(76, 29, 149, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(168, 85, 247, 0.14);
+      }
+      #mobile-menu-backdrop {
+        background: rgba(30, 27, 75, 0.22);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
     }
   </style>
 </head>
@@ -266,65 +279,65 @@
   </header>
 
   <!-- Tło (backdrop) pod mobilnym menu — kliknięcie zamyka menu -->
-  <div id="mobile-menu-backdrop" aria-hidden="true" class="md:hidden fixed inset-0 top-14 z-[45] bg-slate-950/40 backdrop-blur-[2px] opacity-0 pointer-events-none transition-opacity duration-200 ease-out"></div>
+  <div id="mobile-menu-backdrop" aria-hidden="true" class="md:hidden fixed inset-0 top-14 z-[45] opacity-0 pointer-events-none transition-opacity duration-200 ease-out"></div>
 
-  <!-- Mobilne Menu (płynnie wysuwany panel nakładkowy) -->
-  <nav id="mobile-menu" aria-label="Nawigacja mobilna" aria-hidden="true" class="md:hidden fixed inset-x-0 top-14 z-[48] bg-white/98 backdrop-blur-md rounded-b-3xl border-b border-purple-100 shadow-2xl shadow-purple-950/15 px-4 pt-3 pb-3 max-h-[calc(100dvh-3.5rem)] overflow-y-auto opacity-0 -translate-y-3 pointer-events-none transition-all duration-200 ease-out">
+  <!-- Mobilne Menu (płynnie wysuwany panel white glassmorphism) -->
+  <nav id="mobile-menu" aria-label="Nawigacja mobilna" aria-hidden="true" class="md:hidden fixed inset-x-0 top-14 z-[48] rounded-b-3xl px-4 pt-3 pb-3 max-h-[calc(100dvh-3.5rem)] overflow-y-auto opacity-0 -translate-y-3 pointer-events-none transition-all duration-200 ease-out">
     <div class="space-y-1">
-      <a href="#cennik" class="flex items-center justify-between px-3.5 py-3 rounded-xl bg-purple-50/90 border border-purple-100 text-purple-900 font-bold text-sm active:bg-purple-100 transition-colors" onclick="closeMenu()">
+      <a href="#cennik" class="flex items-center justify-between px-3.5 py-3 rounded-xl bg-white/75 border border-purple-200/70 text-purple-900 font-bold text-sm shadow-sm active:bg-purple-50/90 transition-colors" onclick="closeMenu()">
         <span class="flex items-center gap-3">
           <i class="fa-solid fa-tag text-purple-600 w-4 text-center text-xs"></i>
           <span data-i18n="nav_pricing">Cennik i Kalkulator</span>
         </span>
         <i class="fa-solid fa-chevron-right text-purple-400 text-[11px]"></i>
       </a>
-      <a href="#dlaczego-warto" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+      <a href="#dlaczego-warto" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-semibold text-sm hover:bg-white/60 active:bg-white/80 transition-colors" onclick="closeMenu()">
         <span class="flex items-center gap-3">
-          <i class="fa-solid fa-comments text-purple-500 w-4 text-center text-xs"></i>
+          <i class="fa-solid fa-comments text-purple-600 w-4 text-center text-xs"></i>
           <span data-i18n="nav_why">Dlaczego warto</span>
         </span>
-        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+        <i class="fa-solid fa-chevron-right text-purple-300 text-[11px]"></i>
       </a>
-      <a href="#o-mnie" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+      <a href="#o-mnie" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-semibold text-sm hover:bg-white/60 active:bg-white/80 transition-colors" onclick="closeMenu()">
         <span class="flex items-center gap-3">
-          <i class="fa-solid fa-user-graduate text-purple-500 w-4 text-center text-xs"></i>
+          <i class="fa-solid fa-user-graduate text-purple-600 w-4 text-center text-xs"></i>
           <span data-i18n="nav_about">O lektorce</span>
         </span>
-        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+        <i class="fa-solid fa-chevron-right text-purple-300 text-[11px]"></i>
       </a>
-      <a href="#opinie" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+      <a href="#opinie" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-semibold text-sm hover:bg-white/60 active:bg-white/80 transition-colors" onclick="closeMenu()">
         <span class="flex items-center gap-3">
           <i class="fa-solid fa-star text-amber-400 w-4 text-center text-xs"></i>
           <span data-i18n="nav_reviews">Opinie</span>
         </span>
-        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+        <i class="fa-solid fa-chevron-right text-purple-300 text-[11px]"></i>
       </a>
-      <a href="#faq" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+      <a href="#faq" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-semibold text-sm hover:bg-white/60 active:bg-white/80 transition-colors" onclick="closeMenu()">
         <span class="flex items-center gap-3">
-          <i class="fa-solid fa-circle-question text-purple-500 w-4 text-center text-xs"></i>
+          <i class="fa-solid fa-circle-question text-purple-600 w-4 text-center text-xs"></i>
           <span data-i18n="nav_faq">FAQ</span>
         </span>
-        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+        <i class="fa-solid fa-chevron-right text-purple-300 text-[11px]"></i>
       </a>
-      <a href="#kontakt" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-700 font-medium text-sm hover:bg-purple-50/60 active:bg-purple-50 transition-colors" onclick="closeMenu()">
+      <a href="#kontakt" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-slate-800 font-semibold text-sm hover:bg-white/60 active:bg-white/80 transition-colors" onclick="closeMenu()">
         <span class="flex items-center gap-3">
-          <i class="fa-solid fa-envelope text-purple-500 w-4 text-center text-xs"></i>
+          <i class="fa-solid fa-envelope text-purple-600 w-4 text-center text-xs"></i>
           <span data-i18n="nav_contact">Kontakt</span>
         </span>
-        <i class="fa-solid fa-chevron-right text-slate-300 text-[11px]"></i>
+        <i class="fa-solid fa-chevron-right text-purple-300 text-[11px]"></i>
       </a>
     </div>
 
-    <div class="grid grid-cols-2 gap-2.5 mt-3 pt-3 border-t border-purple-100">
-      <a href="tel:+48660031043" class="flex items-center justify-center gap-2 py-3 rounded-full bg-purple-50 active:bg-purple-100 text-purple-900 border border-purple-200 font-semibold text-xs transition-colors" onclick="closeMenu()">
+    <div class="grid grid-cols-2 gap-2.5 mt-3 pt-3 border-t border-purple-200/50">
+      <a href="tel:+48660031043" class="flex items-center justify-center gap-2 py-3 rounded-full bg-white/85 active:bg-white text-purple-900 border border-purple-200/80 shadow-sm font-semibold text-xs transition-colors" onclick="closeMenu()">
         <i class="fa-solid fa-phone text-[11px]"></i>
         <span data-i18n="mob_menu_call">Zadzwoń</span>
       </a>
-      <a href="#kontakt" class="flex items-center justify-center py-3 rounded-full bg-purple-700 active:bg-purple-800 text-white font-semibold text-xs shadow-sm shadow-purple-600/20 transition-colors" onclick="closeMenu()" data-i18n="nav_cta">Zapisz się</a>
+      <a href="#kontakt" class="flex items-center justify-center py-3 rounded-full bg-purple-700 active:bg-purple-800 text-white font-semibold text-xs shadow-md shadow-purple-600/25 transition-colors" onclick="closeMenu()" data-i18n="nav_cta">Zapisz się</a>
     </div>
 
     <!-- Uchwyt wizualny (przesunięcie w górę również zamyka menu) -->
-    <div class="w-10 h-1 rounded-full bg-purple-200/80 mx-auto mt-3" aria-hidden="true"></div>
+    <div class="w-10 h-1 rounded-full bg-purple-300/70 mx-auto mt-3" aria-hidden="true"></div>
   </nav>
 
   <main class="flex flex-col">
