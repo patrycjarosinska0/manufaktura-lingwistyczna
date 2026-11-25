@@ -1279,11 +1279,12 @@
       }, { passive: false });
     })();
 
-    // Mobilne Menu (płynny panel nakładkowy + zamykanie kliknięciem poza, gestem w górę i klawiszem Esc)
+    // Mobilne Menu (biały glassmorphism, zamykanie przy scrollowaniu, kliknięciu poza, gestem w górę i Esc)
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
     let isMobileMenuOpen = false;
+    let menuOpenScrollY = 0;
 
     function updateMenuAriaLabel() {
       if (!menuBtn) return;
@@ -1296,6 +1297,7 @@
     function openMenu() {
       if (isMobileMenuOpen || !mobileMenu) return;
       isMobileMenuOpen = true;
+      menuOpenScrollY = window.scrollY;
       menuBtn.classList.add('is-open');
       menuBtn.setAttribute('aria-expanded', 'true');
       updateMenuAriaLabel();
@@ -1308,7 +1310,6 @@
         mobileMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
         mobileMenuBackdrop.classList.add('opacity-100', 'pointer-events-auto');
       }
-      document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
@@ -1325,10 +1326,6 @@
       if (mobileMenuBackdrop) {
         mobileMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
         mobileMenuBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
-      }
-      const pm = document.getElementById('privacy-modal');
-      if (!pm || pm.classList.contains('hidden')) {
-        document.body.style.overflow = '';
       }
     }
 
@@ -1348,7 +1345,25 @@
     }
     if (mobileMenuBackdrop) {
       mobileMenuBackdrop.addEventListener('click', closeMenu);
+      let backdropTouchY = 0;
+      mobileMenuBackdrop.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length === 1) {
+          backdropTouchY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+      mobileMenuBackdrop.addEventListener('touchmove', (e) => {
+        if (!isMobileMenuOpen || !e.touches || e.touches.length !== 1) return;
+        if (Math.abs(e.touches[0].clientY - backdropTouchY) > 8) {
+          closeMenu();
+        }
+      }, { passive: true });
     }
+    // Zamknij menu natychmiast po rozpoczęciu scrollowania strony
+    window.addEventListener('scroll', () => {
+      if (isMobileMenuOpen && Math.abs(window.scrollY - menuOpenScrollY) > 8) {
+        closeMenu();
+      }
+    }, { passive: true });
     // Zamknij menu przy kliknięciu w dowolne miejsce poza menu i przyciskiem hamburgera (np. logo lub przełącznik języka)
     document.addEventListener('click', (e) => {
       if (!isMobileMenuOpen) return;
@@ -1378,7 +1393,7 @@
       mobileMenu.addEventListener('touchend', (e) => {
         if (!isMobileMenuOpen || !e.changedTouches || e.changedTouches.length !== 1) return;
         const deltaY = e.changedTouches[0].clientY - menuTouchStartY;
-        if (deltaY < -45 && mobileMenu.scrollTop <= 0) {
+        if (deltaY < -35 && mobileMenu.scrollTop <= 0) {
           closeMenu();
         }
       }, { passive: true });
