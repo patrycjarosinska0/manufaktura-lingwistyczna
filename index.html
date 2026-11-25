@@ -263,46 +263,48 @@
   <main class="flex flex-col">
 
   <!-- HERO SECTION -->
-  <section class="order-1 md:order-none purple-soft-bg relative pt-6 pb-4 md:py-24 border-b border-purple-100/80 md:border-b-0 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-12 items-center">
+  <section class="order-1 md:order-none purple-soft-bg relative min-h-[calc(100svh-3.5rem)] md:min-h-0 flex flex-col justify-between md:block pt-5 pb-4 md:py-24 border-b border-purple-100/80 md:border-b-0 overflow-hidden">
+    <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-between md:block">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-12 items-center flex-1 md:flex-none">
         
-        <div class="lg:col-span-7 space-y-5 md:space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-3.5 md:py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-800 text-[11px] md:text-xs font-semibold uppercase tracking-wider">
-            <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-600 animate-pulse"></span>
-            <span data-i18n="hero_badge">Skuteczny angielski w Koszalinie i online</span>
-          </div>
-          
-          <h1 class="text-[1.85rem] leading-[1.16] sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight md:leading-tight">
-            <span data-i18n="hero_title_1">Swoboda mówienia,</span><br>
-            <span class="purple-gradient-text" data-i18n="hero_title_2">która przychodzi naturalnie.</span>
-          </h1>
-
-          <!-- Opis mobilny: tagi odbiorców + 1 zwięzłe zdanie (tylko mobile) -->
-          <div class="md:hidden space-y-3 pt-0.5">
-            <div class="flex flex-wrap items-center justify-center gap-2">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
-                <i class="fa-solid fa-graduation-cap text-purple-600 text-[10px]"></i>
-                <span data-i18n="mob_hero_tag_1">Klasy 7–8</span>
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
-                <i class="fa-solid fa-award text-purple-600 text-[10px]"></i>
-                <span data-i18n="mob_hero_tag_2">Matura</span>
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
-                <i class="fa-solid fa-comments text-purple-600 text-[10px]"></i>
-                <span data-i18n="mob_hero_tag_3">Dorośli</span>
-              </span>
+        <div class="lg:col-span-7 flex flex-col justify-evenly md:block gap-4 md:gap-0 md:space-y-6 h-full md:h-auto text-center lg:text-left">
+          <div class="space-y-3.5 md:space-y-6">
+            <div class="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-3.5 md:py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-800 text-[11px] md:text-xs font-semibold uppercase tracking-wider">
+              <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-600 animate-pulse"></span>
+              <span data-i18n="hero_badge">Skuteczny angielski w Koszalinie i online</span>
             </div>
-            <p class="text-sm leading-relaxed text-slate-600 max-w-sm mx-auto" data-i18n="mob_hero_desc">
-              Bezpieczna atmosfera i naturalne przełamanie bariery mówienia.
+            
+            <h1 class="text-[1.85rem] leading-[1.15] sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight md:leading-tight">
+              <span data-i18n="hero_title_1">Swoboda mówienia,</span><br>
+              <span class="purple-gradient-text" data-i18n="hero_title_2">która przychodzi naturalnie.</span>
+            </h1>
+
+            <!-- Opis mobilny: tagi odbiorców + 1 zwięzłe zdanie (tylko mobile) -->
+            <div class="md:hidden space-y-2.5 pt-0.5">
+              <div class="flex flex-wrap items-center justify-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
+                  <i class="fa-solid fa-graduation-cap text-purple-600 text-[10px]"></i>
+                  <span data-i18n="mob_hero_tag_1">Klasy 7–8</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
+                  <i class="fa-solid fa-award text-purple-600 text-[10px]"></i>
+                  <span data-i18n="mob_hero_tag_2">Matura</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-purple-200 text-purple-900 text-xs font-semibold shadow-sm">
+                  <i class="fa-solid fa-comments text-purple-600 text-[10px]"></i>
+                  <span data-i18n="mob_hero_tag_3">Dorośli</span>
+                </span>
+              </div>
+              <p class="text-sm leading-relaxed text-slate-600 max-w-sm mx-auto" data-i18n="mob_hero_desc">
+                Bezpieczna atmosfera i naturalne przełamanie bariery mówienia.
+              </p>
+            </div>
+
+            <!-- Opis desktopowy (oryginalny, bez zmian) -->
+            <p class="hidden md:block text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
+              Zajęcia tworzone z myślą o młodzieży z klas 7–8, licealistach przygotowujących się do egzaminów oraz dorosłych, którzy chcą wreszcie swobodnie rozmawiać po angielsku. Łączymy bezpieczną atmosferę ze sprawdzonym międzynarodowym doświadczeniem.
             </p>
           </div>
-
-          <!-- Opis desktopowy (oryginalny, bez zmian) -->
-          <p class="hidden md:block text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
-            Zajęcia tworzone z myślą o młodzieży z klas 7–8, licealistach przygotowujących się do egzaminów oraz dorosłych, którzy chcą wreszcie swobodnie rozmawiać po angielsku. Łączymy bezpieczną atmosferę ze sprawdzonym międzynarodowym doświadczeniem.
-          </p>
 
           <div class="grid grid-cols-[1.35fr_1fr] md:flex md:flex-row items-stretch md:items-center justify-center lg:justify-start gap-2.5 md:gap-4 pt-1 md:pt-2">
             <a href="#kontakt" class="flex items-center justify-center md:inline-block w-full md:w-auto px-3 md:px-7 py-3 md:py-3.5 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold text-xs sm:text-sm md:text-base leading-snug text-center shadow-lg shadow-purple-600/20 transition-all hover:-translate-y-0.5" data-i18n="hero_cta_primary">
@@ -313,7 +315,26 @@
             </a>
           </div>
 
-          <div class="pt-4 pb-1 md:pt-6 md:pb-0 border-t border-purple-100 grid grid-cols-3 gap-2 md:gap-4 text-center lg:text-left">
+          <!-- Wizytówka lektorki i opinie Google (tylko mobile — zagospodarowanie 1. ekranu) -->
+          <a href="#o-mnie" class="md:hidden flex items-center gap-3.5 bg-white/95 border border-purple-100 rounded-2xl p-3 shadow-sm text-left">
+            <img src="kobieta.jpg" alt="Patrycja Rosińska-Babiarz" width="900" height="1125" decoding="async" class="w-14 h-14 rounded-full object-cover object-top shrink-0 ring-2 ring-purple-200 bg-purple-100" onerror="this.onerror=null; this.src='kobieta.png';">
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-bold text-slate-900 text-sm truncate">Patrycja Rosińska-Babiarz</span>
+                <span class="inline-flex items-center gap-1 bg-amber-50 border border-amber-200/80 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0">
+                  <i class="fa-solid fa-star text-amber-400 text-[9px]"></i>
+                  <span data-i18n="mob_trust_rating">5.0 Google</span>
+                </span>
+              </div>
+              <p class="text-[11px] text-slate-500 mt-0.5 truncate" data-i18n="mob_trust_sub">mgr filologii angielskiej • Koszalin & online</p>
+              <p class="text-[11px] font-semibold text-purple-700 mt-1 flex items-center gap-1">
+                <i class="fa-solid fa-circle-check text-purple-500 text-[10px]"></i>
+                <span data-i18n="mob_trust_perk">Bezpłatna konsultacja i test poziomujący</span>
+              </p>
+            </div>
+          </a>
+
+          <div class="pt-3.5 pb-1 md:pt-6 md:pb-0 border-t border-purple-100 grid grid-cols-3 gap-2 md:gap-4 text-center lg:text-left">
             <div>
               <div class="text-lg md:text-2xl font-bold text-purple-900" data-i18n="hero_stat_1_val">8+ lat</div>
               <div class="text-[11px] md:text-xs text-slate-500 font-medium leading-tight" data-i18n="hero_stat_1">doświadczenia</div>
@@ -326,6 +347,14 @@
               <div class="text-lg md:text-2xl font-bold text-purple-900">100%</div>
               <div class="text-[11px] md:text-xs text-slate-500 font-medium leading-tight" data-i18n="hero_stat_3">indywidualne podejście</div>
             </div>
+          </div>
+
+          <!-- Subtelny wskaźnik przewijania na dole 1. ekranu (tylko mobile) -->
+          <div class="md:hidden pt-1 pb-2 flex justify-center">
+            <a href="#cennik" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-purple-700/80 hover:text-purple-900 transition">
+              <span data-i18n="mob_scroll_pricing">Przewiń po cennik i kalkulator</span>
+              <i class="fa-solid fa-chevron-down text-[10px] animate-bounce"></i>
+            </a>
           </div>
         </div>
 
@@ -1614,6 +1643,10 @@
         mob_hero_tag_2: "Matura",
         mob_hero_tag_3: "Dorośli",
         mob_hero_desc: "Bezpieczna atmosfera i naturalne przełamanie bariery mówienia.",
+        mob_trust_rating: "5.0 Google",
+        mob_trust_sub: "mgr filologii angielskiej • Koszalin & online",
+        mob_trust_perk: "Bezpłatna konsultacja i test poziomujący",
+        mob_scroll_pricing: "Przewiń po cennik i kalkulator",
         mob_swipe_hint: "Przesuń w bok, aby zobaczyć więcej →",
         about_more_btn: "Czytaj więcej o doświadczeniu",
         about_less_btn: "Zwiń opis"
@@ -1771,6 +1804,10 @@
         mob_hero_tag_2: "Matura Exam",
         mob_hero_tag_3: "Adults",
         mob_hero_desc: "A supportive atmosphere and natural speaking confidence.",
+        mob_trust_rating: "5.0 Google",
+        mob_trust_sub: "MA in English Philology • Koszalin & online",
+        mob_trust_perk: "Free consultation & placement test",
+        mob_scroll_pricing: "Scroll for pricing & calculator",
         mob_swipe_hint: "Swipe sideways to see more →",
         about_more_btn: "Read more about my experience",
         about_less_btn: "Show less"
